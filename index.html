@@ -295,14 +295,14 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>#向量<br>向量对于不同的学科有不一样的定义，我们将从三个角度对向量进行解释。</p>
+        <h1 id="向量"><a href="#向量" class="headerlink" title="向量"></a>向量</h1><p>向量对于不同的学科有不一样的定义，我们将从三个角度对向量进行解释。</p>
 <ol>
 <li>物理学<br>物理中的向量由长度和方向决定，长度和方向不变的情况下随意移动，表示的都是同一个向量。</li>
 <li>计算机<br>计算机中的向量更多的是对数据的抽象，可以是根据面积和价格定义的一个房子特征$\begin{bmatrix}100m^2\700000￥\end{bmatrix}$或是通过神经网络得到的图象的的一个向量。</li>
 <li>数学<br>数学中的向量可以是任意东西，只要保证两个向量的相加$\vec v + \vec w$以及数字和向量相乘$2\vec v$是有意义的即可。</li>
 </ol>
-<p>线性代数中的向量可以理解为一个空间中的箭头，这个箭头起点落在原点。如果空间中有许多的向量，可以点表示一个向量，即向量头的坐标。<br>#向量的基本运算</p>
-<ol>
+<p>线性代数中的向量可以理解为一个空间中的箭头，这个箭头起点落在原点。如果空间中有许多的向量，可以点表示一个向量，即向量头的坐标。</p>
+<h1 id="向量的基本运算"><a href="#向量的基本运算" class="headerlink" title="向量的基本运算"></a>向量的基本运算</h1><ol>
 <li><p>向量的加法<br> 可以理解为在坐标中两个向量的移动。</p>
  <p align="center">    
          <img src="https://jpccc.github.io/resource/algebra/001.png">
@@ -311,7 +311,7 @@
  <p align="center">    
          <img src="https://jpccc.github.io/resource/algebra/002.png">
  </p>
-#线性组合、张成空间、基
+# 线性组合、张成空间、基
 >  线性组合</li>
 </ol>
 <p>两个数乘向量称为两个向量的线性组合$a\vec v+ b\vec w$。<br>两个不共线的向量通过不同的线性组合可以得到二维平面中的所有向量。<br>两个共线的向量通过线程组合只能得到一个直线的所有向量。<br>如果两个向量都是零向量那么它只能在原点。</p>
@@ -323,7 +323,7 @@
 <p>基</p>
 </blockquote>
 <p>向量空间的一组基是张成该空间的一个线性无关向量集。</p>
-<p>#矩阵与线性变换<br>(向量的基默认为(0,1)(1,0)正交基。左乘向量可以看作是向量对基向量进行操作。同一向量乘以不同的基表示对不同的基做相同的运算。)<br>严格意义上来说，线性变换是将向量作为输入和输出的一类函数。<br>变化可以多种多样，线性变化将变化限制在一个特殊类型的变换上，可以简单的理解为网格线保持平行且等距分布。<br>线性变化满足一下两个性质：</p>
+<h1 id="矩阵与线性变换"><a href="#矩阵与线性变换" class="headerlink" title="矩阵与线性变换"></a>矩阵与线性变换</h1><p>(向量的基默认为(0,1)(1,0)正交基。左乘向量可以看作是向量对基向量进行操作。同一向量乘以不同的基表示对不同的基做相同的运算。)<br>严格意义上来说，线性变换是将向量作为输入和输出的一类函数。<br>变化可以多种多样，线性变化将变化限制在一个特殊类型的变换上，可以简单的理解为网格线保持平行且等距分布。<br>线性变化满足一下两个性质：</p>
 <ul>
 <li>线性变化前后直线依旧是直线不能弯曲。</li>
 <li>原点必须保持固定  <p align="center">    
@@ -352,8 +352,7 @@
         <img src="https://jpccc.github.io/resource/algebra/008.png">
 </p>
 
-<p>#矩阵乘法与线性变换复合的联系</p>
-<blockquote>
+<h1 id="矩阵乘法与线性变换复合的联系"><a href="#矩阵乘法与线性变换复合的联系" class="headerlink" title="矩阵乘法与线性变换复合的联系"></a>矩阵乘法与线性变换复合的联系</h1><blockquote>
 <p>线性变化的复合</p>
 </blockquote>
 <p>如何描述先旋转再剪切的操作呢？</p>
@@ -403,8 +402,7 @@
         <img src="https://jpccc.github.io/resource/algebra/017.png">
 </p>
 
-<p>#三维空间的线性变化</p>
-<p>三维的空间变化和二维的类似。</p>
+<h1 id="三维空间的线性变化"><a href="#三维空间的线性变化" class="headerlink" title="三维空间的线性变化"></a>三维空间的线性变化</h1><p>三维的空间变化和二维的类似。</p>
 <p align="center">    
         <img src="https://jpccc.github.io/resource/algebra/018.png">
 </p>
@@ -414,8 +412,7 @@
         <img src="https://jpccc.github.io/resource/algebra/019.png">
 </p>
 
-<p>#行列式</p>
-<blockquote>
+<h1 id="行列式"><a href="#行列式" class="headerlink" title="行列式"></a>行列式</h1><blockquote>
 <p>行列式的本质</p>
 </blockquote>
 <p>行列式的本质是计算线性变化对空间的缩放比例，具体一点就是，测量一个给定区域面积增大或减小的比例。<strong>注意，面积的变化比例是对原空间中的网格来说的。也可以说成是原基向量组成的区域面积的变化。</strong><br>单位面积的变换代表任意区域的面积变换比例。<br>值得注意的是：</p>
@@ -456,7 +453,34 @@
         <img src="https://jpccc.github.io/resource/algebra/026.png">
 </p>
 
-<p>#逆矩阵、列空间、秩、零空间</p>
+<h1 id="逆矩阵、列空间、秩、零空间"><a href="#逆矩阵、列空间、秩、零空间" class="headerlink" title="逆矩阵、列空间、秩、零空间"></a>逆矩阵、列空间、秩、零空间</h1><blockquote>
+<p>线性方程组</p>
+</blockquote>
+<p align="center">    
+        <img src="https://jpccc.github.io/resource/algebra/027.png">
+</p>
+
+<p>从几何的角度来思考，矩阵A表示一个线性变换，我们需要找到一个$\vec x$使得它在变换后和$\vec v$重合。</p>
+<blockquote>
+<p>逆矩阵</p>
+</blockquote>
+<p>矩阵的逆运算，记为$\vec A = \begin{bmatrix}3&amp;1 \0&amp;2\end{bmatrix}^{-1}$，对于线程方程$A \vec x = \vec v $来说，找到$A^{-1}$就得到解$\vec x = A^{-1} \vec v$。<br>$A^{-1}A=\begin{bmatrix}1&amp;0 \0&amp;1\end{bmatrix}$，什么都不做称为恒等变换。</p>
+<blockquote>
+<p>线性方程组的解</p>
+</blockquote>
+<p>对于方程组$A\vec x = \vec v$，线性变换A存在两种情况：<br>$det(A) \neq0$：这时空间的维数并没有改变，有且只有一个向量经过线性变换后和$\vec v$重合。<br>$det(A) =0$：空间被压缩到更低的维度，这时不存在逆变换，因为不能将一个直线解压缩为一个平面，这样就会映射多个向量。但是即使不存在逆变换，解可能仍然存在，因为目标$\vec v$刚好落在压缩后的空间上。</p>
+<blockquote>
+<p>秩</p>
+</blockquote>
+<p>秩代表变换后空间的维度。<br>如果线性变化后将空间压缩成一条直线，那么称这个变化的秩为1；<br>如果线性变化后向量落在二维平面，那么称这个变化的秩为2。</p>
+<blockquote>
+<p>列空间</p>
+</blockquote>
+<p>所有可能的输出向量$A\vec v$构成的集合，称为列空间，即所有列向量张成的空间。</p>
+<blockquote>
+<p>零空间（Null space）</p>
+</blockquote>
+<p>所有的线性变化中，零向量一定包含在列空间中，因为线性变换原点保持不动。对于非满秩的情况来说，会有一系列的向量在变换后仍为零向量。<br>二维空间压缩为一条直线，一条线上的向量都会落到原点。</p>
 
       
     </div>

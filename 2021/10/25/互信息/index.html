@@ -24,7 +24,7 @@
 <meta property="og:locale">
 <meta property="og:image" content="https://jpccc.github.io/resource/Mutual_Information/001.png">
 <meta property="article:published_time" content="2021-10-25T04:44:13.000Z">
-<meta property="article:modified_time" content="2021-10-25T10:52:37.731Z">
+<meta property="article:modified_time" content="2021-10-25T10:59:41.222Z">
 <meta property="article:author" content=" liusha">
 <meta property="article:tag" content="math">
 <meta name="twitter:card" content="summary">
@@ -323,23 +323,27 @@
 </ol>
 <span id="more"></span>
 <ol start="2">
-<li>信息量<blockquote>
+<li><p>信息量</p>
+<blockquote>
 <p>信息量是对信息的度量，就跟时间的度量是秒一样；我们考虑一个离散的随机变量x，当我们观察到的这个变量的一个具体值的时候，我们接收到了多少信息呢？</p>
 </blockquote>
-</li>
-</ol>
-<pre><code>  * 多少信息用信息量来衡量，我们接受到的信息量信息的大小跟随机事件的概率分布有关，越小概率的事情发生了产生的信息量越大，如湖南产生的地震了；越大概率的事情发生了产生的信息量越小，如太阳从东边升起来了（肯定发生嘛，没什么信息量）。这很好理解！ 所以描述信息量的函数应该是一个与随机变量的发生概率成负相关的函数，且不能为负数。
-</code></pre>
+<ul>
+<li>多少信息用信息量来衡量，我们接受到的信息量信息的大小跟随机事件的概率分布有关，越小概率的事情发生了产生的信息量越大，如湖南产生的地震了；越大概率的事情发生了产生的信息量越小，如太阳从东边升起来了（肯定发生嘛，没什么信息量）。这很好理解！ 所以描述信息量的函数应该是一个与随机变量的发生概率成负相关的函数，且不能为负数。</li>
+</ul>
 <blockquote>
 <p>例子</p>
 </blockquote>
-<pre><code>  * 如果我们有俩个不相关的事件x和y，那么我们观察到的俩个事件同时发生时获得的信息应该等于观察到的事件各自发生时获得的信息之和，即：h(x,y) = h(x) + h(y)。 由于x，y是俩个不相关的事件，那么满足p(x,y) = p(x)*p(y)。
-  * 根据上面推导，我们很容易看出h(x)一定与p(x)的对数有关（因为只有对数形式的真数相乘之后，能够对应对数的相加形式，可以试试）。因此我们有信息量公式如下：
-            $$h(x)=-log_2p(x)$$ 
+<ul>
+<li>如果我们有俩个不相关的事件x和y，那么我们观察到的俩个事件同时发生时获得的信息应该等于观察到的事件各自发生时获得的信息之和，即：h(x,y) = h(x) + h(y)。 由于x，y是俩个不相关的事件，那么满足p(x,y) = p(x)*p(y)。</li>
+<li>根据上面推导，我们很容易看出h(x)一定与p(x)的对数有关（因为只有对数形式的真数相乘之后，能够对应对数的相加形式，可以试试）。因此我们有信息量公式如下：<pre><code>       $$h(x)=-log_2p(x)$$ 
 </code></pre>
+</li>
+</ul>
 <blockquote>
 <p>下面解决两个疑问？</p>
 </blockquote>
+</li>
+</ol>
 <pre><code>  (1). 为什么有一个负号?
      &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 信息量取概率的负对数，其实是因为信息量的定义是概率的倒数的对数。而用概率的倒数，是为了使概率越大，信息量越小，同时因为概率的倒数大于1，其对数自然大于0了。
   (2). 为什么底数为2?
@@ -390,7 +394,7 @@
         <p><span>本文标题:</span><a href="/2021/10/25/%E4%BA%92%E4%BF%A1%E6%81%AF/">互信息</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">流沙</a></p>
         <p><span>发布时间:</span>2021-10-25, 12:44:13</p>
-        <p><span>最后更新:</span>2021-10-25, 18:52:37</p>
+        <p><span>最后更新:</span>2021-10-25, 18:59:41</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2021/10/25/%E4%BA%92%E4%BF%A1%E6%81%AF/" title="互信息">https://jpccc.github.io/2021/10/25/%E4%BA%92%E4%BF%A1%E6%81%AF/</a>
             <span class="copy-path" data-clipboard-text="原文: https://jpccc.github.io/2021/10/25/%E4%BA%92%E4%BF%A1%E6%81%AF/　　作者: " title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>

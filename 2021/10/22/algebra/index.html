@@ -78,7 +78,7 @@
 <meta property="og:image" content="https://jpccc.github.io/resource/algebra/050.png">
 <meta property="og:image" content="https://jpccc.github.io/resource/algebra/051.png">
 <meta property="article:published_time" content="2021-10-22T08:26:34.000Z">
-<meta property="article:modified_time" content="2021-10-25T14:18:55.645Z">
+<meta property="article:modified_time" content="2021-11-18T01:21:50.470Z">
 <meta property="article:author" content=" liusha">
 <meta property="article:tag" content="math">
 <meta name="twitter:card" content="summary">
@@ -378,10 +378,10 @@
 <li>数学<br> 数学中的向量可以是任意东西，只要保证两个向量的相加$\vec v + \vec w$以及数字和向量相乘$2\vec v$是有意义的即可。<span id="more"></span></li>
 </ul>
 </li>
-<li>线性代数中的向量可以理解为一个空间中的箭头，这个箭头起点落在原点。如果空间中有许多的向量，可以点表示一个向量，即向量头的坐标。</li>
+<li>线性代数中的向量可以理解为一个空间中的箭头，这个箭头起点落在原点。如果空间中有许多的向量，可以用点表示一个向量，即向量头的坐标。</li>
 </ol>
 <h1 id="二-向量的基本运算"><a href="#二-向量的基本运算" class="headerlink" title="二. 向量的基本运算"></a>二. 向量的基本运算</h1><ol>
-<li><p>向量的加法<br> 可以理解为在坐标中两个向量的移动。</p>
+<li><p>向量的加法<br> 可以理解为在坐标系中两个向量的移动。</p>
  <p align="center">    
          <img src="https://jpccc.github.io/resource/algebra/001.png">
  </p></li>
@@ -390,10 +390,10 @@
          <img src="https://jpccc.github.io/resource/algebra/002.png">
  </p></li>
 </ol>
-<h1 id="线性组合、张成空间、基"><a href="#线性组合、张成空间、基" class="headerlink" title="线性组合、张成空间、基"></a>线性组合、张成空间、基</h1><blockquote>
+<h1 id="三-线性组合、张成空间、基"><a href="#三-线性组合、张成空间、基" class="headerlink" title="三. 线性组合、张成空间、基"></a>三. 线性组合、张成空间、基</h1><blockquote>
 <p> 线性组合</p>
 </blockquote>
-<p>两个数乘向量称为两个向量的线性组合$a\vec v+ b\vec w$。<br>两个不共线的向量通过不同的线性组合可以得到二维平面中的所有向量。<br>两个共线的向量通过线程组合只能得到一个直线的所有向量。<br>如果两个向量都是零向量那么它只能在原点。</p>
+<p>两个数乘向量相加称为两个向量的线性组合$a\vec v+ b\vec w$。<br>两个不共线的向量通过不同的线性组合可以得到二维平面中的所有向量。<br>两个共线的向量通过线程组合只能得到一个直线的所有向量。<br>如果两个向量都是零向量那么它只能在原点。</p>
 <blockquote>
 <p>张成向量</p>
 </blockquote>
@@ -402,18 +402,22 @@
 <p>基</p>
 </blockquote>
 <p>向量空间的一组基是张成该空间的一个线性无关向量集。</p>
-<h1 id="矩阵与线性变换"><a href="#矩阵与线性变换" class="headerlink" title="矩阵与线性变换"></a>矩阵与线性变换</h1><p>(向量的基默认为(0,1)(1,0)正交基。左乘向量可以看作是向量对基向量进行操作。同一向量乘以不同的基表示对不同的基做相同的运算。)<br>严格意义上来说，线性变换是将向量作为输入和输出的一类函数。<br>变化可以多种多样，线性变化将变化限制在一个特殊类型的变换上，可以简单的理解为网格线保持平行且等距分布。<br>线性变化满足一下两个性质：</p>
+<h1 id="四-矩阵与线性变换"><a href="#四-矩阵与线性变换" class="headerlink" title="四. 矩阵与线性变换"></a>四. 矩阵与线性变换</h1><p>(向量的基默认为(0,1)(1,0)正交基。左乘向量可以看作是向量对基向量进行操作。同一向量乘以不同的基表示对不同的基做相同的运算。)</p>
+<p>严格意义上来说，线性变换是将向量作为输入和输出的一类函数。<br>变化可以多种多样，线性变化将变化限制在一个特殊类型的变换上，可以简单的理解为网格线保持平行且等距分布。<br>线性变化满足一下两个性质：</p>
 <ul>
 <li>线性变化前后直线依旧是直线不能弯曲。</li>
-<li>原点必须保持固定  <p align="center">    
-          <img src="https://jpccc.github.io/resource/algebra/003.png">
-  </p></li>
+<li>原点必须保持固定</li>
 </ul>
+<p align="center">    
+<img src="https://jpccc.github.io/resource/algebra/003.png">
+</p>
+
+
 <p>可以使用<strong>基向量来描述线性变化：</strong><br>通过记录两个基向量$\hat{i}$,$\hat{j}$的变换，就可以得到其他变化后的向量。<br>已知向量$\vec v = \begin{bmatrix}-1\\2\end{bmatrix}$<br>变换之前的$\hat i$和$\hat j$：</p>
 <p>$$<br>\hat{i} = \begin{bmatrix}<br>1 \<br>   0<br>  \end{bmatrix} \<br>  \hat{j} = \begin{bmatrix}<br>0 \<br>   1<br>  \end{bmatrix} \<br>\vec{v} = -1\hat{i} + 2 \hat{j} = \begin{bmatrix}<br>-1 \<br>   2<br>  \end{bmatrix}<br>$$</p>
 <p>变换之后的$\hat i$和$\hat j$：</p>
 <p>$$<br>\begin{aligned}<br>\hat{i} = \begin{bmatrix}<br>1 \<br>   -2<br>  \end{bmatrix} \<br>  \hat{j} = \begin{bmatrix}<br>3 \<br>   0<br>  \end{bmatrix} \<br>\vec{v} = -1\hat{i} + 2 \hat{j} &amp;= \begin{bmatrix}<br>5 \<br>   2<br>  \end{bmatrix} \<br>  &amp;= -1\begin{bmatrix}<br>1 \<br>   -2<br>  \end{bmatrix}  + 2 \begin{bmatrix}<br>3 \<br>  0<br>  \end{bmatrix} \<br>  &amp;= \begin{bmatrix}<br>1 &amp; 3 \<br>   -2 &amp; 0<br>  \end{bmatrix}  \begin{bmatrix}<br>-1 \<br>   2<br>  \end{bmatrix} \<br>  &amp;= \begin{bmatrix}<br>5 \<br>   2<br>  \end{bmatrix} \<br>\end{aligned}<br>$$<br><strong>将对基向量的变换记录下来，对其作用于其它向量，就可以得到其它向量在变换后的空间中的值</strong></p>
-<p>我们可以将变换后的$\hat i$和$\hat j$写成矩阵的形式：$\begin{bmatrix}<br>1 &amp; 3 \<br>   -2 &amp; 0<br>  \end{bmatrix}  \begin{bmatrix}<br>-1 \<br>   2<br>  \end{bmatrix}$，通过矩阵的乘法得到变化后的向量。</p>
+<p>我们可以将变换后的$\hat i$和$\hat j$写成矩阵的形式：$\begin{bmatrix}<br>1 &amp; 3 \<br>   -2 &amp; 0<br>  \end{bmatrix}  \begin{bmatrix}<br>-1 \<br>   2<br>  \end{bmatrix}$，通过矩阵的乘法得到变化后的向量。(左侧矩阵是基向量的线性变换矩阵)</p>
 <p align="center">    
         <img src="https://jpccc.github.io/resource/algebra/004.png">
 </p>
@@ -426,12 +430,13 @@
 <p align="center">    
         <img src="https://jpccc.github.io/resource/algebra/007.png">
 </p>
-如果变化后的$\hat{i}$和$\hat{j}$是线性相关的，变化后向量的张量就是一维空间：
+
+<p>如果变化后的$\hat{i}$和$\hat{j}$是线性相关的，变化后向量的张量就是一维空间：</p>
 <p align="center">    
         <img src="https://jpccc.github.io/resource/algebra/008.png">
 </p>
 
-<h1 id="矩阵乘法与线性变换复合的联系"><a href="#矩阵乘法与线性变换复合的联系" class="headerlink" title="矩阵乘法与线性变换复合的联系"></a>矩阵乘法与线性变换复合的联系</h1><blockquote>
+<h1 id="五-矩阵乘法与线性变换复合的联系"><a href="#五-矩阵乘法与线性变换复合的联系" class="headerlink" title="五. 矩阵乘法与线性变换复合的联系"></a>五. 矩阵乘法与线性变换复合的联系</h1><blockquote>
 <p>线性变化的复合</p>
 </blockquote>
 <p>如何描述先旋转再剪切的操作呢？</p>
@@ -481,7 +486,7 @@
         <img src="https://jpccc.github.io/resource/algebra/017.png">
 </p>
 
-<h1 id="三维空间的线性变化"><a href="#三维空间的线性变化" class="headerlink" title="三维空间的线性变化"></a>三维空间的线性变化</h1><p>三维的空间变化和二维的类似。</p>
+<h1 id="六-三维空间的线性变化"><a href="#六-三维空间的线性变化" class="headerlink" title="六. 三维空间的线性变化"></a>六. 三维空间的线性变化</h1><p>三维的空间变化和二维的类似。</p>
 <p align="center">    
         <img src="https://jpccc.github.io/resource/algebra/018.png">
 </p>
@@ -491,7 +496,7 @@
         <img src="https://jpccc.github.io/resource/algebra/019.png">
 </p>
 
-<h1 id="行列式"><a href="#行列式" class="headerlink" title="行列式"></a>行列式</h1><blockquote>
+<h1 id="七-行列式"><a href="#七-行列式" class="headerlink" title="七. 行列式"></a>七. 行列式</h1><blockquote>
 <p>行列式的本质</p>
 </blockquote>
 <p>行列式的本质是计算线性变化对空间的缩放比例，具体一点就是，测量一个给定区域面积增大或减小的比例。<strong>注意，面积的变化比例是对原空间中的网格来说的。也可以说成是原基向量组成的区域面积的变化。</strong><br>单位面积的变换代表任意区域的面积变换比例。<br>值得注意的是：</p>
@@ -532,7 +537,7 @@
         <img src="https://jpccc.github.io/resource/algebra/026.png">
 </p>
 
-<h1 id="逆矩阵、列空间、秩、零空间"><a href="#逆矩阵、列空间、秩、零空间" class="headerlink" title="逆矩阵、列空间、秩、零空间"></a>逆矩阵、列空间、秩、零空间</h1><blockquote>
+<h1 id="八-逆矩阵、列空间、秩、零空间"><a href="#八-逆矩阵、列空间、秩、零空间" class="headerlink" title="八. 逆矩阵、列空间、秩、零空间"></a>八. 逆矩阵、列空间、秩、零空间</h1><blockquote>
 <p>线性方程组</p>
 </blockquote>
 <p align="center">    
@@ -547,7 +552,11 @@
 <blockquote>
 <p>线性方程组的解</p>
 </blockquote>
-<p>对于方程组$A\vec x = \vec v$，线性变换A存在两种情况：<br>$det(A) \neq0$：这时空间的维数并没有改变，有且只有一个向量经过线性变换后和$\vec v$重合。<br>$det(A) =0$：空间被压缩到更低的维度，这时不存在逆变换，因为不能将一个直线解压缩为一个平面(这会要求将一个单独的向量变换为一整条线的向量，函数多对一可以，一对多不行，即存在一个矩阵A将多个向量映射到一个点，但不可能存在一个矩阵A将一个点映射成一条线的向量)。但是即使不存在逆变换，解可能仍然存在，这时候目标$\vec v$必须刚好落在压缩后的空间上。(例如一个变换将空间压缩成了一条直线，而向量$\vec v$恰好在这条直线上。共线的情况下，则有无穷解，因为有一个直线上的向量都被压缩到直线上的每一点)。（但是能将直线上的一个非0向量映射成平面上的某个唯一向量）</p>
+<p>对于方程组$A\vec x = \vec v$，线性变换A存在两种情况：</p>
+<ul>
+<li>$det(A) \neq0$：这时空间的维数并没有改变，有且只有一个向量经过线性变换后和$\vec v$重合。</li>
+<li>$det(A) =0$：空间被压缩到更低的维度，这时不存在逆变换。因为不能将一个直线解压缩为一个平面(这会要求将一个单独的向量变换为一整条线的向量，函数多对一可以，一对多不行，即存在一个矩阵A将多个向量映射到一个点，但不可能存在一个矩阵A将一个点映射成一条线的向量)。但是即使不存在逆变换，解可能仍然存在，这时候目标$\vec v$必须刚好落在压缩后的空间上。(例如一个变换将空间压缩成了一条直线，而向量$\vec v$恰好在这条直线上。共线的情况下，则有无穷解，因为有无穷都被压缩到直线上的每一点)。</li>
+</ul>
 <blockquote>
 <p>秩</p>
 </blockquote>
@@ -729,7 +738,7 @@
         <p><span>本文标题:</span><a href="/2021/10/22/algebra/">algebra</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">流沙</a></p>
         <p><span>发布时间:</span>2021-10-22, 16:26:34</p>
-        <p><span>最后更新:</span>2021-10-25, 22:18:55</p>
+        <p><span>最后更新:</span>2021-11-18, 09:21:50</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2021/10/22/algebra/" title="algebra">https://jpccc.github.io/2021/10/22/algebra/</a>
             <span class="copy-path" data-clipboard-text="原文: https://jpccc.github.io/2021/10/22/algebra/　　作者: " title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -765,7 +774,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80-%E5%90%91%E9%87%8F"><span class="toc-number">1.</span> <span class="toc-text">一. 向量</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C-%E5%90%91%E9%87%8F%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%BF%90%E7%AE%97"><span class="toc-number">2.</span> <span class="toc-text">二. 向量的基本运算</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E7%BB%84%E5%90%88%E3%80%81%E5%BC%A0%E6%88%90%E7%A9%BA%E9%97%B4%E3%80%81%E5%9F%BA"><span class="toc-number">3.</span> <span class="toc-text">线性组合、张成空间、基</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5%E4%B8%8E%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2"><span class="toc-number">4.</span> <span class="toc-text">矩阵与线性变换</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95%E4%B8%8E%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2%E5%A4%8D%E5%90%88%E7%9A%84%E8%81%94%E7%B3%BB"><span class="toc-number">5.</span> <span class="toc-text">矩阵乘法与线性变换复合的联系</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E7%BB%B4%E7%A9%BA%E9%97%B4%E7%9A%84%E7%BA%BF%E6%80%A7%E5%8F%98%E5%8C%96"><span class="toc-number">6.</span> <span class="toc-text">三维空间的线性变化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A1%8C%E5%88%97%E5%BC%8F"><span class="toc-number">7.</span> <span class="toc-text">行列式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%86%E7%9F%A9%E9%98%B5%E3%80%81%E5%88%97%E7%A9%BA%E9%97%B4%E3%80%81%E7%A7%A9%E3%80%81%E9%9B%B6%E7%A9%BA%E9%97%B4"><span class="toc-number">8.</span> <span class="toc-text">逆矩阵、列空间、秩、零空间</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%9E%E6%96%B9%E9%98%B5%E3%80%81%E4%B8%8D%E5%90%8C%E7%BB%B4%E5%BA%A6%E7%A9%BA%E9%97%B4%E4%B9%8B%E9%97%B4%E7%9A%84%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2"><span class="toc-number">9.</span> <span class="toc-text">非方阵、不同维度空间之间的线性变换</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%89%E7%A7%AF"><span class="toc-number">10.</span> <span class="toc-text">叉积</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E7%9C%8B%E5%8F%89%E7%A7%AF"><span class="toc-number">11.</span> <span class="toc-text">线性代数看叉积</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E5%8F%98%E6%8D%A2"><span class="toc-number">12.</span> <span class="toc-text">基变换</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80-%E5%90%91%E9%87%8F"><span class="toc-number">1.</span> <span class="toc-text">一. 向量</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C-%E5%90%91%E9%87%8F%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%BF%90%E7%AE%97"><span class="toc-number">2.</span> <span class="toc-text">二. 向量的基本运算</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89-%E7%BA%BF%E6%80%A7%E7%BB%84%E5%90%88%E3%80%81%E5%BC%A0%E6%88%90%E7%A9%BA%E9%97%B4%E3%80%81%E5%9F%BA"><span class="toc-number">3.</span> <span class="toc-text">三. 线性组合、张成空间、基</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B-%E7%9F%A9%E9%98%B5%E4%B8%8E%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2"><span class="toc-number">4.</span> <span class="toc-text">四. 矩阵与线性变换</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94-%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95%E4%B8%8E%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2%E5%A4%8D%E5%90%88%E7%9A%84%E8%81%94%E7%B3%BB"><span class="toc-number">5.</span> <span class="toc-text">五. 矩阵乘法与线性变换复合的联系</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AD-%E4%B8%89%E7%BB%B4%E7%A9%BA%E9%97%B4%E7%9A%84%E7%BA%BF%E6%80%A7%E5%8F%98%E5%8C%96"><span class="toc-number">6.</span> <span class="toc-text">六. 三维空间的线性变化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%83-%E8%A1%8C%E5%88%97%E5%BC%8F"><span class="toc-number">7.</span> <span class="toc-text">七. 行列式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AB-%E9%80%86%E7%9F%A9%E9%98%B5%E3%80%81%E5%88%97%E7%A9%BA%E9%97%B4%E3%80%81%E7%A7%A9%E3%80%81%E9%9B%B6%E7%A9%BA%E9%97%B4"><span class="toc-number">8.</span> <span class="toc-text">八. 逆矩阵、列空间、秩、零空间</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%9E%E6%96%B9%E9%98%B5%E3%80%81%E4%B8%8D%E5%90%8C%E7%BB%B4%E5%BA%A6%E7%A9%BA%E9%97%B4%E4%B9%8B%E9%97%B4%E7%9A%84%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2"><span class="toc-number">9.</span> <span class="toc-text">非方阵、不同维度空间之间的线性变换</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%89%E7%A7%AF"><span class="toc-number">10.</span> <span class="toc-text">叉积</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E7%9C%8B%E5%8F%89%E7%A7%AF"><span class="toc-number">11.</span> <span class="toc-text">线性代数看叉积</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E5%8F%98%E6%8D%A2"><span class="toc-number">12.</span> <span class="toc-text">基变换</span></a></li></ol>
         
     </div>
     <style>

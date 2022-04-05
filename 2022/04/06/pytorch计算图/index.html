@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://jpccc.github.io/resource/pytorch/full_graph-16491739555532.png">
 <meta property="og:image" content="https://jpccc.github.io/resource/pytorch/image-4.png">
 <meta property="article:published_time" content="2022-04-05T16:08:00.000Z">
-<meta property="article:modified_time" content="2022-04-05T16:37:31.986Z">
+<meta property="article:modified_time" content="2022-04-05T16:42:25.955Z">
 <meta property="article:author" content=" liusha">
 <meta property="article:tag" content="math">
 <meta name="twitter:card" content="summary">
@@ -359,7 +359,7 @@
 <p>The following equations describe our neural network.</p>
 <p>$$<br>b=w1∗a\\<br>c=w2∗a\\<br>d=w3∗b+w4∗c\\<br>L=10−d\\<br>$$</p>
 <p>Let us compute the gradients for each of the learnable parameters ww.</p>
-<p>$$<br>\frac{\partial{L}}{\partial{w_4}} = \frac{\partial{L}}{\partial{d}}\frac{\partial{d}}{\partial{w_4}}\\<br>\frac{\partial{L}}{\partial{w_3}} = \frac{\partial{L}}{\partial{d}}\frac{\partial{d}}{\partial{w_3}}\\<br>\frac{\partial{L}}{\partial{w_2}} = \frac{\partial{L}}{\partial{d}} * \frac{\partial{d}}{\partial{c}} * \frac{\partial{c}}{\partial{w_2}}\\<br>\frac{\partial{L}}{\partial{w_1}} = \frac{\partial{L}}{\partial{d}}* \frac{\partial{d}}{\partial{b}} * \frac{\partial{b}}{\partial{w_1}}\\<br>$$</p>
+<p>$$<br>\frac{\partial{L}}{\partial{w_4}} = \frac{\partial{L}}{\partial{d}}\frac{\partial{d}}{\partial{w_4}} \\<br>\frac{\partial{L}}{\partial{w_3}} = \frac{\partial{L}}{\partial{d}}\frac{\partial{d}}{\partial{w_3}}\\<br>\frac{\partial{L}}{\partial{w_2}} = \frac{\partial{L}}{\partial{d}} * \frac{\partial{d}}{\partial{c}} * \frac{\partial{c}}{\partial{w_2}}\\<br>\frac{\partial{L}}{\partial{w_1}} = \frac{\partial{L}}{\partial{d}}* \frac{\partial{d}}{\partial{b}} * \frac{\partial{b}}{\partial{w_1}}\\<br>$$</p>
 <p>All these gradients have been computed by applying the chain rule. Note that all the individual gradients on the right hand side of the equations mentioned above can be computed directly since the <em>numerators</em> of the gradients are explicit functions of the <em>denominators.</em></p>
 <hr>
 <h2 id="Computation-Graphs"><a href="#Computation-Graphs" class="headerlink" title="Computation Graphs"></a>Computation Graphs</h2><p>We could manually compute the gradients of our network as it was very simple. Imagine, what if you had a network with 152 layers. Or, if the network had multiple branches.</p>
@@ -495,7 +495,7 @@
         <p><span>本文标题:</span><a href="/2022/04/06/pytorch%E8%AE%A1%E7%AE%97%E5%9B%BE/">Understanding Graphs, Automatic Differentiation and Autograd</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">流沙</a></p>
         <p><span>发布时间:</span>2022-04-06, 00:08:00</p>
-        <p><span>最后更新:</span>2022-04-06, 00:37:31</p>
+        <p><span>最后更新:</span>2022-04-06, 00:42:25</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2022/04/06/pytorch%E8%AE%A1%E7%AE%97%E5%9B%BE/" title="Understanding Graphs, Automatic Differentiation and Autograd">https://jpccc.github.io/2022/04/06/pytorch%E8%AE%A1%E7%AE%97%E5%9B%BE/</a>
             <span class="copy-path" data-clipboard-text="原文: https://jpccc.github.io/2022/04/06/pytorch%E8%AE%A1%E7%AE%97%E5%9B%BE/　　作者: " title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>

@@ -23,14 +23,14 @@
 <meta property="og:description" content="IntroductionPyTorch is one of the foremost python deep learning libraries out there. It’s the go to choice for deep learning research, and as each days passes by, more and more companies and research">
 <meta property="og:locale">
 <meta property="og:image" content="https://jpccc.github.io/resource/pytorch/full_graph.png">
-<meta property="og:image" content="e:/笔记/markdown/reference/picture/computation_graph_forward.png">
+<meta property="og:image" content="https://jpccc.github.io/resource/pytorch/computation_graph_forward-16491755993381.png">
 <meta property="og:image" content="https://jpccc.github.io/resource/pytorch/computation_graph.png">
 <meta property="og:image" content="https://jpccc.github.io/resource/pytorch/d_mini.png">
 <meta property="og:image" content="https://jpccc.github.io/resource/pytorch/d_mini_grad.png">
 <meta property="og:image" content="https://jpccc.github.io/resource/pytorch/full_graph-16491739555532.png">
 <meta property="og:image" content="https://jpccc.github.io/resource/pytorch/image-4.png">
 <meta property="article:published_time" content="2022-04-05T16:08:00.000Z">
-<meta property="article:modified_time" content="2022-04-05T16:15:11.846Z">
+<meta property="article:modified_time" content="2022-04-05T16:21:17.692Z">
 <meta property="article:author" content=" liusha">
 <meta property="article:tag" content="math">
 <meta name="twitter:card" content="summary">
@@ -355,7 +355,7 @@
 <p>The forward pass is pretty straight forward. The output of one layer is the input to the next and so forth.</p>
 <p>Backward pass is a bit more complicated since it requires us to use the chain rule to compute the gradients of weights w.r.t to the loss function.</p>
 <h2 id="A-toy-example"><a href="#A-toy-example" class="headerlink" title="A toy example"></a>A toy example</h2><p>Let us take an very simple neural network consisting of just 5 neurons. Our neural network looks like the following.</p>
-<p><img src="E:\笔记\markdown\reference\picture/computation_graph_forward.png" alt="img"></p>
+<p><img src="https://jpccc.github.io/resource/pytorch/computation_graph_forward-16491755993381.png" alt="img"></p>
 <p>The following equations describe our neural network.<br>$$<br>b=w1∗a\<br>c=w2∗a\<br>d=w3∗b+w4∗c\<br>L=10−d\<br>$$</p>
 <p>Let us compute the gradients for each of the learnable parameters ww.<br>$$<br>\frac{\partial{L}}{\partial{w_4}} = \frac{\partial{L}}{\partial{d}}\frac{\partial{d}}{\partial{w_4}}\</p>
 <p>\frac{\partial{L}}{\partial{w_3}} = \frac{\partial{L}}{\partial{d}}\frac{\partial{d}}{\partial{w_3}}\</p>
@@ -495,7 +495,7 @@
         <p><span>本文标题:</span><a href="/2022/04/06/pytorch%E8%AE%A1%E7%AE%97%E5%9B%BE/">Understanding Graphs, Automatic Differentiation and Autograd</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">流沙</a></p>
         <p><span>发布时间:</span>2022-04-06, 00:08:00</p>
-        <p><span>最后更新:</span>2022-04-06, 00:15:11</p>
+        <p><span>最后更新:</span>2022-04-06, 00:21:17</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2022/04/06/pytorch%E8%AE%A1%E7%AE%97%E5%9B%BE/" title="Understanding Graphs, Automatic Differentiation and Autograd">https://jpccc.github.io/2022/04/06/pytorch%E8%AE%A1%E7%AE%97%E5%9B%BE/</a>
             <span class="copy-path" data-clipboard-text="原文: https://jpccc.github.io/2022/04/06/pytorch%E8%AE%A1%E7%AE%97%E5%9B%BE/　　作者: " title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>

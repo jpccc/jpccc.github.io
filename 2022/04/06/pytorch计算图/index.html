@@ -15,12 +15,12 @@
 
 
 
-<meta name="description" content="Understanding Graphs, Automatic Differentiation and Autograd IntroductionPyTorch is one of the foremost python deep learning libraries out there. It’s the go to choice for deep learning research, and">
+<meta name="description" content="IntroductionPyTorch is one of the foremost python deep learning libraries out there. It’s the go to choice for deep learning research, and as each days passes by, more and more companies and research">
 <meta property="og:type" content="article">
-<meta property="og:title" content="pytorch计算图">
+<meta property="og:title" content="Understanding Graphs, Automatic Differentiation and Autograd">
 <meta property="og:url" content="https://jpccc.github.io/2022/04/06/pytorch%E8%AE%A1%E7%AE%97%E5%9B%BE/index.html">
 <meta property="og:site_name" content="流沙">
-<meta property="og:description" content="Understanding Graphs, Automatic Differentiation and Autograd IntroductionPyTorch is one of the foremost python deep learning libraries out there. It’s the go to choice for deep learning research, and">
+<meta property="og:description" content="IntroductionPyTorch is one of the foremost python deep learning libraries out there. It’s the go to choice for deep learning research, and as each days passes by, more and more companies and research">
 <meta property="og:locale">
 <meta property="og:image" content="https://jpccc.github.io/resource/pytorch/full_graph.png">
 <meta property="og:image" content="e:/笔记/markdown/reference/picture/computation_graph_forward.png">
@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://jpccc.github.io/resource/pytorch/full_graph-16491739555532.png">
 <meta property="og:image" content="https://jpccc.github.io/resource/pytorch/image-4.png">
 <meta property="article:published_time" content="2022-04-05T16:08:00.000Z">
-<meta property="article:modified_time" content="2022-04-05T16:11:39.221Z">
+<meta property="article:modified_time" content="2022-04-05T16:15:11.846Z">
 <meta property="article:author" content=" liusha">
 <meta property="article:tag" content="math">
 <meta name="twitter:card" content="summary">
@@ -68,7 +68,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>pytorch计算图 | 流沙</title>
+<title>Understanding Graphs, Automatic Differentiation and Autograd | 流沙</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -302,7 +302,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      pytorch计算图
+      Understanding Graphs, Automatic Differentiation and Autograd
     </h1>
   
 
@@ -323,7 +323,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="Understanding-Graphs-Automatic-Differentiation-and-Autograd"><a href="#Understanding-Graphs-Automatic-Differentiation-and-Autograd" class="headerlink" title="Understanding Graphs, Automatic Differentiation and Autograd"></a>Understanding Graphs, Automatic Differentiation and Autograd</h1><p><img src="https://jpccc.github.io/resource/pytorch/full_graph.png" alt="img"></p>
+        <p><img src="https://jpccc.github.io/resource/pytorch/full_graph.png" alt="img"></p>
 <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>PyTorch is one of the foremost python deep learning libraries out there. It’s the go to choice for deep learning research, and as each days passes by, more and more companies and research labs are adopting this library.</p>
 <p>In this series of tutorials, we will be introducing you to PyTorch, and how to make the best use of the libraries as well the ecosystem of tools built around it. We’ll first cover the basic building blocks, and then move onto how you can quickly prototype custom architectures. We will finally conclude with a couple of posts on how to scale your code, and how to debug your code if things go awry.</p>
 <p>This is Part 1 of our PyTorch 101 series.</p>
@@ -492,12 +492,12 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2022/04/06/pytorch%E8%AE%A1%E7%AE%97%E5%9B%BE/">pytorch计算图</a></p>
+        <p><span>本文标题:</span><a href="/2022/04/06/pytorch%E8%AE%A1%E7%AE%97%E5%9B%BE/">Understanding Graphs, Automatic Differentiation and Autograd</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">流沙</a></p>
         <p><span>发布时间:</span>2022-04-06, 00:08:00</p>
-        <p><span>最后更新:</span>2022-04-06, 00:11:39</p>
+        <p><span>最后更新:</span>2022-04-06, 00:15:11</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2022/04/06/pytorch%E8%AE%A1%E7%AE%97%E5%9B%BE/" title="pytorch计算图">https://jpccc.github.io/2022/04/06/pytorch%E8%AE%A1%E7%AE%97%E5%9B%BE/</a>
+            <span>原始链接:</span><a class="post-url" href="/2022/04/06/pytorch%E8%AE%A1%E7%AE%97%E5%9B%BE/" title="Understanding Graphs, Automatic Differentiation and Autograd">https://jpccc.github.io/2022/04/06/pytorch%E8%AE%A1%E7%AE%97%E5%9B%BE/</a>
             <span class="copy-path" data-clipboard-text="原文: https://jpccc.github.io/2022/04/06/pytorch%E8%AE%A1%E7%AE%97%E5%9B%BE/　　作者: " title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -525,7 +525,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Understanding-Graphs-Automatic-Differentiation-and-Autograd"><span class="toc-number">1.</span> <span class="toc-text">Understanding Graphs, Automatic Differentiation and Autograd</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-number">1.1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Prerequisites"><span class="toc-number">1.2.</span> <span class="toc-text">Prerequisites</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Automatic-Differentiation"><span class="toc-number">1.3.</span> <span class="toc-text">Automatic Differentiation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#A-toy-example"><span class="toc-number">1.4.</span> <span class="toc-text">A toy example</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Computation-Graphs"><span class="toc-number">1.5.</span> <span class="toc-text">Computation Graphs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Computing-the-gradients"><span class="toc-number">1.6.</span> <span class="toc-text">Computing the gradients</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PyTorch-Autograd"><span class="toc-number">1.7.</span> <span class="toc-text">PyTorch Autograd</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Tensor"><span class="toc-number">1.7.1.</span> <span class="toc-text">Tensor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Function"><span class="toc-number">1.7.2.</span> <span class="toc-text">Function</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How-are-PyTorch%E2%80%99s-graphs-different-from-TensorFlow-graphs"><span class="toc-number">1.8.</span> <span class="toc-text">How are PyTorch’s graphs different from TensorFlow graphs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Some-Tricks-of-Trade"><span class="toc-number">1.9.</span> <span class="toc-text">Some Tricks of Trade</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#requires-grad"><span class="toc-number">1.9.1.</span> <span class="toc-text">requires_grad</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#torch-no-grad"><span class="toc-number">1.9.2.</span> <span class="toc-text">torch.no_grad()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-number">1.10.</span> <span class="toc-text">Conclusion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Further-Reading"><span class="toc-number">1.11.</span> <span class="toc-text">Further Reading</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Prerequisites"><span class="toc-number">2.</span> <span class="toc-text">Prerequisites</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Automatic-Differentiation"><span class="toc-number">3.</span> <span class="toc-text">Automatic Differentiation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#A-toy-example"><span class="toc-number">4.</span> <span class="toc-text">A toy example</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Computation-Graphs"><span class="toc-number">5.</span> <span class="toc-text">Computation Graphs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Computing-the-gradients"><span class="toc-number">6.</span> <span class="toc-text">Computing the gradients</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PyTorch-Autograd"><span class="toc-number">7.</span> <span class="toc-text">PyTorch Autograd</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Tensor"><span class="toc-number">7.1.</span> <span class="toc-text">Tensor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Function"><span class="toc-number">7.2.</span> <span class="toc-text">Function</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How-are-PyTorch%E2%80%99s-graphs-different-from-TensorFlow-graphs"><span class="toc-number">8.</span> <span class="toc-text">How are PyTorch’s graphs different from TensorFlow graphs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Some-Tricks-of-Trade"><span class="toc-number">9.</span> <span class="toc-text">Some Tricks of Trade</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#requires-grad"><span class="toc-number">9.1.</span> <span class="toc-text">requires_grad</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#torch-no-grad"><span class="toc-number">9.2.</span> <span class="toc-text">torch.no_grad()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-number">10.</span> <span class="toc-text">Conclusion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Further-Reading"><span class="toc-number">11.</span> <span class="toc-text">Further Reading</span></a></li></ol>
         
     </div>
     <style>
@@ -579,7 +579,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2022/04/06/pytorch%E8%AE%A1%E7%AE%97%E5%9B%BE/">pytorch计算图</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/10/28/Jensen-inequality/">Jensen_inequality</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/10/28/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%AC%E4%B8%80%E8%8A%82%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/">统计学习第一节数学基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/10/25/pytorch/">pytorch</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/10/25/DroupOut/">DroupOut</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/10/25/BN%E7%AE%97%E6%B3%95/">BN算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/10/25/%E4%BA%92%E4%BF%A1%E6%81%AF/">互信息</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/10/22/algebra/">algebra</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/10/17/hello-world/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2022/04/06/pytorch%E8%AE%A1%E7%AE%97%E5%9B%BE/">Understanding Graphs, Automatic Differentiation and Autograd</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/10/28/Jensen-inequality/">Jensen_inequality</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/10/28/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%AC%E4%B8%80%E8%8A%82%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/">统计学习第一节数学基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/10/25/pytorch/">pytorch</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/10/25/DroupOut/">DroupOut</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/10/25/BN%E7%AE%97%E6%B3%95/">BN算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/10/25/%E4%BA%92%E4%BF%A1%E6%81%AF/">互信息</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/10/22/algebra/">algebra</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/10/17/hello-world/">Hello World</a></li></ul>
 
 
 

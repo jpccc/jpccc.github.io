@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://jpccc.github.io/resource/pytorch/full_graph-16491739555532.png">
 <meta property="og:image" content="https://jpccc.github.io/resource/pytorch/image-4.png">
 <meta property="article:published_time" content="2022-04-05T16:08:00.000Z">
-<meta property="article:modified_time" content="2022-04-05T16:42:25.955Z">
+<meta property="article:modified_time" content="2022-04-05T16:50:43.031Z">
 <meta property="article:author" content=" liusha">
 <meta property="article:tag" content="math">
 <meta name="twitter:card" content="summary">
@@ -378,12 +378,12 @@
 <p>​                                                                                                                Local Gradients</p>
 <p>We do it for the entire graph. The graph looks like this.</p>
 <p><img src="https://jpccc.github.io/resource/pytorch/full_graph-16491739555532.png" alt="img"></p>
-<p>​                                                                                    Back propagation in a Computational Graph</p>
+<p>​                                                                        <center>        Back propagation in a Computational Graph   </center></p>
 <p>Following we describe the algorithm for computing derivative(微分) of any node in this graph with respect to the loss, LL. Let’s say we want to compute the derivative, $\frac{\partial{f}}{\partial{w_4}}$</p>
 <ol>
 <li>We first trace down all possible paths from <em>d</em> to $w_4$.</li>
 <li>There is only one such path.</li>
-<li>We multiply all the edges along this path.</li>
+<li>We multiply all the edges long this path.</li>
 </ol>
 <p>If you see, the product is precisely the same expression we derived using chain rule. If there is more than one path to a variable from <em>L</em> then, we multiply the edges along each path and then add them together. For example,$\frac{\partial{L}}{\partial{a}}$  is computed as</p>
 <p>$$<br>\frac{\partial{L}}{\partial{w_4}} = \frac{\partial{L}}{\partial{d}}*\frac{\partial{d}}{\partial{b}}*\frac{\partial{b}}{\partial{a}} + \frac{\partial{L}}{\partial{d}}*\frac{\partial{d}}{\partial{c}}*\frac{\partial{c}}{\partial{a}}<br>$$</p>
@@ -495,7 +495,7 @@
         <p><span>本文标题:</span><a href="/2022/04/06/pytorch%E8%AE%A1%E7%AE%97%E5%9B%BE/">Understanding Graphs, Automatic Differentiation and Autograd</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">流沙</a></p>
         <p><span>发布时间:</span>2022-04-06, 00:08:00</p>
-        <p><span>最后更新:</span>2022-04-06, 00:42:25</p>
+        <p><span>最后更新:</span>2022-04-06, 00:50:43</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2022/04/06/pytorch%E8%AE%A1%E7%AE%97%E5%9B%BE/" title="Understanding Graphs, Automatic Differentiation and Autograd">https://jpccc.github.io/2022/04/06/pytorch%E8%AE%A1%E7%AE%97%E5%9B%BE/</a>
             <span class="copy-path" data-clipboard-text="原文: https://jpccc.github.io/2022/04/06/pytorch%E8%AE%A1%E7%AE%97%E5%9B%BE/　　作者: " title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>

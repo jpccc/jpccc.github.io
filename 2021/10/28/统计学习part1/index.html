@@ -17,13 +17,11 @@
 <meta property="og:site_name" content="流沙">
 <meta property="og:description" content="Introduction对概率的诠释有两大学派，一种是频率派另一种是贝叶斯派。后面我们对观测集采用下面记号：$$X_{N\times p}&#x3D;(x_{1},x_{2},\cdots,x_{N})^{T},x_{i}&#x3D;(x_{i1},x_{i2},\cdots,x_{ip})^{T}$$这个记号表示有 $N$ 个样本，每个样本都是 $p$ 维向量。其中每个观测都是由 $p(x|\theta)$ 生成的">
 <meta property="og:locale">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=a=\theta_{MLE}=\mathop{argmax}\limits_{\theta}\log p(X|\theta)\mathop{=}\limits_{iid}\mathop{argmax}\limits_{\theta}\sum\limits _{i=1}^{N}\log p(x_{i}|\theta)">
 <meta property="article:published_time" content="2021-10-28T04:44:13.000Z">
-<meta property="article:modified_time" content="2022-04-06T04:06:30.415Z">
+<meta property="article:modified_time" content="2022-04-06T04:10:10.533Z">
 <meta property="article:author" content=" liusha">
 <meta property="article:tag" content="统计学习">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://www.zhihu.com/equation?tex=a=\theta_{MLE}=\mathop{argmax}\limits_{\theta}\log p(X|\theta)\mathop{=}\limits_{iid}\mathop{argmax}\limits_{\theta}\sum\limits _{i=1}^{N}\log p(x_{i}|\theta)">
   
     <link rel="alternative" href="/atom.xml" title="流沙" type="application/atom+xml">
   
@@ -92,7 +90,7 @@
 				
 					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
 		        
-					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
+					<a class="weibo" target="_blank" href="//api.qrserver.com/v1/create-qr-code/?data=abnerchou.me" title="weibo"><i class="icon-weibo"></i></a>
 		        
 					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
 		        
@@ -133,7 +131,7 @@
 					
 						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
 			        
-						<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
+						<a class="weibo" target="_blank" href="//api.qrserver.com/v1/create-qr-code/?data=abnerchou.me" title="weibo"><i class="icon-weibo"></i></a>
 			        
 						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
 			        
@@ -186,12 +184,7 @@
         <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>对概率的诠释有两大学派，一种是频率派另一种是贝叶斯派。后面我们对观测集采用下面记号：<br>$$<br>X_{N\times p}=(x_{1},x_{2},\cdots,x_{N})^{T},x_{i}=(x_{i1},x_{i2},\cdots,x_{ip})^{T}<br>$$<br>这个记号表示有 $N$ 个样本，每个样本都是 $p$ 维向量。其中每个观测都是由 $p(x|\theta)$ 生成的。</p>
 <span id="more"></span>
 
-<h2 id="频率派的观点"><a href="#频率派的观点" class="headerlink" title="频率派的观点"></a>频率派的观点</h2><p>$p(x|\theta)$中的 $\theta$ 是一个未知常量，数据是随机变量。对于 $N$ 个观测来说观测集的概率为$p(X|\theta) \mathop{=}\limits _{iid}\prod\limits <em>{i=1}^{N}{p(x</em>{i}|\theta)}$<br>为了求 $\theta$ 的大小，我们采用最大对数似然MLE的方法：</p>
-<img src='https://www.zhihu.com/equation?tex=a=\theta_{MLE}=\mathop{argmax}\limits_{\theta}\log p(X|\theta)\mathop{=}\limits_{iid}\mathop{argmax}\limits_{\theta}\sum\limits _{i=1}^{N}\log p(x_{i}|\theta)'/>
-
-
-<p>$$</p>
-<p>$$<br>$x_i$服从独立同分布的条件，所以$P(X|\theta)=\prod_{i=0}^n p(x_i|\theta)$,为了<b>方便计算</b>，在前面加上log,将连乘变成连加。</p>
+<h2 id="频率派的观点"><a href="#频率派的观点" class="headerlink" title="频率派的观点"></a>频率派的观点</h2><p>$p(x|\theta)$中的 $\theta$ 是一个未知常量，数据是随机变量。对于 $N$ 个观测来说观测集的概率为$p(X|\theta) \mathop{=}\limits <em>{iid}\prod\limits <em>{i=1}^{N}{p(x</em>{i}|\theta)}$<br>为了求 $\theta$ 的大小，我们采用最大对数似然MLE的方法：<br>$$<br>\theta</em>{MLE}=\mathop{argmax}\limits_{\theta}\log p(X|\theta)\mathop{=}\limits_{iid}\mathop{argmax}\limits_{\theta}\sum\limits <em>{i=1}^{N}\log p(x</em>{i}|\theta)<br>$$<br>$x_i$服从独立同分布的条件，所以$P(X|\theta)=\prod_{i=0}^n p(x_i|\theta)$,为了<b>方便计算</b>，在前面加上log,将连乘变成连加。</p>
 <h2 id="贝叶斯派的观点"><a href="#贝叶斯派的观点" class="headerlink" title="贝叶斯派的观点"></a>贝叶斯派的观点</h2><p>贝叶斯派认为 $p(x|\theta)$ 中的 $\theta$ 不是一个常量。这个 $\theta$ 满足一个预设的<strong>先验</strong>的分布 $\theta\sim p(\theta)$ （比喻可以假设为高斯分布）,并借助贝叶斯定理，用似然将参数的先验和后验连接起来，于是根据贝叶斯定理依赖观测集参数的后验可以写成：</p>
 <p>$$<br>p(\theta|X)=\frac{p(X|\theta)\cdot p(\theta)}{p(X)}=\frac{p(X|\theta)\cdot p(\theta)}{\int\limits _{\theta}p(X|\theta)\cdot p(\theta)d\theta}<br>$$<br>为了求 $\theta$ 的值，我们要最大化这个参数后验MAP：</p>
 <blockquote>

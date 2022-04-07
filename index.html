@@ -313,49 +313,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>在 Python 中，* 和 ** 具有语法多义性，具体来说是有四类用法。</p>
-<ol>
-<li><h3 id="算数运算"><a href="#算数运算" class="headerlink" title="算数运算"></a>算数运算</h3></li>
-</ol>
-<p>​    *代表乘法</p>
-<p>​    **代表乘方</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">2</span> * <span class="number">5</span></span><br><span class="line"><span class="number">10</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">2</span> ** <span class="number">5</span></span><br><span class="line"><span class="number">32</span></span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li><h3 id="函数形参"><a href="#函数形参" class="headerlink" title="函数形参"></a>函数形参</h3></li>
-</ol>
-<p>*args 和 **kwargs 主要用于函数定义。</p>
-<p>你可以将不定数量的参数传递给一个函数。不定的意思是：预先并不知道, 函数使用者会传递多少个参数给你, 所以在这个场景下使用这两个关键字。其实并不是必须写成 *args 和 **kwargs。  *(星号) 才是必须的. 你也可以写成 *ar  和 **k 。而写成 *args 和**kwargs 只是一个通俗的命名约定。</p>
-<ul>
-<li>  python函数传递参数的方式有两种：</li>
-</ul>
-<p>​                位置参数（positional argument）</p>
-<p>​                关键词参数（keyword argument）</p>
-<ul>
-<li>  *args 与 **kwargs 的区别，两者都是 python 中的可变参数：</li>
-</ul>
-<p>​                *args 表示任何多个无名参数，它本质是一个 tuple<br>​                        ** kwargs 表示关键字参数，它本质上是一个 dict<br>如果同时使用 *args 和 **kwargs 时，必须 *args 参数列要在 **kwargs 之前。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">fun</span>(<span class="params">*args, **kwargs</span>):</span></span><br><span class="line"><span class="meta">... </span>    <span class="built_in">print</span>(<span class="string">&#x27;args=&#x27;</span>, args)</span><br><span class="line"><span class="meta">... </span>    <span class="built_in">print</span>(<span class="string">&#x27;kwargs=&#x27;</span>, kwargs)</span><br><span class="line"><span class="meta">... </span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>fun(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, A=<span class="string">&#x27;a&#x27;</span>, B=<span class="string">&#x27;b&#x27;</span>, C=<span class="string">&#x27;c&#x27;</span>, D=<span class="string">&#x27;d&#x27;</span>)</span><br><span class="line">args= (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line">kwargs= &#123;<span class="string">&#x27;A&#x27;</span>: <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;B&#x27;</span>: <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;C&#x27;</span>: <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;D&#x27;</span>: <span class="string">&#x27;d&#x27;</span>&#125;</span><br></pre></td></tr></table></figure>
-
-<p>使用*args：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">fun</span>(<span class="params">name, *args</span>):</span></span><br><span class="line"><span class="meta">... </span>    <span class="built_in">print</span>(<span class="string">&#x27;你好:&#x27;</span>, name)</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">for</span> i <span class="keyword">in</span> args:</span><br><span class="line"><span class="meta">... </span>        <span class="built_in">print</span>(<span class="string">&quot;你的宠物有:&quot;</span>, i)</span><br><span class="line"><span class="meta">... </span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>fun(<span class="string">&quot;Geek&quot;</span>, <span class="string">&quot;dog&quot;</span>, <span class="string">&quot;cat&quot;</span>)</span><br><span class="line">你好: Geek</span><br><span class="line">你的宠物有: dog</span><br><span class="line">你的宠物有: cat</span><br></pre></td></tr></table></figure>
-
-<p>使用 **kwargs:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">fun</span>(<span class="params">**kwargs</span>):</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">for</span> key, value <span class="keyword">in</span> kwargs.items():</span><br><span class="line"><span class="meta">... </span>        <span class="built_in">print</span>(<span class="string">&quot;&#123;0&#125; 喜欢 &#123;1&#125;&quot;</span>.<span class="built_in">format</span>(key, value))</span><br><span class="line"><span class="meta">... </span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>fun(Geek=<span class="string">&quot;cat&quot;</span>, cat=<span class="string">&quot;box&quot;</span>)</span><br><span class="line">Geek 喜欢 cat</span><br><span class="line">cat 喜欢 box</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li><h3 id="函数实参"><a href="#函数实参" class="headerlink" title="函数实参"></a>函数实参</h3></li>
-</ol>
-<p>如果函数的形参是定长参数，也可以使用 *args 和 **kwargs 调用函数，类似对元组和字典进行解引用：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">fun</span>(<span class="params">**kwargs</span>):</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">for</span> key, value <span class="keyword">in</span> kwargs.items():</span><br><span class="line"><span class="meta">... </span>        <span class="built_in">print</span>(<span class="string">&quot;&#123;0&#125; 喜欢 &#123;1&#125;&quot;</span>.<span class="built_in">format</span>(key, value))</span><br><span class="line"><span class="meta">... </span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>fun(Geek=<span class="string">&quot;cat&quot;</span>, cat=<span class="string">&quot;box&quot;</span>)</span><br><span class="line">Geek 喜欢 cat</span><br><span class="line">cat 喜欢 box</span><br></pre></td></tr></table></figure>
-
-<ol start="4">
-<li><h3 id="序列解包"><a href="#序列解包" class="headerlink" title="序列解包"></a>序列解包</h3></li>
-</ol>
-<p>序列解包 往期博客有写过，这里只列出一个例子，序列解包没有 **。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a, b, *c = <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>  </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a  </span><br><span class="line"><span class="number">0</span>  </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b  </span><br><span class="line"><span class="number">1</span>  </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c  </span><br><span class="line">[<span class="number">2</span>, <span class="number">3</span>]</span><br></pre></td></tr></table></figure>
-
-
+              <p>在 Python 中，* 和 ** 具有语法多义性，具体来说是有四类用法。</p>
+          
       
     </div>
     
@@ -368,6 +327,10 @@
         <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a href="/2022/04/07/python/#more">阅读全文 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>

@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://jpccc.github.io/2022/04/07/%E7%89%B9%E8%89%B2%E5%8C%85/</loc>
+    
+    <lastmod>2022-04-07</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://jpccc.github.io/2022/04/07/python/</loc>
     
     <lastmod>2022-04-07</lastmod>
@@ -123,14 +130,14 @@
   </url>
   
   <url>
-    <loc>https://jpccc.github.io/tags/pytorch/</loc>
+    <loc>https://jpccc.github.io/tags/python/</loc>
     <lastmod>2022-04-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://jpccc.github.io/tags/python/</loc>
+    <loc>https://jpccc.github.io/tags/pytorch/</loc>
     <lastmod>2022-04-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

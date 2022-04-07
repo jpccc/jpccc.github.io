@@ -2,9 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://jpccc.github.io/2022/04/06/pytorch%E4%BD%BF%E7%94%A8/</loc>
+    <loc>https://jpccc.github.io/2022/04/07/pytorch%E4%BD%BF%E7%94%A8/</loc>
     
-    <lastmod>2022-04-06</lastmod>
+    <lastmod>2022-04-07</lastmod>
     
   </url>
   
@@ -95,7 +95,7 @@
 
   <url>
     <loc>https://jpccc.github.io/</loc>
-    <lastmod>2022-04-06</lastmod>
+    <lastmod>2022-04-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -103,35 +103,35 @@
   
   <url>
     <loc>https://jpccc.github.io/tags/deepLearning/</loc>
-    <lastmod>2022-04-06</lastmod>
+    <lastmod>2022-04-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jpccc.github.io/tags/math/</loc>
-    <lastmod>2022-04-06</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://jpccc.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2022-04-06</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://jpccc.github.io/tags/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2022-04-06</lastmod>
+    <lastmod>2022-04-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jpccc.github.io/tags/pytorch/</loc>
-    <lastmod>2022-04-06</lastmod>
+    <lastmod>2022-04-07</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://jpccc.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2022-04-07</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://jpccc.github.io/tags/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2022-04-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>

@@ -23,21 +23,21 @@
 <meta property="og:description" content="深度神经网络模型训练中的 tricks（原理与代码汇总）本文总结了多种图像分类任务中的重要技巧，对于目标检测和图像分割等任务，也起到了不错的作用。 计算机视觉主要问题有图像分类、目标检测和图像分割等。针对图像分类任务，提升准确率的方法路线有两条，一个是模型的修改，另一个是*各种数据处理和训练的技巧(tricks)*。图像分类中的各种技巧对于目标检测、图像分割等任务也有很好的作用，因此值得好好总结。">
 <meta property="og:locale">
 <meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/TAavotZvwI79wHdWL3XqdYGI7icvZUYmJLVyTHHvaKGoEs2p6UEgMplbZVCDwZK6KwB1LZCICnHicn05ic6HuPwDA/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/TAavotZvwI79wHdWL3XqdYGI7icvZUYmJnZ56uO5jXto75hYEb9PzQJhZcZJkgL7iajcLAf1JVWicnRfo04ZYHfOQ/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/TAavotZvwI79wHdWL3XqdYGI7icvZUYmJN2kfib8muI8ojmEyDOcXRPG8mNhAFBHEkAZtc9bf7Gx6GdicWZ5N1EYA/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/TAavotZvwI79wHdWL3XqdYGI7icvZUYmJ0rlqcHelFDkiaMic9wPXDQqh49kXHy7M5FG28fHWAuaC4qy95F4UKIyQ/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://jpccc.github.io/resource/deepLearning/640.jpeg">
+<meta property="og:image" content="https://jpccc.github.io/resource/deepLearning/640-16493198579212.jpeg">
+<meta property="og:image" content="https://jpccc.github.io/resource/deepLearning/640-16493198617344.jpeg">
 <meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/TAavotZvwI79wHdWL3XqdYGI7icvZUYmJBxtpd1H4YYKQgffc4aXUHT9kMBPIWw70281Dsc786mJd7DFzTvXR3g/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/TAavotZvwI79wHdWL3XqdYGI7icvZUYmJm6c6agzkk7OYffWuvvGpDXUDRvoJCzIjsjdLuLpDJXBricnRSJuB16w/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/TAavotZvwI79wHdWL3XqdYGI7icvZUYmJiamKs1XTZNPicPR2676DbSECJxn7AN0icewFFK5icBp48JV3w6FQiaNdTfA/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://jpccc.github.io/resource/deepLearning/640-16493198658876.jpeg">
+<meta property="og:image" content="https://jpccc.github.io/resource/deepLearning/640-16493198686898.jpeg">
 <meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/TAavotZvwI79wHdWL3XqdYGI7icvZUYmJXCmWGRd2Zd5rB0vNxgcaPARVicFLIp3ot4DLia1j0czibFtmkricA3zMGQ/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/TAavotZvwI79wHdWL3XqdYGI7icvZUYmJSwbmmd5AoewTICssFqNicKCamKAFgicJ28h3fR7vbvbKch42fEx8IFnQ/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/TAavotZvwI79wHdWL3XqdYGI7icvZUYmJxaXO0CJXian9wI5kngibanaX3MWH0d0C9xBFwXHvE2sS6Oux8cDFyqrw/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://jpccc.github.io/resource/deepLearning/640-164931987398310.jpeg">
+<meta property="og:image" content="https://jpccc.github.io/resource/deepLearning/640-164931987712312.jpeg">
 <meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/TAavotZvwI79wHdWL3XqdYGI7icvZUYmJ6ZqjZVftTB8VSicCZOXdeQdXPiaNkPdtVQw1aPWV9eoHBFV4vZb5pv9g/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/TAavotZvwI79wHdWL3XqdYGI7icvZUYmJKSfae4XckksGBCmiaJP3f7pzEiaeAIyOrnspibicGxkTl6H04eGqfut9Rw/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/TAavotZvwI79wHdWL3XqdYGI7icvZUYmJxSAlIbwTYBYLfbTOOjNt6QFgPksfP319aqONlm5UrwV2VRKvXVwk3Q/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/TAavotZvwI79wHdWL3XqdYGI7icvZUYmJSoCgiccK5kg2Xfkx6TOiceYmDZpMlXaa0AJIdZOibFJa1auVHrJhdvVuw/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://jpccc.github.io/resource/deepLearning/640-164931988094314.jpeg">
+<meta property="og:image" content="https://jpccc.github.io/resource/deepLearning/640-164931988818716.jpeg">
+<meta property="og:image" content="https://jpccc.github.io/resource/deepLearning/640-164931989171518.jpeg">
 <meta property="article:published_time" content="2022-04-06T15:06:13.000Z">
-<meta property="article:modified_time" content="2022-04-06T15:07:32.849Z">
+<meta property="article:modified_time" content="2022-04-07T08:27:49.197Z">
 <meta property="article:author" content=" liusha">
 <meta property="article:tag" content="深度学习">
 <meta name="twitter:card" content="summary">
@@ -380,10 +380,10 @@
 
 <h2 id="Random-image-cropping-and-patching"><a href="#Random-image-cropping-and-patching" class="headerlink" title="Random image cropping and patching"></a>Random image cropping and patching</h2><p>Random image cropping and patching (RICAP)[7]方法随机裁剪四个图片中的部分，然后把它们拼接为一个图片，同时混合这四个图片的标签。</p>
 <p>RICAP在caifar10上达到了2.19%的错误率。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/TAavotZvwI79wHdWL3XqdYGI7icvZUYmJnZ56uO5jXto75hYEb9PzQJhZcZJkgL7iajcLAf1JVWicnRfo04ZYHfOQ/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><img src="https://jpccc.github.io/resource/deepLearning/640.jpeg" alt="图片"></p>
 <p>如下图所示，Ix, Iy是原始图片的宽和高。w和h称为boundary position，它决定了四个裁剪得到的小图片的尺寸。w和h从beta分布Beta(β, β)中随机生成，β也是RICAP的超参数。最终拼接的图片尺寸和原图片尺寸保持一致。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/TAavotZvwI79wHdWL3XqdYGI7icvZUYmJN2kfib8muI8ojmEyDOcXRPG8mNhAFBHEkAZtc9bf7Gx6GdicWZ5N1EYA/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/TAavotZvwI79wHdWL3XqdYGI7icvZUYmJ0rlqcHelFDkiaMic9wPXDQqh49kXHy7M5FG28fHWAuaC4qy95F4UKIyQ/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><img src="https://jpccc.github.io/resource/deepLearning/640-16493198579212.jpeg" alt="图片"></p>
+<p><img src="https://jpccc.github.io/resource/deepLearning/640-16493198617344.jpeg" alt="图片"></p>
 <h2 id="Knowledge-Distillation"><a href="#Knowledge-Distillation" class="headerlink" title="Knowledge Distillation"></a>Knowledge Distillation</h2><p>提高几乎所有机器学习算法性能的一种非常简单的方法是在相同的数据上训练许多不同的模型，然后对它们的预测进行平均。但是使用所有的模型集成进行预测是比较麻烦的，并且可能计算量太大而无法部署到大量用户。Knowledge Distillation(知识蒸馏)[8]方法就是应对这种问题的有效方法之一。</p>
 <p>在知识蒸馏方法中，我们使用一个教师模型来帮助当前的模型（学生模型）训练。教师模型是一个较高准确率的预训练模型，因此学生模型可以在保持模型复杂度不变的情况下提升准确率。比如，可以使用ResNet-152作为教师模型来帮助学生模型ResNet-50训练。在训练过程中，我们会加一个蒸馏损失来惩罚学生模型和教师模型的输出之间的差异。</p>
 <p>给定输入，假定p是真正的概率分布，z和r分别是学生模型和教师模型最后一个全连接层的输出。之前我们会用交叉熵损失l(p,softmax(z))来度量p和z之间的差异，这里的蒸馏损失同样用交叉熵。所以，使用知识蒸馏方法总的损失函数是</p>
@@ -392,16 +392,16 @@
 <p>##Cutout</p>
 <p>Cutout[9]是一种新的正则化方法。原理是在训练时随机把图片的一部分减掉，这样能提高模型的鲁棒性。它的来源是计算机视觉任务中经常遇到的物体遮挡问题。通过cutout生成一些类似被遮挡的物体，不仅可以让模型在遇到遮挡问题时表现更好，还能让模型在做决定时更多地考虑环境(context)。</p>
 <p>效果如下图，每个图片的一小部分被cutout了。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/TAavotZvwI79wHdWL3XqdYGI7icvZUYmJm6c6agzkk7OYffWuvvGpDXUDRvoJCzIjsjdLuLpDJXBricnRSJuB16w/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><img src="https://jpccc.github.io/resource/deepLearning/640-16493198658876.jpeg" alt="图片"></p>
 <h2 id="Random-erasing"><a href="#Random-erasing" class="headerlink" title="Random erasing"></a>Random erasing</h2><p>Random erasing[6]其实和cutout非常类似，也是一种模拟物体遮挡情况的数据增强方法。区别在于，cutout是把图片中随机抽中的矩形区域的像素值置为0，相当于裁剪掉，random erasing是用随机数或者数据集中像素的平均值替换原来的像素值。而且，cutout每次裁剪掉的区域大小是固定的，Random erasing替换掉的区域大小是随机的。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/TAavotZvwI79wHdWL3XqdYGI7icvZUYmJiamKs1XTZNPicPR2676DbSECJxn7AN0icewFFK5icBp48JV3w6FQiaNdTfA/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><img src="https://jpccc.github.io/resource/deepLearning/640-16493198686898.jpeg" alt="图片"></p>
 <p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/TAavotZvwI79wHdWL3XqdYGI7icvZUYmJXCmWGRd2Zd5rB0vNxgcaPARVicFLIp3ot4DLia1j0czibFtmkricA3zMGQ/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
 <h2 id="Cosine-learning-rate-decay"><a href="#Cosine-learning-rate-decay" class="headerlink" title="Cosine learning rate decay"></a>Cosine learning rate decay</h2><p>在warmup之后的训练过程中，学习率不断衰减是一个提高精度的好方法。其中有step decay和cosine decay等，前者是随着epoch增大学习率不断减去一个小的数，后者是让学习率随着训练过程曲线下降。</p>
 <p>对于cosine decay，假设总共有T个batch（不考虑warmup阶段），在第t个batch时，学习率η_t为：</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/TAavotZvwI79wHdWL3XqdYGI7icvZUYmJSwbmmd5AoewTICssFqNicKCamKAFgicJ28h3fR7vbvbKch42fEx8IFnQ/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><img src="https://jpccc.github.io/resource/deepLearning/640-164931987398310.jpeg" alt="图片"></p>
 <p>这里，η代表初始设置的学习率。这种学习率递减的方式称之为cosine decay。</p>
 <p>下面是带有warmup的学习率衰减的可视化图[4]。其中，图(a)是学习率随epoch增大而下降的图，可以看出cosine decay比step decay更加平滑一点。图(b)是准确率随epoch的变化图，两者最终的准确率没有太大差别，不过cosine decay的学习过程更加平滑。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/TAavotZvwI79wHdWL3XqdYGI7icvZUYmJxaXO0CJXian9wI5kngibanaX3MWH0d0C9xBFwXHvE2sS6Oux8cDFyqrw/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><img src="https://jpccc.github.io/resource/deepLearning/640-164931987712312.jpeg" alt="图片"></p>
 <p>在pytorch的torch.optim.lr_scheduler中有更多的学习率衰减的方法，至于哪个效果好，可能对于不同问题答案是不一样的。</p>
 <h2 id="Mixup-training"><a href="#Mixup-training" class="headerlink" title="Mixup training"></a>Mixup training</h2><p>Mixup[10]是一种新的数据增强的方法。Mixup training，就是每次取出2张图片，然后将它们线性组合，得到新的图片，以此来作为新的训练样本，进行网络的训练，如下公式，其中x代表图像数据，y代表标签，则得到的新的xhat, yhat。</p>
 <p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/TAavotZvwI79wHdWL3XqdYGI7icvZUYmJ6ZqjZVftTB8VSicCZOXdeQdXPiaNkPdtVQw1aPWV9eoHBFV4vZb5pv9g/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
@@ -409,9 +409,9 @@
 <p>Mixup方法主要增强了训练样本之间的线性表达，增强网络的泛化能力，不过mixup方法需要较长的时间才能收敛得比较好。</p>
 <h2 id="AdaBound"><a href="#AdaBound" class="headerlink" title="AdaBound"></a><strong>AdaBound</strong></h2><p>AdaBound是最近一篇论文[5]中提到的，按照作者的说法，AdaBound会让你的训练过程像adam一样快，并且像SGD一样好。</p>
 <p>如下图所示，使用AdaBound会收敛速度更快，过程更平滑，结果更好。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/TAavotZvwI79wHdWL3XqdYGI7icvZUYmJKSfae4XckksGBCmiaJP3f7pzEiaeAIyOrnspibicGxkTl6H04eGqfut9Rw/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><img src="https://jpccc.github.io/resource/deepLearning/640-164931988094314.jpeg" alt="图片"></p>
 <p>另外，这种方法相对于SGD对超参数的变化不是那么敏感，也就是说鲁棒性更好。但是，针对不同的问题还是需要调节超参数的，只是所用的时间可能变少了。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/TAavotZvwI79wHdWL3XqdYGI7icvZUYmJxSAlIbwTYBYLfbTOOjNt6QFgPksfP319aqONlm5UrwV2VRKvXVwk3Q/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><img src="https://jpccc.github.io/resource/deepLearning/640-164931988818716.jpeg" alt="图片"></p>
 <p>当然，AdaBound还没有经过普遍的检验，也有可能只是对于某些问题效果好。</p>
 <p>使用方法如下：安装AdaBound</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install adabound</span><br></pre></td></tr></table></figure>
@@ -421,7 +421,7 @@
 
 <h2 id="AutoAugment"><a href="#AutoAugment" class="headerlink" title="AutoAugment"></a>AutoAugment</h2><p>数据增强在图像分类问题上有很重要的作用，但是增强的方法有很多，并非一股脑地用上所有的方法就是最好的。那么，如何选择最佳的数据增强方法呢？AutoAugment[11]就是一种搜索适合当前问题的数据增强方法的方法。该方法创建一个数据增强策略的搜索空间，利用搜索算法选取适合特定数据集的数据增强策略。此外，从一个数据集中学到的策略能够很好地迁移到其它相似的数据集上。</p>
 <p>AutoAugment在cifar10上的表现如下表，达到了98.52%的准确率。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/TAavotZvwI79wHdWL3XqdYGI7icvZUYmJSoCgiccK5kg2Xfkx6TOiceYmDZpMlXaa0AJIdZOibFJa1auVHrJhdvVuw/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><img src="https://jpccc.github.io/resource/deepLearning/640-164931989171518.jpeg" alt="图片"></p>
 <h2 id="其他经典的tricks"><a href="#其他经典的tricks" class="headerlink" title="其他经典的tricks"></a>其他经典的tricks</h2><h3 id="常用的正则化方法为"><a href="#常用的正则化方法为" class="headerlink" title="常用的正则化方法为"></a><strong>常用的正则化方法为</strong></h3><ul>
 <li>Dropout</li>
 <li>L1/L2正则</li>
@@ -453,7 +453,7 @@
         <p><span>本文标题:</span><a href="/2022/04/06/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%20tricks/">深度学习训练tricks</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">流沙</a></p>
         <p><span>发布时间:</span>2022-04-06, 23:06:13</p>
-        <p><span>最后更新:</span>2022-04-06, 23:07:32</p>
+        <p><span>最后更新:</span>2022-04-07, 16:27:49</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2022/04/06/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%20tricks/" title="深度学习训练tricks">https://jpccc.github.io/2022/04/06/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%20tricks/</a>
             <span class="copy-path" data-clipboard-text="原文: https://jpccc.github.io/2022/04/06/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%20tricks/　　作者: " title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>

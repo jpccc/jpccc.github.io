@@ -22,26 +22,26 @@
 <meta property="og:site_name" content="流沙">
 <meta property="og:description" content="深度神经网络模型训练中的 tricks（原理与代码汇总）本文总结了多种图像分类任务中的重要技巧，对于目标检测和图像分割等任务，也起到了不错的作用。 计算机视觉主要问题有图像分类、目标检测和图像分割等。针对图像分类任务，提升准确率的方法路线有两条，一个是模型的修改，另一个是*各种数据处理和训练的技巧(tricks)*。图像分类中的各种技巧对于目标检测、图像分割等任务也有很好的作用，因此值得好好总结。">
 <meta property="og:locale">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/TAavotZvwI79wHdWL3XqdYGI7icvZUYmJLVyTHHvaKGoEs2p6UEgMplbZVCDwZK6KwB1LZCICnHicn05ic6HuPwDA/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://jpccc.github.io/resource/deepLearning/640.jpeg">
 <meta property="og:image" content="https://jpccc.github.io/resource/deepLearning/640.jpeg">
 <meta property="og:image" content="https://jpccc.github.io/resource/deepLearning/640-16493198579212.jpeg">
 <meta property="og:image" content="https://jpccc.github.io/resource/deepLearning/640-16493198617344.jpeg">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/TAavotZvwI79wHdWL3XqdYGI7icvZUYmJBxtpd1H4YYKQgffc4aXUHT9kMBPIWw70281Dsc786mJd7DFzTvXR3g/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://jpccc.github.io/resource/deepLearning/640-16493202572062.jpeg">
 <meta property="og:image" content="https://jpccc.github.io/resource/deepLearning/640-16493198658876.jpeg">
 <meta property="og:image" content="https://jpccc.github.io/resource/deepLearning/640-16493198686898.jpeg">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/TAavotZvwI79wHdWL3XqdYGI7icvZUYmJXCmWGRd2Zd5rB0vNxgcaPARVicFLIp3ot4DLia1j0czibFtmkricA3zMGQ/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://jpccc.github.io/resource/deepLearning/640-16493202724694.jpeg">
 <meta property="og:image" content="https://jpccc.github.io/resource/deepLearning/640-164931987398310.jpeg">
 <meta property="og:image" content="https://jpccc.github.io/resource/deepLearning/640-164931987712312.jpeg">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/TAavotZvwI79wHdWL3XqdYGI7icvZUYmJ6ZqjZVftTB8VSicCZOXdeQdXPiaNkPdtVQw1aPWV9eoHBFV4vZb5pv9g/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://jpccc.github.io/resource/deepLearning/640-16493202939116.jpeg">
 <meta property="og:image" content="https://jpccc.github.io/resource/deepLearning/640-164931988094314.jpeg">
 <meta property="og:image" content="https://jpccc.github.io/resource/deepLearning/640-164931988818716.jpeg">
 <meta property="og:image" content="https://jpccc.github.io/resource/deepLearning/640-164931989171518.jpeg">
 <meta property="article:published_time" content="2022-04-06T15:06:13.000Z">
-<meta property="article:modified_time" content="2022-04-07T08:27:49.197Z">
+<meta property="article:modified_time" content="2022-04-07T08:33:18.325Z">
 <meta property="article:author" content=" liusha">
 <meta property="article:tag" content="深度学习">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/TAavotZvwI79wHdWL3XqdYGI7icvZUYmJLVyTHHvaKGoEs2p6UEgMplbZVCDwZK6KwB1LZCICnHicn05ic6HuPwDA/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta name="twitter:image" content="https://jpccc.github.io/resource/deepLearning/640.jpeg">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -372,7 +372,7 @@
 <p>具体做法很简单，比如ResNet原论文[1]中，batch size为256时选择的学习率是0.1，当我们把batch size变为一个较大的数b时，学习率应该变为 0.1 × b/256。</p>
 <h2 id="Label-smoothing"><a href="#Label-smoothing" class="headerlink" title="Label-smoothing"></a>Label-smoothing</h2><p>在分类问题中，我们的最后一层一般是全连接层，然后对应标签的one-hot编码，即把对应类别的值编码为1，其他为0。这种编码方式和通过降低交叉熵损失来调整参数的方式结合起来，会有一些问题。这种方式会鼓励模型对不同类别的输出分数差异非常大，或者说，模型过分相信它的判断。但是，对于一个由多人标注的数据集，不同人标注的准则可能不同，每个人的标注也可能会有一些错误。<strong>模型对标签的过分相信会导致过拟合。</strong></p>
 <p>标签平滑(Label-smoothing regularization,LSR)是应对该问题的有效方法之一，它的具体思想是降低我们对于标签的信任，例如我们可以将损失的目标值从1稍微降到0.9，或者将从0稍微升到0.1。标签平滑最早在inception-v2[4]中被提出，它将真实的概率改造为：</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/TAavotZvwI79wHdWL3XqdYGI7icvZUYmJLVyTHHvaKGoEs2p6UEgMplbZVCDwZK6KwB1LZCICnHicn05ic6HuPwDA/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><img src="https://jpccc.github.io/resource/deepLearning/640.jpeg" alt="图片"></p>
 <p>其中，ε是一个小的常数，K是类别的数目，y是图片的真正的标签，i代表第i个类别，q_i是图片为第i类的概率。</p>
 <p>总的来说，LSR是一种通过在标签y中加入噪声，实现对模型约束，降低模型过拟合程度的一种正则化方法。</p>
 <p>LSR代码如下：</p>
@@ -387,7 +387,7 @@
 <h2 id="Knowledge-Distillation"><a href="#Knowledge-Distillation" class="headerlink" title="Knowledge Distillation"></a>Knowledge Distillation</h2><p>提高几乎所有机器学习算法性能的一种非常简单的方法是在相同的数据上训练许多不同的模型，然后对它们的预测进行平均。但是使用所有的模型集成进行预测是比较麻烦的，并且可能计算量太大而无法部署到大量用户。Knowledge Distillation(知识蒸馏)[8]方法就是应对这种问题的有效方法之一。</p>
 <p>在知识蒸馏方法中，我们使用一个教师模型来帮助当前的模型（学生模型）训练。教师模型是一个较高准确率的预训练模型，因此学生模型可以在保持模型复杂度不变的情况下提升准确率。比如，可以使用ResNet-152作为教师模型来帮助学生模型ResNet-50训练。在训练过程中，我们会加一个蒸馏损失来惩罚学生模型和教师模型的输出之间的差异。</p>
 <p>给定输入，假定p是真正的概率分布，z和r分别是学生模型和教师模型最后一个全连接层的输出。之前我们会用交叉熵损失l(p,softmax(z))来度量p和z之间的差异，这里的蒸馏损失同样用交叉熵。所以，使用知识蒸馏方法总的损失函数是</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/TAavotZvwI79wHdWL3XqdYGI7icvZUYmJBxtpd1H4YYKQgffc4aXUHT9kMBPIWw70281Dsc786mJd7DFzTvXR3g/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><img src="https://jpccc.github.io/resource/deepLearning/640-16493202572062.jpeg" alt="图片"></p>
 <p>上式中，第一项还是原来的损失函数，第二项是添加的用来惩罚学生模型和教师模型输出差异的蒸馏损失。其中，T是一个温度超参数，用来使softmax的输出更加平滑的。实验证明，用ResNet-152作为教师模型来训练ResNet-50，可以提高后者的准确率。</p>
 <p>##Cutout</p>
 <p>Cutout[9]是一种新的正则化方法。原理是在训练时随机把图片的一部分减掉，这样能提高模型的鲁棒性。它的来源是计算机视觉任务中经常遇到的物体遮挡问题。通过cutout生成一些类似被遮挡的物体，不仅可以让模型在遇到遮挡问题时表现更好，还能让模型在做决定时更多地考虑环境(context)。</p>
@@ -395,7 +395,7 @@
 <p><img src="https://jpccc.github.io/resource/deepLearning/640-16493198658876.jpeg" alt="图片"></p>
 <h2 id="Random-erasing"><a href="#Random-erasing" class="headerlink" title="Random erasing"></a>Random erasing</h2><p>Random erasing[6]其实和cutout非常类似，也是一种模拟物体遮挡情况的数据增强方法。区别在于，cutout是把图片中随机抽中的矩形区域的像素值置为0，相当于裁剪掉，random erasing是用随机数或者数据集中像素的平均值替换原来的像素值。而且，cutout每次裁剪掉的区域大小是固定的，Random erasing替换掉的区域大小是随机的。</p>
 <p><img src="https://jpccc.github.io/resource/deepLearning/640-16493198686898.jpeg" alt="图片"></p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/TAavotZvwI79wHdWL3XqdYGI7icvZUYmJXCmWGRd2Zd5rB0vNxgcaPARVicFLIp3ot4DLia1j0czibFtmkricA3zMGQ/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><img src="https://jpccc.github.io/resource/deepLearning/640-16493202724694.jpeg" alt="图片"></p>
 <h2 id="Cosine-learning-rate-decay"><a href="#Cosine-learning-rate-decay" class="headerlink" title="Cosine learning rate decay"></a>Cosine learning rate decay</h2><p>在warmup之后的训练过程中，学习率不断衰减是一个提高精度的好方法。其中有step decay和cosine decay等，前者是随着epoch增大学习率不断减去一个小的数，后者是让学习率随着训练过程曲线下降。</p>
 <p>对于cosine decay，假设总共有T个batch（不考虑warmup阶段），在第t个batch时，学习率η_t为：</p>
 <p><img src="https://jpccc.github.io/resource/deepLearning/640-164931987398310.jpeg" alt="图片"></p>
@@ -404,7 +404,7 @@
 <p><img src="https://jpccc.github.io/resource/deepLearning/640-164931987712312.jpeg" alt="图片"></p>
 <p>在pytorch的torch.optim.lr_scheduler中有更多的学习率衰减的方法，至于哪个效果好，可能对于不同问题答案是不一样的。</p>
 <h2 id="Mixup-training"><a href="#Mixup-training" class="headerlink" title="Mixup training"></a>Mixup training</h2><p>Mixup[10]是一种新的数据增强的方法。Mixup training，就是每次取出2张图片，然后将它们线性组合，得到新的图片，以此来作为新的训练样本，进行网络的训练，如下公式，其中x代表图像数据，y代表标签，则得到的新的xhat, yhat。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/TAavotZvwI79wHdWL3XqdYGI7icvZUYmJ6ZqjZVftTB8VSicCZOXdeQdXPiaNkPdtVQw1aPWV9eoHBFV4vZb5pv9g/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><img src="https://jpccc.github.io/resource/deepLearning/640-16493202939116.jpeg" alt="图片"></p>
 <p>其中，λ是从Beta(α, α)随机采样的数，在[0,1]之间。在训练过程中，仅使用(xhat, yhat)。</p>
 <p>Mixup方法主要增强了训练样本之间的线性表达，增强网络的泛化能力，不过mixup方法需要较长的时间才能收敛得比较好。</p>
 <h2 id="AdaBound"><a href="#AdaBound" class="headerlink" title="AdaBound"></a><strong>AdaBound</strong></h2><p>AdaBound是最近一篇论文[5]中提到的，按照作者的说法，AdaBound会让你的训练过程像adam一样快，并且像SGD一样好。</p>
@@ -453,7 +453,7 @@
         <p><span>本文标题:</span><a href="/2022/04/06/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%20tricks/">深度学习训练tricks</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">流沙</a></p>
         <p><span>发布时间:</span>2022-04-06, 23:06:13</p>
-        <p><span>最后更新:</span>2022-04-07, 16:27:49</p>
+        <p><span>最后更新:</span>2022-04-07, 16:33:18</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2022/04/06/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%20tricks/" title="深度学习训练tricks">https://jpccc.github.io/2022/04/06/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%20tricks/</a>
             <span class="copy-path" data-clipboard-text="原文: https://jpccc.github.io/2022/04/06/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%20tricks/　　作者: " title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>

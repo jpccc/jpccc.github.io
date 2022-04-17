@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content=" liusha" />
+
+
+
+<meta name="description" content="日志输出利用logging模块在控制台实时打印并及时记录运行日志。 123456789101112131415161718192021222324from config import  *import logging  # 引入logging模块import os.pathclass Logger:    def __init__(self,mode&#x3D;&amp;#x27;w&amp;#x27;):">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pytorch使用汇总">
+<meta property="og:url" content="https://jpccc.github.io/2022/04/07/pytorch%E4%BD%BF%E7%94%A8%E6%B1%87%E6%80%BB/index.html">
+<meta property="og:site_name" content="流沙">
+<meta property="og:description" content="日志输出利用logging模块在控制台实时打印并及时记录运行日志。 123456789101112131415161718192021222324from config import  *import logging  # 引入logging模块import os.pathclass Logger:    def __init__(self,mode&#x3D;&amp;#x27;w&amp;#x27;):">
+<meta property="og:locale">
+<meta property="og:image" content="e:/笔记/markdown/reference/picture/640.jpeg">
+<meta property="article:published_time" content="2022-04-07T04:44:13.000Z">
+<meta property="article:modified_time" content="2022-04-13T11:22:15.158Z">
+<meta property="article:author" content=" liusha">
+<meta property="article:tag" content="pytorch">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="e:/笔记/markdown/reference/picture/640.jpeg">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="流沙" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>pytorch使用汇总 | 流沙</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/"></a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="https://jpccc.github.io/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/%E9%9A%8F%E7%AC%94">随笔</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:jiangpc21@mails.glu.edu.cn" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa QQ" href="/1778013127" title="QQ"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/deepLearning/" rel="tag">deepLearning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math/" rel="tag">math</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pytorch/" rel="tag">pytorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag">深度学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0/" rel="tag">统计学习</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" target="_blank" rel="noopener" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" target="_blank" rel="noopener" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">机器学习</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页"></a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页"></a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="https://jpccc.github.io/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/%E9%9A%8F%E7%AC%94">随笔</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:jiangpc21@mails.glu.edu.cn" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="/1778013127" title="QQ"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-pytorch使用汇总" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/04/07/pytorch%E4%BD%BF%E7%94%A8%E6%B1%87%E6%80%BB/" class="article-date">
+      <time datetime="2022-04-07T04:44:13.000Z" itemprop="datePublished">2022-04-07</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      pytorch使用汇总
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pytorch/" rel="tag">pytorch</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="日志输出"><a href="#日志输出" class="headerlink" title="日志输出"></a>日志输出</h2><p>利用logging模块在控制台实时打印并及时记录运行日志。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">from config import  *</span><br><span class="line">import logging  # 引入logging模块</span><br><span class="line">import os.path</span><br><span class="line">class Logger:</span><br><span class="line">    def __init__(self,mode=&#x27;w&#x27;):</span><br><span class="line">        # 第一步，创建一个logger</span><br><span class="line">        self.logger = logging.getLogger()</span><br><span class="line">        self.logger.setLevel(logging.INFO)  # Log等级总开关</span><br><span class="line">        # 第二步，创建一个handler，用于写入日志文件</span><br><span class="line">        rq = time.strftime(&#x27;%Y%m%d%H%M&#x27;, time.localtime(time.time()))</span><br><span class="line">        log_path = os.getcwd() + &#x27;/Logs/&#x27;</span><br><span class="line">        log_name = log_path + rq + &#x27;.log&#x27;</span><br><span class="line">        logfile = log_name</span><br><span class="line">        fh = logging.FileHandler(logfile, mode=mode)</span><br><span class="line">        fh.setLevel(logging.DEBUG)  # 输出到file的log等级的开关</span><br><span class="line">        # 第三步，定义handler的输出格式</span><br><span class="line">        formatter = logging.Formatter(&quot;%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s&quot;)</span><br><span class="line">        fh.setFormatter(formatter)</span><br><span class="line">        # 第四步，将logger添加到handler里面</span><br><span class="line">        self.logger.addHandler(fh)</span><br><span class="line">        ch = logging.StreamHandler()</span><br><span class="line">        ch.setLevel(logging.INFO)  # 输出到console的log等级的开关</span><br><span class="line">        ch.setFormatter(formatter)</span><br><span class="line">        self.logger.addHandler(ch)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="模型的保存和读取"><a href="#模型的保存和读取" class="headerlink" title="模型的保存和读取"></a>模型的保存和读取</h2><p>​    </p>
+<table>
+<thead>
+<tr>
+<th>保存</th>
+<th align="left">（1）torch.save(net.state_dict(),保存路径) 。（2）多卡训练时，要用 torch.save(net.module.state_dict(),’./model/best.pth’)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>读取</td>
+<td align="left">（1）net.load_state_dict(torch.load(‘best.pth’))。（2）并行时map_location=device.type在读取模型的时候一定要加上。即：    model.load_state_dict(torch.load(‘model/self_train_bestv2.pth’,map_location=’cuda’))</td>
+</tr>
+<tr>
+<td></td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<span id="more"></span>
+
+<h3 id="网络参数和参数学习率的修改"><a href="#网络参数和参数学习率的修改" class="headerlink" title="网络参数和参数学习率的修改"></a>网络参数和参数学习率的修改</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">if use_resnet:</span><br><span class="line">resnet = models.resnet50(pretrained=True)</span><br><span class="line">new_state_dict = resnet.state_dict()</span><br><span class="line">dd = net.state_dict()</span><br><span class="line">for k in new_state_dict.keys():</span><br><span class="line">    print(k)</span><br><span class="line">    if k in dd.keys() and not k.startswith(&#x27;fc&#x27;):</span><br><span class="line">        print(&#x27;yes&#x27;)</span><br><span class="line">        dd[k] = new_state_dict[k]</span><br><span class="line">net.load_state_dict(dd)</span><br><span class="line"></span><br><span class="line">different learning rate</span><br><span class="line">params=[]</span><br><span class="line">params_dict = dict(net.named_parameters())</span><br><span class="line">print(learning_rate*1,learning_rate)</span><br><span class="line">for key,value in params_dict.items():</span><br><span class="line">    print(key)</span><br><span class="line">    if key.startswith(&#x27;features&#x27;):</span><br><span class="line">        params += [&#123;&#x27;params&#x27;:[value],&#x27;lr&#x27;:learning_rate*1&#125;]</span><br><span class="line">    else:</span><br><span class="line">        params += [&#123;&#x27;params&#x27;:[value],&#x27;lr&#x27;:learning_rate&#125;]</span><br><span class="line">创建优化器的时候设置了，上面的操作就没必要了</span><br></pre></td></tr></table></figure>
+
+<h2 id="数据的保存和读取"><a href="#数据的保存和读取" class="headerlink" title="数据的保存和读取"></a>数据的保存和读取</h2><p>DataLoader的pin_memory和data.cuda(non_blocking=True)搭配使用</p>
+<p><a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=PyTorch&spm=1001.2101.3001.7020">PyTorch</a>的DataLoader有一个参数pin_memory，使用固定内存，并使用non_blocking=True来并行处理数据传输。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> x = x.cuda(non_blocking=<span class="literal">True</span>)</span><br><span class="line"><span class="number">2.</span> 进行一些和x无关的操作</span><br><span class="line"><span class="number">3.</span> 执行和x有关的操作</span><br></pre></td></tr></table></figure>
+
+<p>在<code>non_blocking=true</code>下，<code>1</code>不会阻塞<code>2</code>，<code>1</code>和<code>2</code>并行。</p>
+<p>这样将数据从CPU移动到<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=GPU&spm=1001.2101.3001.7020">GPU</a>的时候，它是异步的。在它传输的时候，CPU还可以干其他的事情（不依赖于数据的事情）</p>
+<h2 id="GPU的并行计算"><a href="#GPU的并行计算" class="headerlink" title="GPU的并行计算"></a>GPU的并行计算</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">   device = torch.device(<span class="string">&quot;cuda&quot;</span> <span class="keyword">if</span> torch.cuda.is_available() <span class="keyword">else</span> <span class="string">&quot;cpu&quot;</span>)</span><br><span class="line">   device_ids = [<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">   model = torch.nn.DataParallel(model, device_ids=device_ids)</span><br><span class="line">   model.to(device)</span><br><span class="line">   data.to(device)</span><br><span class="line">   output=model(data)</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">   parser.add_argument(<span class="string">&quot;-g&quot;</span>, <span class="string">&quot;--gpus&quot;</span>, <span class="built_in">type</span>=<span class="built_in">str</span>, default=<span class="string">&quot;&quot;</span>)<span class="comment">#gpu的数量</span></span><br><span class="line">   <span class="keyword">if</span> torch.cuda.is_available():</span><br><span class="line">       net = torch.nn.DataParallel(net,device_ids=<span class="built_in">range</span>(<span class="built_in">len</span>(args.gpus.split(<span class="string">&quot;,&quot;</span>))))</span><br><span class="line">       torch.backends.cudnn.benchmark = <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Wandb的使用"><a href="#Wandb的使用" class="headerlink" title="Wandb的使用"></a>Wandb的使用</h2><pre><code>import wandb
+wandb.init(project=&#39;yolov2&#39;)
+config = wandb.config
+config.learning_rate = 0.01
+wandb.log(&#123;&quot;loss&quot;: loss&#125;)
+</code></pre>
+<h2 id="torchsummary"><a href="#torchsummary" class="headerlink" title="torchsummary"></a>torchsummary</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 安装：pip install torchsummary</span><br><span class="line"></span><br><span class="line">from torchsummary import summary</span><br><span class="line">from torchvision.models import resnet18</span><br><span class="line">model = resnet18()</span><br><span class="line">summary(model, input_size=[(3, 256, 256)], batch_size=2, device=&quot;cpu&quot;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Tensor-board的使用"><a href="#Tensor-board的使用" class="headerlink" title="Tensor board的使用"></a>Tensor board的使用</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from torch.utils.tensorboard import SummaryWriter</span><br><span class="line">writer = SummaryWriter()</span><br><span class="line">writer.add_scalar(&#x27;loss&#x27;, loss, global_step=n_iter)  #loss是纵坐标，global_step是横坐标。</span><br></pre></td></tr></table></figure>
+
+<h2 id="seed设置"><a href="#seed设置" class="headerlink" title="seed设置"></a>seed设置</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">torch.manual_seed(args.seed)</span><br><span class="line">torch.cuda.manual_seed_all(args.seed)</span><br><span class="line">np.random.seed(args.seed)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="import-类"><a href="#import-类" class="headerlink" title="import 类"></a>import 类</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#用法1</span><br><span class="line">    import 包名</span><br><span class="line">    在包内的__init__.py文件中导入需要导入的类</span><br><span class="line">    那么就可以在import所在的文件中使用Init文件中导入的类</span><br><span class="line">#用法2</span><br><span class="line">	如果在包内的某个pu文件想导入其它包的文件，路径从包名开始写</span><br><span class="line">	例如： from model.resnet import Resnet18</span><br><span class="line">	</span><br><span class="line">#vscode项目的文件的访问	</span><br><span class="line">所有文件都能访问到最外层目录(项目所在的主目录)</span><br></pre></td></tr></table></figure>
+
+<h2 id="计算过程中的梯度问题"><a href="#计算过程中的梯度问题" class="headerlink" title="计算过程中的梯度问题"></a>计算过程中的梯度问题</h2><p>requires_grad=True 要求计算梯度<br>        requires_grad=False 不要求计算梯度<br>        with torch.no_grad()或者@torch.no_grad()中的数据不需要计算梯度，也不会进行反向传播。<br>        tensor.data 近似tensor.detach()，都是让tensor不进行导数的计算，但是，tensor的值不能修改，否则求梯度时会报错。</p>
+<p>==不计算梯度能够加快运行速度。==</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### model.eval()和with torch.no_grad()的区别</span></span><br><span class="line"></span><br><span class="line">在PyTorch中进行validation时，会使用model.<span class="built_in">eval</span>()切换到测试模式，在该模式下，</span><br><span class="line"></span><br><span class="line">主要用于通知dropout层和batchnorm层在train和val模式间切换</span><br><span class="line"></span><br><span class="line">在train模式下，dropout网络层会按照设定的参数p设置保留激活单元的概率（保留概率=p); batchnorm层会继续计算数据的mean和var等参数并更新。</span><br><span class="line"></span><br><span class="line">在val模式下，dropout层会让所有的激活单元都通过，而batchnorm层会停止计算和更新mean和var，直接使用在训练阶段已经学出的mean和var值。</span><br><span class="line"></span><br><span class="line">该模式不会影响各层的gradient计算行为，即gradient计算和存储与training模式一样，只是不进行反传（backprobagation）</span><br><span class="line"></span><br><span class="line">而<span class="keyword">with</span> torch.no_grad()则主要是用于停止autograd模块的工作，以起到加速和节省显存的作用，具体行为就是停止gradient计算，从而节省了GPU算力和显存，但是并不会影响dropout和batchnorm层的行为。</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">model.<span class="built_in">eval</span>()                                <span class="comment"># 测试模式</span></span><br><span class="line"><span class="keyword">with</span> torch.no_grad():</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@torch.no_grad()</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">eval</span>():</span></span><br><span class="line">    model.<span class="built_in">eval</span>()  </span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<h2 id="python-下划线开头和结尾-的元素"><a href="#python-下划线开头和结尾-的元素" class="headerlink" title="python(下划线开头和结尾)的元素"></a>python(下划线开头和结尾)的元素</h2><pre><code>事实上，当我们向文件导入某个模块时，导入的是该模块中那些名称不以下划线（单下划线“_”或者双下划线“__”）开头的变量、函数和类。因此，如果我们不想模块文件中的某个成员被引入到其它文件中使用，可以在其名称前添加下划线。
+</code></pre>
+<h2 id="open函数"><a href="#open函数" class="headerlink" title="open函数"></a>open函数</h2><p>读取文本文件时，不要使用rb模式打开文件，而应该仅使用r模式。</p>
+<table>
+<thead>
+<tr>
+<th align="left">读取方式</th>
+<th>解读</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">r</td>
+<td>r是推荐使用的打开文本文件的模式。因为使用此模式打开文本文件时，python默认为我们做了一些处理，比如：假设在windows下，将本来应该读入的换行符\r\n处理成\n,方便我们处理。（值得一提的是，当你将\n写入文件时，python也会默认将其替换成\r\n，如果你是win系统的话）<br/>补充：其实是启用了通用换行符支持（UNS），它默认开启。</td>
+</tr>
+<tr>
+<td align="left">rb</td>
+<td>使用rb：则python不会对文本文件预处理了，你读入的\r\n依然是\r\n.</td>
+</tr>
+</tbody></table>
+<h2 id="输入的图像变量需要设置梯度吗"><a href="#输入的图像变量需要设置梯度吗" class="headerlink" title="输入的图像变量需要设置梯度吗"></a>输入的图像变量需要设置梯度吗</h2><pre><code>不需要，每个网络参数都有梯度grad，因为其需要根据此来更新梯度
+pytorch不会记录中间变量的梯度，如果需要的话，要另外设置
+但是resnet等模型中的卷积层等参数，其是有梯度的，每个参数都有grad
+</code></pre>
+<h2 id="F和nn"><a href="#F和nn" class="headerlink" title="F和nn"></a>F和nn</h2><pre><code>F.relu()和nn.Function()的区别：一个是函数一个是类方法。
+</code></pre>
+<h2 id="读取网络参数"><a href="#读取网络参数" class="headerlink" title="读取网络参数"></a>读取网络参数</h2><p>​    </p>
+<h2 id="contiguous"><a href="#contiguous" class="headerlink" title="contiguous"></a>contiguous</h2><pre><code>如果想要变得连续使用contiguous方法，如果Tensor不是连续的，则会重新开辟一块内存空间保证数据是在内存中是连续的，如果Tensor是连续的，则contiguous无操作。
+</code></pre>
+<p>注意梯度反向传播的时候，所有的变量的应该在gpu或者同时在cpu上。</p>
+<h2 id="提高gpu利用率"><a href="#提高gpu利用率" class="headerlink" title="提高gpu利用率"></a>提高gpu利用率</h2><pre><code>pytorch跑Unet代码，gpu利用率在0%-20%闪现，主要问题是GPU一直在等cpu处理的数据传输过去。利用top查看cup的利用率也是从0省道100%且显然cup的线程并不多，能处理出的数据也不多。在一般的程序中，除了加载从dataloader中数据和model的运行需要gpu，其余更多的dataset、dataloader、loss的计算和日志的输出很多部分都需要cup的计算。
+所以，可以提升的方面包括 从class dataset的优化、dataloader的优化和其他部分代码的优化。当然代码的优化是一个长期的考验代码能力的问题。那么短期的提升在于对dataloader的优化：
+    1.batchsize调大 提高GPU内存占用率
+    2.num_works 调到适当值，一般情况下为8、16是比较合适的值。太小就会出现我上述讲道的一些问题。太大的话cpu线程增加会导致gpu的利用率降低。因为模型需要将数据平均分配到几个子线程去进行预处理，分发等数据操作，设高了反而影响效率。
+    3.pin_memory =True 省掉了将数据从CPU传入到缓存RAM里面，再给传输到GPU上；为True时是直接映射到GPU的相关内存块上，省掉了一点数据传输时间。
+</code></pre>
+<h2 id="vscode的目录访问"><a href="#vscode的目录访问" class="headerlink" title="vscode的目录访问"></a>vscode的目录访问</h2><h2 id="pytorch的GPU设置理解"><a href="#pytorch的GPU设置理解" class="headerlink" title="pytorch的GPU设置理解"></a><a href="./reference/gpu.md">pytorch的GPU设置</a>理解</h2><pre><code>cudnn.deterministic = True
+cudnn.benchmark = True
+</code></pre>
+<h2 id="torch-tensor与torch-Tensor的区别"><a href="#torch-tensor与torch-Tensor的区别" class="headerlink" title="torch.tensor与torch.Tensor的区别"></a><strong>torch.tensor与torch.Tensor的区别</strong></h2><p>​    细心的读者可能注意到了，通过Tensor建立数组有torch.tensor([1,2])或torch.Tensor([1,2])两种方式。那么，这两种方式有什么区别呢？</p>
+<p>​    （1）torch.tensor是从数据中推断数据类型，而torch.Tensor是torch.empty(会随机产生垃圾数组，详见实例)和torch.tensor之间的一种混合。但是，当传入数据时，torch.Tensor使用全局默认dtype(FloatTensor)；</p>
+<h2 id="tensor类型和形状"><a href="#tensor类型和形状" class="headerlink" title="tensor类型和形状"></a>tensor类型和形状</h2><p>​    查看tensor类型最好用tensor.type()函数，而不要用type(tensor)！</p>
+<p>tensor.shape和tensor.size（）都可以返回tensor的形状，前一个是属性，后一个是方法。</p>
+<h2 id="1-基本配置"><a href="#1-基本配置" class="headerlink" title="1. 基本配置"></a>1. 基本配置</h2><h3 id="导入包和版本查询"><a href="#导入包和版本查询" class="headerlink" title="导入包和版本查询"></a>导入包和版本查询</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import torch</span><br><span class="line">import torch.nn as nn</span><br><span class="line">import torchvision</span><br><span class="line">print(torch.__version__)</span><br><span class="line">print(torch.version.cuda)</span><br><span class="line">print(torch.backends.cudnn.version())</span><br><span class="line">print(torch.cuda.get_device_name(0))</span><br></pre></td></tr></table></figure>
+
+<h3 id="可复现性"><a href="#可复现性" class="headerlink" title="可复现性"></a>可复现性</h3><p>在硬件设备（CPU、GPU）不同时，完全的可复现性无法保证，即使随机种子相同。但是，在同一个设备上，应该保证可复现性。具体做法是，在程序开始的时候固定torch的随机种子，同时也把numpy的随机种子固定。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">np.random.seed(0)</span><br><span class="line">torch.manual_seed(0)</span><br><span class="line">torch.cuda.manual_seed_all(0)</span><br><span class="line"></span><br><span class="line">torch.backends.cudnn.deterministic = True</span><br><span class="line">torch.backends.cudnn.benchmark = False</span><br></pre></td></tr></table></figure>
+
+<h3 id="显卡设置"><a href="#显卡设置" class="headerlink" title="显卡设置"></a>显卡设置</h3><p>如果只需要一张显卡</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Device configuration</span><br><span class="line">device = torch.device(&#x27;cuda&#x27; if torch.cuda.is_available() else &#x27;cpu&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>如果需要指定多张显卡，比如0，1号显卡。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">os.environ[&#x27;CUDA_VISIBLE_DEVICES&#x27;] = &#x27;0,1&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>也可以在命令行运行代码时设置显卡：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CUDA_VISIBLE_DEVICES=0,1 python train.py</span><br></pre></td></tr></table></figure>
+
+<p>清除显存</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">torch.cuda.empty_cache()</span><br></pre></td></tr></table></figure>
+
+<p>也可以使用在命令行重置GPU的指令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvidia-smi --gpu-reset -i [gpu_id]</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-张量-Tensor-处理"><a href="#2-张量-Tensor-处理" class="headerlink" title="2. 张量(Tensor)处理"></a>2. 张量(Tensor)处理</h2><h3 id="张量的数据类型"><a href="#张量的数据类型" class="headerlink" title="张量的数据类型"></a>张量的数据类型</h3><p>PyTorch有9种CPU张量类型和9种GPU张量类型。</p>
+<p><img src="E:\笔记\markdown\reference\picture\640.jpeg" alt="图片"></p>
+<h3 id="张量基本信息"><a href="#张量基本信息" class="headerlink" title="张量基本信息"></a>张量基本信息</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tensor = torch.randn(3,4,5)</span><br><span class="line">print(tensor.type())  # 数据类型</span><br><span class="line">print(tensor.size())  # 张量的shape，是个元组</span><br><span class="line">print(tensor.dim())   # 维度的数量</span><br></pre></td></tr></table></figure>
+
+<h3 id="命名张量"><a href="#命名张量" class="headerlink" title="命名张量"></a>命名张量</h3><p>张量命名是一个非常有用的方法，这样可以方便地使用维度的名字来做索引或其他操作，大大提高了可读性、易用性，防止出错。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># 在PyTorch 1.3之前，需要使用注释</span><br><span class="line"># Tensor[N, C, H, W]</span><br><span class="line">images = torch.randn(32, 3, 56, 56)</span><br><span class="line">images.sum(dim=1)</span><br><span class="line">images.select(dim=1, index=0)</span><br><span class="line"></span><br><span class="line"># PyTorch 1.3之后</span><br><span class="line">NCHW = [‘N’, ‘C’, ‘H’, ‘W’]</span><br><span class="line">images = torch.randn(32, 3, 56, 56, names=NCHW)</span><br><span class="line">images.sum(&#x27;C&#x27;)</span><br><span class="line">images.select(&#x27;C&#x27;, index=0)</span><br><span class="line"># 也可以这么设置</span><br><span class="line">tensor = torch.rand(3,4,1,2,names=(&#x27;C&#x27;, &#x27;N&#x27;, &#x27;H&#x27;, &#x27;W&#x27;))</span><br><span class="line"># 使用align_to可以对维度方便地排序</span><br><span class="line">tensor = tensor.align_to(&#x27;N&#x27;, &#x27;C&#x27;, &#x27;H&#x27;, &#x27;W&#x27;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据类型转换"><a href="#数据类型转换" class="headerlink" title="数据类型转换"></a>数据类型转换</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 设置默认类型，pytorch中的FloatTensor远远快于DoubleTensor</span><br><span class="line">torch.set_default_tensor_type(torch.FloatTensor)</span><br><span class="line"></span><br><span class="line"># 类型转换</span><br><span class="line">tensor = tensor.cuda()</span><br><span class="line">tensor = tensor.cpu()</span><br><span class="line">tensor = tensor.float()</span><br><span class="line">tensor = tensor.long()</span><br></pre></td></tr></table></figure>
+
+<h3 id="torch-Tensor与np-ndarray转换"><a href="#torch-Tensor与np-ndarray转换" class="headerlink" title="torch.Tensor与np.ndarray转换"></a><strong>torch.Tensor与np.ndarray转换</strong></h3><p>除了CharTensor，其他所有CPU上的张量都支持转换为numpy格式然后再转换回来。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ndarray = tensor.cpu().numpy()</span><br><span class="line">tensor = torch.from_numpy(ndarray).float()</span><br><span class="line">tensor = torch.from_numpy(ndarray.copy()).float() # If ndarray has negative stride.</span><br></pre></td></tr></table></figure>
+
+<h3 id="Torch-tensor与PIL-Image转换"><a href="#Torch-tensor与PIL-Image转换" class="headerlink" title="Torch.tensor与PIL.Image转换"></a><strong>Torch.tensor与PIL.Image转换</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># pytorch中的张量默认采用[N, C, H, W]的顺序，并且数据范围在[0,1]，需要进行转置和规范化</span><br><span class="line"># torch.Tensor -&gt; PIL.Image</span><br><span class="line">image = PIL.Image.fromarray(torch.clamp(tensor*255, min=0, max=255).byte().permute(1,2,0).cpu().numpy())</span><br><span class="line">image = torchvision.transforms.functional.to_pil_image(tensor)  # Equivalently way</span><br><span class="line"></span><br><span class="line"># PIL.Image -&gt; torch.Tensor</span><br><span class="line">path = r&#x27;./figure.jpg&#x27;</span><br><span class="line">tensor = torch.from_numpy(np.asarray(PIL.Image.open(path))).permute(2,0,1).float() / 255</span><br><span class="line">tensor = torchvision.transforms.functional.to_tensor(PIL.Image.open(path)) # Equivalently way</span><br></pre></td></tr></table></figure>
+
+<h3 id="np-ndarray与PIL-Image的转换"><a href="#np-ndarray与PIL-Image的转换" class="headerlink" title="np.ndarray与PIL.Image的转换"></a><strong>np.ndarray与PIL.Image的转换</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">image = PIL.Image.fromarray(ndarray.astype(np.uint8))</span><br><span class="line">ndarray = np.asarray(PIL.Image.open(path))</span><br></pre></td></tr></table></figure>
+
+<h3 id="从只包含一个元素的张量中提取值"><a href="#从只包含一个元素的张量中提取值" class="headerlink" title="从只包含一个元素的张量中提取值"></a>从只包含一个元素的张量中提取值</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">value = torch.rand(1).item()</span><br></pre></td></tr></table></figure>
+
+<h3 id="张量形变"><a href="#张量形变" class="headerlink" title="张量形变"></a>张量形变</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 在将卷积层输入全连接层的情况下通常需要对张量做形变处理，</span><br><span class="line"># 相比torch.view，torch.reshape可以自动处理输入张量不连续的情况。</span><br><span class="line">tensor = torch.rand(2,3,4)</span><br><span class="line">shape = (6, 4)</span><br><span class="line">tensor = torch.reshape(tensor, shape)</span><br></pre></td></tr></table></figure>
+
+<h3 id="打乱顺序"><a href="#打乱顺序" class="headerlink" title="打乱顺序"></a>打乱顺序</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tensor = tensor[torch.randperm(tensor.size(0))]  # 打乱第一个维度</span><br></pre></td></tr></table></figure>
+
+<h3 id="水平翻转"><a href="#水平翻转" class="headerlink" title="水平翻转"></a>水平翻转</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># pytorch不支持tensor[::-1]这样的负步长操作，水平翻转可以通过张量索引实现</span><br><span class="line"># 假设张量的维度为[N, D, H, W].</span><br><span class="line">tensor = tensor[:,:,:,torch.arange(tensor.size(3) - 1, -1, -1).long()]</span><br></pre></td></tr></table></figure>
+
+<h3 id="复制张量"><a href="#复制张量" class="headerlink" title="复制张量"></a>复制张量</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># Operation                 |  New/Shared memory | Still in computation graph |</span><br><span class="line">tensor.clone()            # |        New         |          Yes               |</span><br><span class="line">tensor.detach()           # |      Shared        |          No                |</span><br><span class="line">tensor.detach.clone()()   # |        New         |          No                |</span><br></pre></td></tr></table></figure>
+
+<h3 id="张量拼接"><a href="#张量拼接" class="headerlink" title="张量拼接"></a>张量拼接</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line">注意torch.cat和torch.stack的区别在于torch.cat沿着给定的维度拼接，</span><br><span class="line">而torch.stack会新增一维。例如当参数是3个10x5的张量，torch.cat的结果是30x5的张量，</span><br><span class="line">而torch.stack的结果是3x10x5的张量。</span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line">tensor = torch.cat(list_of_tensors, dim=0)</span><br><span class="line">tensor = torch.stack(list_of_tensors, dim=0)</span><br></pre></td></tr></table></figure>
+
+<h3 id="将整数标签转为one-hot编码"><a href="#将整数标签转为one-hot编码" class="headerlink" title="将整数标签转为one-hot编码"></a>将整数标签转为one-hot编码</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># pytorch的标记默认从0开始</span><br><span class="line">tensor = torch.tensor([0, 2, 1, 3])</span><br><span class="line">N = tensor.size(0)</span><br><span class="line">num_classes = 4</span><br><span class="line">one_hot = torch.zeros(N, num_classes).long()</span><br><span class="line">one_hot.scatter_(dim=1, index=torch.unsqueeze(tensor, dim=1), src=torch.ones(N, num_classes).long())</span><br></pre></td></tr></table></figure>
+
+<h3 id="得到非零元素"><a href="#得到非零元素" class="headerlink" title="得到非零元素"></a>得到非零元素</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">torch.nonzero(tensor)               # index of non-zero elements</span><br><span class="line">torch.nonzero(tensor==0)            # index of zero elements</span><br><span class="line">torch.nonzero(tensor).size(0)       # number of non-zero elements</span><br><span class="line">torch.nonzero(tensor == 0).size(0)  # number of zero elements</span><br></pre></td></tr></table></figure>
+
+<h3 id="判断两个张量相等"><a href="#判断两个张量相等" class="headerlink" title="判断两个张量相等"></a>判断两个张量相等</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">torch.allclose(tensor1, tensor2)  # float tensor</span><br><span class="line">torch.equal(tensor1, tensor2)     # int tensor</span><br></pre></td></tr></table></figure>
+
+<h3 id="张量扩展"><a href="#张量扩展" class="headerlink" title="张量扩展"></a>张量扩展</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># Expand tensor of shape 64*512 to shape 64*512*7*7.</span><br><span class="line">tensor = torch.rand(64,512)</span><br><span class="line">torch.reshape(tensor, (64, 512, 1, 1)).expand(64, 512, 7, 7)</span><br></pre></td></tr></table></figure>
+
+<h3 id="矩阵乘法"><a href="#矩阵乘法" class="headerlink" title="矩阵乘法"></a>矩阵乘法</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># Matrix multiplcation: (m*n) * (n*p) * -&gt; (m*p).</span><br><span class="line">result = torch.mm(tensor1, tensor2)</span><br><span class="line"></span><br><span class="line"># Batch matrix multiplication: (b*m*n) * (b*n*p) -&gt; (b*m*p)</span><br><span class="line">result = torch.bmm(tensor1, tensor2)</span><br><span class="line"></span><br><span class="line"># Element-wise multiplication.</span><br><span class="line">result = tensor1 * tensor2</span><br></pre></td></tr></table></figure>
+
+<h3 id="计算两组数据之间的两两欧式距离"><a href="#计算两组数据之间的两两欧式距离" class="headerlink" title="计算两组数据之间的两两欧式距离"></a>计算两组数据之间的两两欧式距离</h3><p>利用broadcast机制</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dist = torch.sqrt(torch.sum((X1[:,None,:] - X2) ** 2, dim=2))</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-模型定义和操作"><a href="#3-模型定义和操作" class="headerlink" title="3. 模型定义和操作"></a>3. 模型定义和操作</h2><h3 id="一个简单两层卷积网络的示例"><a href="#一个简单两层卷积网络的示例" class="headerlink" title="一个简单两层卷积网络的示例"></a>一个简单两层卷积网络的示例</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"># convolutional neural network (2 convolutional layers)</span><br><span class="line">class ConvNet(nn.Module):   </span><br><span class="line">    def __init__(self, num_classes=10):   </span><br><span class="line">        super(ConvNet, self).__init__()    </span><br><span class="line">        self.layer1 = nn.Sequential(     </span><br><span class="line">            nn.Conv2d(1, 16, kernel_size=5, stride=1, padding=2),           </span><br><span class="line">            nn.BatchNorm2d(16),     </span><br><span class="line">            nn.ReLU(),      </span><br><span class="line">            nn.MaxPool2d(kernel_size=2, stride=2))     </span><br><span class="line">        self.layer2 = nn.Sequential(       </span><br><span class="line">            nn.Conv2d(16, 32, kernel_size=5, stride=1, padding=2),         </span><br><span class="line">            nn.BatchNorm2d(32),    </span><br><span class="line">            nn.ReLU(),        </span><br><span class="line">            nn.MaxPool2d(kernel_size=2, stride=2))   </span><br><span class="line">        self.fc = nn.Linear(7*7*32, num_classes)   </span><br><span class="line">        </span><br><span class="line">    def forward(self, x):   </span><br><span class="line">        out = self.layer1(x)    </span><br><span class="line">        out = self.layer2(out)     </span><br><span class="line">        out = out.reshape(out.size(0), -1)     </span><br><span class="line">        out = self.fc(out)   </span><br><span class="line">        return out</span><br><span class="line">        </span><br><span class="line">model = ConvNet(num_classes).to(device)</span><br></pre></td></tr></table></figure>
+
+<p>卷积层的计算和展示可以用这个网站辅助。</p>
+<h3 id="双线性汇合（bilinear-pooling）"><a href="#双线性汇合（bilinear-pooling）" class="headerlink" title="双线性汇合（bilinear pooling）"></a>双线性汇合（bilinear pooling）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">X = torch.reshape(N, D, H * W)       # Assume X has shape N*D*H*W</span><br><span class="line">X = torch.bmm(X, torch.transpose(X, 1, 2)) / (H * W)  # Bilinear pooling</span><br><span class="line">assert X.size() == (N, D, D)</span><br><span class="line">X = torch.reshape(X, (N, D * D))</span><br><span class="line">X = torch.sign(X) * torch.sqrt(torch.abs(X) + 1e-5)   # Signed-sqrt normalization</span><br><span class="line">X = torch.nn.functional.normalize(X)                  # L2 normalization</span><br></pre></td></tr></table></figure>
+
+<h3 id="多卡同步-BN（Batch-normalization）"><a href="#多卡同步-BN（Batch-normalization）" class="headerlink" title="多卡同步 BN（Batch normalization）"></a>多卡同步 BN（Batch normalization）</h3><p>当使用 torch.nn.DataParallel 将代码运行在多张 GPU 卡上时，PyTorch 的 BN 层默认操作是各卡上数据独立地计算均值和标准差，同步 BN 使用所有卡上的数据一起计算 BN 层的均值和标准差，缓解了当批量大小（batch size）比较小时对均值和标准差估计不准的情况，是在目标检测等任务中一个有效的提升性能的技巧。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sync_bn = torch.nn.SyncBatchNorm(num_features, eps=1e-05, momentum=0.1, affine=True,             </span><br><span class="line">                                 track_running_stats=True)</span><br></pre></td></tr></table></figure>
+
+<h3 id="将已有网络的所有BN层改为同步BN层"><a href="#将已有网络的所有BN层改为同步BN层" class="headerlink" title="将已有网络的所有BN层改为同步BN层"></a>将已有网络的所有BN层改为同步BN层</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">def convertBNtoSyncBN(module, process_group=None):   </span><br><span class="line">    &#x27;&#x27;&#x27;Recursively replace all BN layers to SyncBN layer.  </span><br><span class="line">    </span><br><span class="line">    Args:     </span><br><span class="line">        module[torch.nn.Module]. Network  </span><br><span class="line">    &#x27;&#x27;&#x27; </span><br><span class="line">    if isinstance(module, torch.nn.modules.batchnorm._BatchNorm):      </span><br><span class="line">        sync_bn = torch.nn.SyncBatchNorm(module.num_features, module.eps, module.momentum,                                         </span><br><span class="line">                                         module.affine, module.track_running_stats, process_group)     </span><br><span class="line">        sync_bn.running_mean = module.running_mean      </span><br><span class="line">        sync_bn.running_var = module.running_var     </span><br><span class="line">        if module.affine:       </span><br><span class="line">            sync_bn.weight = module.weight.clone().detach() </span><br><span class="line">            sync_bn.bias = module.bias.clone().detach()   </span><br><span class="line">        return sync_bn  </span><br><span class="line">    else:    </span><br><span class="line">        for name, child_module in module.named_children():           </span><br><span class="line">            setattr(module, name) = convert_syncbn_model(child_module, process_group=process_group))    </span><br><span class="line">        return module</span><br></pre></td></tr></table></figure>
+
+<h3 id="类似-BN-滑动平均"><a href="#类似-BN-滑动平均" class="headerlink" title="类似 BN 滑动平均"></a>类似 BN 滑动平均</h3><p>如果要实现类似 BN 滑动平均的操作，在 forward 函数中要使用原地（inplace）操作给滑动平均赋值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class BN(torch.nn.Module)  </span><br><span class="line">    def __init__(self):     </span><br><span class="line">        ...     </span><br><span class="line">        self.register_buffer(&#x27;running_mean&#x27;, torch.zeros(num_features))</span><br><span class="line">        </span><br><span class="line">    def forward(self, X):   </span><br><span class="line">        ...      </span><br><span class="line">        self.running_mean += momentum * (current - self.running_mean)</span><br></pre></td></tr></table></figure>
+
+<h3 id="计算模型整体参数量"><a href="#计算模型整体参数量" class="headerlink" title="计算模型整体参数量"></a>计算模型整体参数量</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">num_parameters = sum(torch.numel(parameter) for parameter in model.parameters())</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看网络中的参数"><a href="#查看网络中的参数" class="headerlink" title="查看网络中的参数"></a>查看网络中的参数</h3><p>可以通过model.state_dict()或者model.named_parameters()函数查看现在的全部可训练参数（包括通过继承得到的父类中的参数）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">params = list(model.named_parameters())</span><br><span class="line">(name, param) = params[28]</span><br><span class="line">print(name)</span><br><span class="line">print(param.grad)</span><br><span class="line">print(&#x27;-------------------------------------------------&#x27;)</span><br><span class="line">(name2, param2) = params[29]</span><br><span class="line">print(name2)</span><br><span class="line">print(param2.grad)</span><br><span class="line">print(&#x27;----------------------------------------------------&#x27;)</span><br><span class="line">(name1, param1) = params[30]</span><br><span class="line">print(name1)</span><br><span class="line">print(param1.grad)</span><br></pre></td></tr></table></figure>
+
+<h3 id="模型可视化（使用pytorchviz）"><a href="#模型可视化（使用pytorchviz）" class="headerlink" title="模型可视化（使用pytorchviz）"></a>模型可视化（使用pytorchviz）</h3><p>szagoruyko/pytorchvizgithub.com</p>
+<h3 id="类似-Keras-的-model-summary-输出模型信息，使用pytorch-summary"><a href="#类似-Keras-的-model-summary-输出模型信息，使用pytorch-summary" class="headerlink" title="类似 Keras 的 model.summary() 输出模型信息，使用pytorch-summary"></a>类似 Keras 的 model.summary() 输出模型信息，使用pytorch-summary</h3><p>sksq96/pytorch-summarygithub.com</p>
+<p><strong>模型权重初始化</strong></p>
+<p>注意 model.modules() 和 model.children() 的区别：model.modules() 会迭代地遍历模型的所有子层，而 model.children() 只会遍历模型下的一层。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># Common practise for initialization.</span><br><span class="line">for layer in model.modules(): </span><br><span class="line">    if isinstance(layer, torch.nn.Conv2d):    </span><br><span class="line">        torch.nn.init.kaiming_normal_(layer.weight, mode=&#x27;fan_out&#x27;,                                </span><br><span class="line">                                       nonlinearity=&#x27;relu&#x27;) </span><br><span class="line">        if layer.bias is not None:    </span><br><span class="line">            torch.nn.init.constant_(layer.bias, val=0.0)  </span><br><span class="line">    elif isinstance(layer, torch.nn.BatchNorm2d):     </span><br><span class="line">        torch.nn.init.constant_(layer.weight, val=1.0)  </span><br><span class="line">        torch.nn.init.constant_(layer.bias, val=0.0)   </span><br><span class="line">    elif isinstance(layer, torch.nn.Linear):     </span><br><span class="line">        torch.nn.init.xavier_normal_(layer.weight)    </span><br><span class="line">        if layer.bias is not None:      </span><br><span class="line">            torch.nn.init.constant_(layer.bias, val=0.0)</span><br><span class="line"># Initialization with given tensor.</span><br><span class="line">layer.weight = torch.nn.Parameter(tensor)</span><br></pre></td></tr></table></figure>
+
+<h3 id="提取模型中的某一层"><a href="#提取模型中的某一层" class="headerlink" title="提取模型中的某一层"></a>提取模型中的某一层</h3><p>modules()会返回模型中所有模块的迭代器，它能够访问到最内层，比如self.layer1.conv1这个模块，还有一个与它们相对应的是name_children()属性以及named_modules(),这两个不仅会返回模块的迭代器，还会返回网络层的名字。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 取模型中的前两层</span><br><span class="line">new_model = nn.Sequential(*list(model.children())[:2] </span><br><span class="line"># 如果希望提取出模型中的所有卷积层，可以像下面这样操作：</span><br><span class="line">for layer in model.named_modules():   </span><br><span class="line">    if isinstance(layer[1],nn.Conv2d):    </span><br><span class="line">         conv_model.add_module(layer[0],layer[1])</span><br></pre></td></tr></table></figure>
+
+<h3 id="部分层使用预训练模型"><a href="#部分层使用预训练模型" class="headerlink" title="部分层使用预训练模型"></a>部分层使用预训练模型</h3><p>注意如果保存的模型是 torch.nn.DataParallel，则当前的模型也需要是</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model.load_state_dict(torch.load(&#x27;model.pth&#x27;), strict=False)</span><br></pre></td></tr></table></figure>
+
+<h3 id="将在-GPU-保存的模型加载到-CPU"><a href="#将在-GPU-保存的模型加载到-CPU" class="headerlink" title="将在 GPU 保存的模型加载到 CPU"></a>将在 GPU 保存的模型加载到 CPU</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model.load_state_dict(torch.load(&#x27;model.pth&#x27;, map_location=&#x27;cpu&#x27;))</span><br></pre></td></tr></table></figure>
+
+<h3 id="导入另一个模型的相同部分到新的模型"><a href="#导入另一个模型的相同部分到新的模型" class="headerlink" title="导入另一个模型的相同部分到新的模型"></a>导入另一个模型的相同部分到新的模型</h3><p>模型导入参数时，如果两个模型结构不一致，则直接导入参数会报错。用下面方法可以把另一个模型的相同的部分导入到新的模型中。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># model_new代表新的模型</span><br><span class="line"># model_saved代表其他模型，比如用torch.load导入的已保存的模型</span><br><span class="line">model_new_dict = model_new.state_dict()</span><br><span class="line">model_common_dict = &#123;k:v for k, v in model_saved.items() if k in model_new_dict.keys()&#125;</span><br><span class="line">model_new_dict.update(model_common_dict)</span><br><span class="line">model_new.load_state_dict(model_new_dict)</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-数据处理"><a href="#4-数据处理" class="headerlink" title="4. 数据处理"></a>4. 数据处理</h2><h3 id="计算数据集的均值和标准差"><a href="#计算数据集的均值和标准差" class="headerlink" title="计算数据集的均值和标准差"></a>计算数据集的均值和标准差</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">import cv2</span><br><span class="line">import numpy as np</span><br><span class="line">from torch.utils.data import Dataset</span><br><span class="line">from PIL import Image</span><br><span class="line"></span><br><span class="line">def compute_mean_and_std(dataset):  </span><br><span class="line">    # 输入PyTorch的dataset，输出均值和标准差   </span><br><span class="line">    mean_r = 0  </span><br><span class="line">    mean_g = 0   </span><br><span class="line">    mean_b = 0 </span><br><span class="line">    </span><br><span class="line">    for img, _ in dataset:    </span><br><span class="line">        img = np.asarray(img) # change PIL Image to numpy array     </span><br><span class="line">        mean_b += np.mean(img[:, :, 0])     </span><br><span class="line">        mean_g += np.mean(img[:, :, 1])   </span><br><span class="line">        mean_r += np.mean(img[:, :, 2])  </span><br><span class="line">        </span><br><span class="line">    mean_b /= len(dataset)  </span><br><span class="line">    mean_g /= len(dataset)   </span><br><span class="line">    mean_r /= len(dataset)  </span><br><span class="line">    </span><br><span class="line">    diff_r = 0    </span><br><span class="line">    diff_g = 0  </span><br><span class="line">    diff_b = 0  </span><br><span class="line">    </span><br><span class="line">    N = 0  </span><br><span class="line">    </span><br><span class="line">    for img, _ in dataset:   </span><br><span class="line">        img = np.asarray(img)      </span><br><span class="line">        </span><br><span class="line">        diff_b += np.sum(np.power(img[:, :, 0] - mean_b, 2))</span><br><span class="line">        diff_g += np.sum(np.power(img[:, :, 1] - mean_g, 2))</span><br><span class="line">        diff_r += np.sum(np.power(img[:, :, 2] - mean_r, 2)) </span><br><span class="line">        </span><br><span class="line">        N += np.prod(img[:, :, 0].shape)  </span><br><span class="line">    </span><br><span class="line">    std_b = np.sqrt(diff_b / N)  </span><br><span class="line">    std_g = np.sqrt(diff_g / N)  </span><br><span class="line">    std_r = np.sqrt(diff_r / N) </span><br><span class="line">    </span><br><span class="line">    mean = (mean_b.item() / 255.0, mean_g.item() / 255.0, mean_r.item() / 255.0) </span><br><span class="line">    std = (std_b.item() / 255.0, std_g.item() / 255.0, std_r.item() / 255.0) </span><br><span class="line">    return mean, std</span><br></pre></td></tr></table></figure>
+
+<h3 id="得到视频数据基本信息"><a href="#得到视频数据基本信息" class="headerlink" title="得到视频数据基本信息"></a>得到视频数据基本信息</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import cv2</span><br><span class="line">video = cv2.VideoCapture(mp4_path)</span><br><span class="line">height = int(video.get(cv2.CAP_PROP_FRAME_HEIGHT))</span><br><span class="line">width = int(video.get(cv2.CAP_PROP_FRAME_WIDTH))</span><br><span class="line">num_frames = int(video.get(cv2.CAP_PROP_FRAME_COUNT))</span><br><span class="line">fps = int(video.get(cv2.CAP_PROP_FPS))</span><br><span class="line">video.release()</span><br></pre></td></tr></table></figure>
+
+<h3 id="TSN-每段（segment）采样一帧视频"><a href="#TSN-每段（segment）采样一帧视频" class="headerlink" title="TSN 每段（segment）采样一帧视频"></a>TSN 每段（segment）采样一帧视频</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">K = self._num_segments</span><br><span class="line">if is_train: </span><br><span class="line">    if num_frames &gt; K:    </span><br><span class="line">        # Random index for each segment.     </span><br><span class="line">        frame_indices = torch.randint(       </span><br><span class="line">            high=num_frames // K, size=(K,), dtype=torch.long)      </span><br><span class="line">        frame_indices += num_frames // K * torch.arange(K) </span><br><span class="line">    else:      </span><br><span class="line">        frame_indices = torch.randint(      </span><br><span class="line">            high=num_frames, size=(K - num_frames,), dtype=torch.long)     </span><br><span class="line">        frame_indices = torch.sort(torch.cat((       </span><br><span class="line">            torch.arange(num_frames), frame_indices)))[0]</span><br><span class="line">else:   </span><br><span class="line">    if num_frames &gt; K:  </span><br><span class="line">        # Middle index for each segment.    </span><br><span class="line">        frame_indices = num_frames / K // 2     </span><br><span class="line">        frame_indices += num_frames // K * torch.arange(K)  </span><br><span class="line">    else:    </span><br><span class="line">        frame_indices = torch.sort(torch.cat((      </span><br><span class="line">            torch.arange(num_frames), torch.arange(K - num_frames))))[0]</span><br><span class="line">assert frame_indices.size() == (K,)</span><br><span class="line">return [frame_indices[i] for i in range(K)]</span><br></pre></td></tr></table></figure>
+
+<h3 id="常用训练和验证数据预处理"><a href="#常用训练和验证数据预处理" class="headerlink" title="常用训练和验证数据预处理"></a>常用训练和验证数据预处理</h3><p>其中 ToTensor 操作会将 PIL.Image 或形状为 H×W×D，数值范围为 [0, 255] 的 np.ndarray 转换为形状为 D×H×W，数值范围为 [0.0, 1.0] 的 torch.Tensor。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">train_transform = torchvision.transforms.Compose([ </span><br><span class="line">    torchvision.transforms.RandomResizedCrop(size=224,                                       </span><br><span class="line">                                             scale=(0.08, 1.0)),   </span><br><span class="line">    torchvision.transforms.RandomHorizontalFlip(),   </span><br><span class="line">    torchvision.transforms.ToTensor(),  </span><br><span class="line">    torchvision.transforms.Normalize(mean=(0.485, 0.456, 0.406),                                </span><br><span class="line">                                     std=(0.229, 0.224, 0.225)</span><br><span class="line">]) </span><br><span class="line">val_transform = torchvision.transforms.Compose([  </span><br><span class="line">   torchvision.transforms.Resize(256),  </span><br><span class="line">   torchvision.transforms.CenterCrop(224),   </span><br><span class="line">   torchvision.transforms.ToTensor(), </span><br><span class="line">   torchvision.transforms.Normalize(mean=(0.485, 0.456, 0.406),                                  </span><br><span class="line">                                    std=(0.229, 0.224, 0.225)),</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-模型训练和测试"><a href="#5-模型训练和测试" class="headerlink" title="5. 模型训练和测试"></a>5. 模型训练和测试</h2><h3 id="分类模型训练代码"><a href="#分类模型训练代码" class="headerlink" title="分类模型训练代码"></a>分类模型训练代码</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"># Loss and optimizer</span><br><span class="line">criterion = nn.CrossEntropyLoss()</span><br><span class="line">optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)</span><br><span class="line"></span><br><span class="line"># Train the model</span><br><span class="line">total_step = len(train_loader)</span><br><span class="line">for epoch in range(num_epochs):  </span><br><span class="line">    for i ,(images, labels) in enumerate(train_loader):    </span><br><span class="line">        images = images.to(device)    </span><br><span class="line">        labels = labels.to(device)      </span><br><span class="line">        </span><br><span class="line">        # Forward pass    </span><br><span class="line">        outputs = model(images)       </span><br><span class="line">        loss = criterion(outputs, labels)     </span><br><span class="line">        </span><br><span class="line">        # Backward and optimizer   </span><br><span class="line">        optimizer.zero_grad()     </span><br><span class="line">        loss.backward() </span><br><span class="line">        optimizer.step()      </span><br><span class="line">        </span><br><span class="line">        if (i+1) % 100 == 0:    </span><br><span class="line">            print(&#x27;Epoch: [&#123;&#125;/&#123;&#125;], Step: [&#123;&#125;/&#123;&#125;], Loss: &#123;&#125;&#x27;                 </span><br><span class="line">                  .format(epoch+1, num_epochs, i+1, total_step, loss.item()))</span><br></pre></td></tr></table></figure>
+
+<h3 id="分类模型测试代码"><a href="#分类模型测试代码" class="headerlink" title="分类模型测试代码"></a>分类模型测试代码</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># Test the model</span><br><span class="line">model.eval()  # eval mode(batch norm uses moving mean/variance             </span><br><span class="line">              #instead of mini-batch mean/variance)</span><br><span class="line">with torch.no_grad(): </span><br><span class="line">    correct = 0  </span><br><span class="line">    total = 0 </span><br><span class="line">    for images, labels in test_loader:   </span><br><span class="line">        images = images.to(device)     </span><br><span class="line">        labels = labels.to(device)    </span><br><span class="line">        outputs = model(images)      </span><br><span class="line">        _, predicted = torch.max(outputs.data, 1)    </span><br><span class="line">        total += labels.size(0)      </span><br><span class="line">        correct += (predicted == labels).sum().item()   </span><br><span class="line">        </span><br><span class="line">        print(&#x27;Test accuracy of the model on the 10000 test images: &#123;&#125; %&#x27;      </span><br><span class="line">              .format(100 * correct / total))</span><br></pre></td></tr></table></figure>
+
+<h3 id="自定义loss"><a href="#自定义loss" class="headerlink" title="自定义loss"></a>自定义loss</h3><p>继承torch.nn.Module类写自己的loss。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class MyLoss(torch.nn.Moudle):  </span><br><span class="line">    def __init__(self):    </span><br><span class="line">        super(MyLoss, self).__init__()</span><br><span class="line">        </span><br><span class="line">    def forward(self, x, y):    </span><br><span class="line">        loss = torch.mean((x - y) ** 2)   </span><br><span class="line">        return loss</span><br></pre></td></tr></table></figure>
+
+<h3 id="标签平滑（label-smoothing）"><a href="#标签平滑（label-smoothing）" class="headerlink" title="标签平滑（label smoothing）"></a>标签平滑（label smoothing）</h3><p>写一个label_smoothing.py的文件，然后在训练代码里引用，用LSR代替交叉熵损失即可。label_smoothing.py内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line">import torch</span><br><span class="line">import torch.nn as nn</span><br><span class="line"></span><br><span class="line">class LSR(nn.Module):</span><br><span class="line"></span><br><span class="line">    def __init__(self, e=0.1, reduction=&#x27;mean&#x27;):   </span><br><span class="line">        super().__init__()</span><br><span class="line">        </span><br><span class="line">        self.log_softmax = nn.LogSoftmax(dim=1)   </span><br><span class="line">        self.e = e     </span><br><span class="line">        self.reduction = reduction</span><br><span class="line">        </span><br><span class="line">    def _one_hot(self, labels, classes, value=1):   </span><br><span class="line">        &quot;&quot;&quot;        </span><br><span class="line">            Convert labels to one hot vectors</span><br><span class="line">            </span><br><span class="line">        Args:      </span><br><span class="line">            labels: torch tensor in format [label1, label2, label3, ...]       </span><br><span class="line">            classes: int, number of classes       </span><br><span class="line">            value: label value in one hot vector, default to 1</span><br><span class="line">            </span><br><span class="line">        Returns:        </span><br><span class="line">            return one hot format labels in shape [batchsize, classes]    </span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        </span><br><span class="line">        one_hot = torch.zeros(labels.size(0), classes)</span><br><span class="line">        </span><br><span class="line">        #labels and value_added  size must match     </span><br><span class="line">        labels = labels.view(labels.size(0), -1)   </span><br><span class="line">        value_added = torch.Tensor(labels.size(0), 1).fill_(value)</span><br><span class="line">        </span><br><span class="line">        value_added = value_added.to(labels.device)   </span><br><span class="line">        one_hot = one_hot.to(labels.device)</span><br><span class="line">        </span><br><span class="line">        one_hot.scatter_add_(1, labels, value_added)</span><br><span class="line">        </span><br><span class="line">        return one_hot</span><br><span class="line">        </span><br><span class="line">    def _smooth_label(self, target, length, smooth_factor): </span><br><span class="line">        &quot;&quot;&quot;convert targets to one-hot format, and smooth  </span><br><span class="line">        them.  </span><br><span class="line">        Args:      </span><br><span class="line">            target: target in form with [label1, label2, label_batchsize]        </span><br><span class="line">            length: length of one-hot format(number of classes)         </span><br><span class="line">            smooth_factor: smooth factor for label smooth</span><br><span class="line">       </span><br><span class="line">       Returns:        </span><br><span class="line">           smoothed labels in one hot format   </span><br><span class="line">       &quot;&quot;&quot;    </span><br><span class="line">       one_hot = self._one_hot(target, length, value=1 - smooth_factor)      </span><br><span class="line">       one_hot += smooth_factor / (length - 1)</span><br><span class="line">       </span><br><span class="line">       return one_hot.to(target.device)</span><br><span class="line">       </span><br><span class="line">    def forward(self, x, target):</span><br><span class="line">    </span><br><span class="line">        if x.size(0) != target.size(0):      </span><br><span class="line">            raise ValueError(&#x27;Expected input batchsize (&#123;&#125;) to match target batch_size(&#123;&#125;)&#x27;                </span><br><span class="line">                    .format(x.size(0), target.size(0)))</span><br><span class="line">                    </span><br><span class="line">        if x.dim() &lt; 2:       </span><br><span class="line">            raise ValueError(&#x27;Expected input tensor to have least 2 dimensions(got &#123;&#125;)&#x27;       </span><br><span class="line">                    .format(x.size(0)))</span><br><span class="line">                    </span><br><span class="line">        if x.dim() != 2:     </span><br><span class="line">            raise ValueError(&#x27;Only 2 dimension tensor are implemented, (got &#123;&#125;)&#x27;           </span><br><span class="line">                    .format(x.size()))</span><br><span class="line"></span><br><span class="line">        smoothed_target = self._smooth_label(target, x.size(1), self.e)     </span><br><span class="line">        x = self.log_softmax(x)   </span><br><span class="line">        loss = torch.sum(- x * smoothed_target, dim=1)</span><br><span class="line">        </span><br><span class="line">        if self.reduction == &#x27;none&#x27;:         </span><br><span class="line">            return loss</span><br><span class="line">            </span><br><span class="line">        elif self.reduction == &#x27;sum&#x27;:        </span><br><span class="line">            return torch.sum(loss)</span><br><span class="line">            </span><br><span class="line">        elif self.reduction == &#x27;mean&#x27;:      </span><br><span class="line">            return torch.mean(loss)</span><br><span class="line">            </span><br><span class="line">        else:         </span><br><span class="line">            raise ValueError(&#x27;unrecognized option, expect reduction to be one of none, mean, sum&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>或者直接在训练文件里做label smoothing</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">for images, labels in train_loader:  </span><br><span class="line">    images, labels = images.cuda(), labels.cuda()  </span><br><span class="line">    N = labels.size(0) </span><br><span class="line">    # C is the number of classes.  </span><br><span class="line">    smoothed_labels = torch.full(size=(N, C), fill_value=0.1 / (C - 1)).cuda()  </span><br><span class="line">    smoothed_labels.scatter_(dim=1, index=torch.unsqueeze(labels, dim=1), value=0.9)</span><br><span class="line">    </span><br><span class="line">    score = model(images)  </span><br><span class="line">    log_prob = torch.nn.functional.log_softmax(score, dim=1)  </span><br><span class="line">    loss = -torch.sum(log_prob * smoothed_labels) / N   </span><br><span class="line">    optimizer.zero_grad()  </span><br><span class="line">    loss.backward() </span><br><span class="line">    optimizer.step()</span><br></pre></td></tr></table></figure>
+
+<h3 id="Mixup训练"><a href="#Mixup训练" class="headerlink" title="Mixup训练"></a>Mixup训练</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">beta_distribution = torch.distributions.beta.Beta(alpha, alpha)</span><br><span class="line">for images, labels in train_loader:  </span><br><span class="line">    images, labels = images.cuda(), labels.cuda()   </span><br><span class="line">    </span><br><span class="line">    # Mixup images and labels.  </span><br><span class="line">    lambda_ = beta_distribution.sample([]).item()   </span><br><span class="line">    index = torch.randperm(images.size(0)).cuda()  </span><br><span class="line">    mixed_images = lambda_ * images + (1 - lambda_) * images[index, :]  </span><br><span class="line">    label_a, label_b = labels, labels[index]  </span><br><span class="line">    </span><br><span class="line">    # Mixup loss.  </span><br><span class="line">    scores = model(mixed_images) </span><br><span class="line">    loss = (lambda_ * loss_function(scores, label_a)     </span><br><span class="line">            + (1 - lambda_) * loss_function(scores, label_b))  </span><br><span class="line">    optimizer.zero_grad() </span><br><span class="line">    loss.backward()  </span><br><span class="line">    optimizer.step()</span><br></pre></td></tr></table></figure>
+
+<h3 id="L1-正则化"><a href="#L1-正则化" class="headerlink" title="L1 正则化"></a>L1 正则化</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">l1_regularization = torch.nn.L1Loss(reduction=&#x27;sum&#x27;)</span><br><span class="line">loss = ...  # Standard cross-entropy loss</span><br><span class="line">for param in model.parameters():  </span><br><span class="line">    loss += torch.sum(torch.abs(param))</span><br><span class="line">loss.backward()</span><br></pre></td></tr></table></figure>
+
+<h3 id="不对偏置项进行权重衰减（weight-decay）"><a href="#不对偏置项进行权重衰减（weight-decay）" class="headerlink" title="不对偏置项进行权重衰减（weight decay）"></a>不对偏置项进行权重衰减（weight decay）</h3><p>pytorch里的weight decay相当于l2正则</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bias_list = (param for name, param in model.named_parameters() if name[-4:] == &#x27;bias&#x27;)</span><br><span class="line">others_list = (param for name, param in model.named_parameters() if name[-4:] != &#x27;bias&#x27;)</span><br><span class="line">parameters = [&#123;&#x27;parameters&#x27;: bias_list, &#x27;weight_decay&#x27;: 0&#125;,                            </span><br><span class="line">              &#123;&#x27;parameters&#x27;: others_list&#125;]</span><br><span class="line">optimizer = torch.optim.SGD(parameters, lr=1e-2, momentum=0.9, weight_decay=1e-4)</span><br></pre></td></tr></table></figure>
+
+<h3 id="梯度裁剪（gradient-clipping）"><a href="#梯度裁剪（gradient-clipping）" class="headerlink" title="梯度裁剪（gradient clipping）"></a>梯度裁剪（gradient clipping）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=20)</span><br></pre></td></tr></table></figure>
+
+<h3 id="得到当前学习率"><a href="#得到当前学习率" class="headerlink" title="得到当前学习率"></a>得到当前学习率</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># If there is one global learning rate (which is the common case).</span><br><span class="line">lr = next(iter(optimizer.param_groups))[&#x27;lr&#x27;]</span><br><span class="line"></span><br><span class="line"># If there are multiple learning rates for different layers.</span><br><span class="line">all_lr = []</span><br><span class="line">for param_group in optimizer.param_groups:  </span><br><span class="line">    all_lr.append(param_group[&#x27;lr&#x27;])</span><br></pre></td></tr></table></figure>
+
+<p>另一种方法，在一个batch训练代码里，当前的lr是optimizer.param_groups[0][‘lr’]</p>
+<h3 id="学习率衰减"><a href="#学习率衰减" class="headerlink" title="学习率衰减"></a>学习率衰减</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"># Reduce learning rate when validation accuarcy plateau.</span><br><span class="line">scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode=&#x27;max&#x27;, patience=5, verbose=True)</span><br><span class="line">for t in range(0, 80):  </span><br><span class="line">    train(...)   </span><br><span class="line">    val(...)  </span><br><span class="line">    scheduler.step(val_acc)</span><br><span class="line">    </span><br><span class="line"># Cosine annealing learning rate.</span><br><span class="line">scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=80)</span><br><span class="line"># Reduce learning rate by 10 at given epochs.</span><br><span class="line">scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer, milestones=[50, 70], gamma=0.1)</span><br><span class="line">for t in range(0, 80):  </span><br><span class="line">    scheduler.step()    </span><br><span class="line">    train(...)  </span><br><span class="line">    val(...)</span><br><span class="line">    </span><br><span class="line"># Learning rate warmup by 10 epochs.</span><br><span class="line">scheduler = torch.optim.lr_scheduler.LambdaLR(optimizer, lr_lambda=lambda t: t / 10)</span><br><span class="line">for t in range(0, 10):  </span><br><span class="line">    scheduler.step()  </span><br><span class="line">    train(...)  </span><br><span class="line">    val(...)</span><br></pre></td></tr></table></figure>
+
+<h3 id="优化器链式更新"><a href="#优化器链式更新" class="headerlink" title="优化器链式更新"></a>优化器链式更新</h3><p>从1.4版本开始，torch.optim.lr_scheduler 支持链式更新（chaining），即用户可以定义两个 schedulers，并交替在训练中使用。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import torch</span><br><span class="line">from torch.optim import SGD</span><br><span class="line">from torch.optim.lr_scheduler import ExponentialLR, StepLR</span><br><span class="line">model = [torch.nn.Parameter(torch.randn(2, 2, requires_grad=True))]</span><br><span class="line">optimizer = SGD(model, 0.1)</span><br><span class="line">scheduler1 = ExponentialLR(optimizer, gamma=0.9)</span><br><span class="line">scheduler2 = StepLR(optimizer, step_size=3, gamma=0.1)</span><br><span class="line">for epoch in range(4):  </span><br><span class="line">    print(epoch, scheduler2.get_last_lr()[0]) </span><br><span class="line">    optimizer.step()  </span><br><span class="line">    scheduler1.step()  </span><br><span class="line">    scheduler2.step()</span><br></pre></td></tr></table></figure>
+
+<h3 id="模型训练可视化"><a href="#模型训练可视化" class="headerlink" title="模型训练可视化"></a>模型训练可视化</h3><p>PyTorch可以使用tensorboard来可视化训练过程。</p>
+<p>安装和运行TensorBoard。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install tensorboard</span><br><span class="line">tensorboard --logdir=runs</span><br></pre></td></tr></table></figure>
+
+<p>使用SummaryWriter类来收集和可视化相应的数据，放了方便查看，可以使用不同的文件夹，比如’Loss/train’和’Loss/test’。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from torch.utils.tensorboard import SummaryWriter</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">writer = SummaryWriter()</span><br><span class="line"></span><br><span class="line">for n_iter in range(100):  </span><br><span class="line">    writer.add_scalar(&#x27;Loss/train&#x27;, np.random.random(), n_iter)   </span><br><span class="line">    writer.add_scalar(&#x27;Loss/test&#x27;, np.random.random(), n_iter)   </span><br><span class="line">    writer.add_scalar(&#x27;Accuracy/train&#x27;, np.random.random(), n_iter)  </span><br><span class="line">    writer.add_scalar(&#x27;Accuracy/test&#x27;, np.random.random(), n_iter)</span><br></pre></td></tr></table></figure>
+
+<h3 id="保存与加载断点"><a href="#保存与加载断点" class="headerlink" title="保存与加载断点"></a>保存与加载断点</h3><p>注意为了能够恢复训练，我们需要同时保存模型和优化器的状态，以及当前的训练轮数。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">start_epoch = 0</span><br><span class="line"># Load checkpoint.</span><br><span class="line">if resume: # resume为参数，第一次训练时设为0，中断再训练时设为1  </span><br><span class="line">    model_path = os.path.join(&#x27;model&#x27;, &#x27;best_checkpoint.pth.tar&#x27;)  </span><br><span class="line">    assert os.path.isfile(model_path) </span><br><span class="line">    checkpoint = torch.load(model_path)  </span><br><span class="line">    best_acc = checkpoint[&#x27;best_acc&#x27;]  </span><br><span class="line">    start_epoch = checkpoint[&#x27;epoch&#x27;]  </span><br><span class="line">    model.load_state_dict(checkpoint[&#x27;model&#x27;])   </span><br><span class="line">    optimizer.load_state_dict(checkpoint[&#x27;optimizer&#x27;])  </span><br><span class="line">    print(&#x27;Load checkpoint at epoch &#123;&#125;.&#x27;.format(start_epoch)) </span><br><span class="line">    print(&#x27;Best accuracy so far &#123;&#125;.&#x27;.format(best_acc))</span><br><span class="line">    </span><br><span class="line"># Train the model</span><br><span class="line">for epoch in range(start_epoch, num_epochs):    </span><br><span class="line">    ... </span><br><span class="line">    </span><br><span class="line">    # Test the model  </span><br><span class="line">    ...</span><br><span class="line">    </span><br><span class="line">    # save checkpoint  </span><br><span class="line">    is_best = current_acc &gt; best_acc   </span><br><span class="line">    best_acc = max(current_acc, best_acc) </span><br><span class="line">    checkpoint = &#123;   </span><br><span class="line">        &#x27;best_acc&#x27;: best_acc,   </span><br><span class="line">        &#x27;epoch&#x27;: epoch + 1,   </span><br><span class="line">        &#x27;model&#x27;: model.state_dict(),   </span><br><span class="line">        &#x27;optimizer&#x27;: optimizer.state_dict(),   </span><br><span class="line">    &#125;  </span><br><span class="line">    model_path = os.path.join(&#x27;model&#x27;, &#x27;checkpoint.pth.tar&#x27;)    </span><br><span class="line">    best_model_path = os.path.join(&#x27;model&#x27;, &#x27;best_checkpoint.pth.tar&#x27;) </span><br><span class="line">    torch.save(checkpoint, model_path)  </span><br><span class="line">    if is_best:    </span><br><span class="line">        shutil.copy(model_path, best_model_path)</span><br></pre></td></tr></table></figure>
+
+<h3 id="提取-ImageNet-预训练模型某层的卷积特征"><a href="#提取-ImageNet-预训练模型某层的卷积特征" class="headerlink" title="提取 ImageNet 预训练模型某层的卷积特征"></a>提取 ImageNet 预训练模型某层的卷积特征</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># VGG-16 relu5-3 feature.</span><br><span class="line">model = torchvision.models.vgg16(pretrained=True).features[:-1]</span><br><span class="line"># VGG-16 pool5 feature.</span><br><span class="line">model = torchvision.models.vgg16(pretrained=True).features</span><br><span class="line"># VGG-16 fc7 feature.</span><br><span class="line">model = torchvision.models.vgg16(pretrained=True)</span><br><span class="line">model.classifier = torch.nn.Sequential(*list(model.classifier.children())[:-3])</span><br><span class="line"># ResNet GAP feature.</span><br><span class="line">model = torchvision.models.resnet18(pretrained=True)</span><br><span class="line">model = torch.nn.Sequential(collections.OrderedDict(   </span><br><span class="line">    list(model.named_children())[:-1]))</span><br><span class="line">    </span><br><span class="line">with torch.no_grad():  </span><br><span class="line">    model.eval()  </span><br><span class="line">    conv_representation = model(image)</span><br></pre></td></tr></table></figure>
+
+<h3 id="提取-ImageNet-预训练模型多层的卷积特征"><a href="#提取-ImageNet-预训练模型多层的卷积特征" class="headerlink" title="提取 ImageNet 预训练模型多层的卷积特征"></a>提取 ImageNet 预训练模型多层的卷积特征</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">class FeatureExtractor(torch.nn.Module): </span><br><span class="line">    &quot;&quot;&quot;Helper class to extract several convolution features from the given   </span><br><span class="line">    pre-trained model.</span><br><span class="line">    </span><br><span class="line">    Attributes:   </span><br><span class="line">        _model, torch.nn.Module.    </span><br><span class="line">        _layers_to_extract, list&lt;str&gt; or set&lt;str&gt;</span><br><span class="line">        </span><br><span class="line">    Example:     </span><br><span class="line">        &gt;&gt;&gt; model = torchvision.models.resnet152(pretrained=True)     </span><br><span class="line">        &gt;&gt;&gt; model = torch.nn.Sequential(collections.OrderedDict(          </span><br><span class="line">                list(model.named_children())[:-1]))    </span><br><span class="line">        &gt;&gt;&gt; conv_representation = FeatureExtractor(     </span><br><span class="line">                pretrained_model=model,           </span><br><span class="line">                layers_to_extract=&#123;&#x27;layer1&#x27;, &#x27;layer2&#x27;, &#x27;layer3&#x27;, &#x27;layer4&#x27;&#125;)(image)  </span><br><span class="line">    &quot;&quot;&quot;  </span><br><span class="line">    def __init__(self, pretrained_model, layers_to_extract):       </span><br><span class="line">        torch.nn.Module.__init__(self)   </span><br><span class="line">        self._model = pretrained_model   </span><br><span class="line">        self._model.eval()   </span><br><span class="line">        self._layers_to_extract = set(layers_to_extract)</span><br><span class="line">        </span><br><span class="line">    def forward(self, x):    </span><br><span class="line">        with torch.no_grad():     </span><br><span class="line">           conv_representation = []       </span><br><span class="line">           for name, layer in self._model.named_children():           </span><br><span class="line">               x = layer(x)       </span><br><span class="line">               if name in self._layers_to_extract:   </span><br><span class="line">                   conv_representation.append(x)    </span><br><span class="line">            return conv_representation</span><br></pre></td></tr></table></figure>
+
+<h3 id="微调全连接层"><a href="#微调全连接层" class="headerlink" title="微调全连接层"></a>微调全连接层</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">model = torchvision.models.resnet18(pretrained=True)</span><br><span class="line">for param in model.parameters():  </span><br><span class="line">    param.requires_grad = False</span><br><span class="line">model.fc = nn.Linear(512, 100)  # Replace the last fc layer</span><br><span class="line">optimizer = torch.optim.SGD(model.fc.parameters(), lr=1e-2, momentum=0.9, weight_decay=1e-4)</span><br></pre></td></tr></table></figure>
+
+<h3 id="以较大学习率微调全连接层，较小学习率微调卷积层"><a href="#以较大学习率微调全连接层，较小学习率微调卷积层" class="headerlink" title="以较大学习率微调全连接层，较小学习率微调卷积层"></a>以较大学习率微调全连接层，较小学习率微调卷积层</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">model = torchvision.models.resnet18(pretrained=True)</span><br><span class="line">finetuned_parameters = list(map(id, model.fc.parameters()))</span><br><span class="line">conv_parameters = (p for p in model.parameters() if id(p) not in finetuned_parameters)</span><br><span class="line">parameters = [&#123;&#x27;params&#x27;: conv_parameters, &#x27;lr&#x27;: 1e-3&#125;,    </span><br><span class="line">              &#123;&#x27;params&#x27;: model.fc.parameters()&#125;]</span><br><span class="line">optimizer = torch.optim.SGD(parameters, lr=1e-2, momentum=0.9, weight_decay=1e-4)</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-其他注意事项"><a href="#6-其他注意事项" class="headerlink" title="6. 其他注意事项"></a>6. 其他注意事项</h2><p>不要使用太大的线性层。因为nn.Linear(m,n)使用的是的内存，线性层太大很容易超出现有显存。</p>
+<p>不要在太长的序列上使用RNN。因为RNN反向传播使用的是BPTT算法，其需要的内存和输入序列的长度呈线性关系。</p>
+<p>model(x) 前用 model.train() 和 model.eval() 切换网络状态。</p>
+<p>不需要计算梯度的代码块用 with torch.no_grad() 包含起来。</p>
+<p>model.eval() 和 torch.no_grad() 的区别在于，model.eval() 是将网络切换为测试状态，例如 BN 和dropout在训练和测试阶段使用不同的计算方法。torch.no_grad() 是关闭 PyTorch 张量的自动求导机制，以减少存储使用和加速计算，得到的结果无法进行 loss.backward()。</p>
+<p>model.zero_grad()会把整个模型的参数的梯度都归零, 而optimizer.zero_grad()只会把传入其中的参数的梯度归零.</p>
+<p>torch.nn.CrossEntropyLoss 的输入不需要经过 Softmax。torch.nn.CrossEntropyLoss 等价于 torch.nn.functional.log_softmax + torch.nn.NLLLoss。</p>
+<p>loss.backward() 前用 optimizer.zero_grad() 清除累积梯度。</p>
+<p>torch.utils.data.DataLoader 中尽量设置 pin_memory=True，对特别小的数据集如 MNIST 设置 pin_memory=False 反而更快一些。num_workers 的设置需要在实验中找到最快的取值。</p>
+<p>用 del 及时删除不用的中间变量，节约 GPU 存储。</p>
+<p>使用 inplace 操作可节约 GPU 存储，如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x = torch.nn.functional.relu(x, inplace=True)</span><br></pre></td></tr></table></figure>
+
+<p>减少 CPU 和 GPU 之间的数据传输。例如如果你想知道一个 epoch 中每个 mini-batch 的 loss 和准确率，先将它们累积在 GPU 中等一个 epoch 结束之后一起传输回 CPU 会比每个 mini-batch 都进行一次 GPU 到 CPU 的传输更快。</p>
+<p>使用半精度浮点数 half() 会有一定的速度提升，具体效率依赖于 GPU 型号。需要小心数值精度过低带来的稳定性问题。</p>
+<p>时常使用 assert tensor.size() == (N, D, H, W) 作为调试手段，确保张量维度和你设想中一致。</p>
+<p>除了标记 y 外，尽量少使用一维张量，使用 n*1 的二维张量代替，可以避免一些意想不到的一维张量计算结果。</p>
+<p>统计代码各部分耗时</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">with torch.autograd.profiler.profile(enabled=True, use_cuda=False) as profile:  </span><br><span class="line">    ...</span><br><span class="line">print(profile)</span><br><span class="line"></span><br><span class="line"># 或者在命令行运行</span><br><span class="line">python -m torch.utils.bottleneck main.py</span><br></pre></td></tr></table></figure>
+
+<p>使用TorchSnooper来调试PyTorch代码，程序在执行的时候，就会自动 print 出来每一行的执行结果的 tensor 的形状、数据类型、设备、是否需要梯度的信息。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># pip install torchsnooper</span><br><span class="line">import torchsnooper</span><br><span class="line"></span><br><span class="line"># 对于函数，使用修饰器</span><br><span class="line">@torchsnooper.snoop()</span><br><span class="line"></span><br><span class="line"># 如果不是函数，使用 with 语句来激活 TorchSnooper，把训练的那个循环装进 with 语句中去。</span><br><span class="line">with torchsnooper.snoop():  </span><br><span class="line">    原本的代码</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://github.com/zasdfgbnm/TorchSnoopergithub.com">https://github.com/zasdfgbnm/TorchSnoopergithub.com</a></p>
+<p>模型可解释性，使用captum库：<a target="_blank" rel="noopener" href="https://captum.ai/captum.ai">https://captum.ai/captum.ai</a></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a><strong>参考资料</strong></h2><ol>
+<li> 张皓：PyTorch Cookbook（常用代码段整理合集），<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/59205847">https://zhuanlan.zhihu.com/p/59205847</a>?</li>
+<li> PyTorch官方文档和示例</li>
+<li> <a target="_blank" rel="noopener" href="https://pytorch.org/docs/stable/notes/faq.html">https://pytorch.org/docs/stable/notes/faq.html</a></li>
+<li> <a target="_blank" rel="noopener" href="https://github.com/szagoruyko/pytorchviz">https://github.com/szagoruyko/pytorchviz</a></li>
+<li> <a target="_blank" rel="noopener" href="https://github.com/sksq96/pytorch-summary">https://github.com/sksq96/pytorch-summary</a></li>
+</ol>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2022/04/07/pytorch%E4%BD%BF%E7%94%A8%E6%B1%87%E6%80%BB/">pytorch使用汇总</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">流沙</a></p>
+        <p><span>发布时间:</span>2022-04-07, 12:44:13</p>
+        <p><span>最后更新:</span>2022-04-13, 19:22:15</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2022/04/07/pytorch%E4%BD%BF%E7%94%A8%E6%B1%87%E6%80%BB/" title="pytorch使用汇总">https://jpccc.github.io/2022/04/07/pytorch%E4%BD%BF%E7%94%A8%E6%B1%87%E6%80%BB/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://jpccc.github.io/2022/04/07/pytorch%E4%BD%BF%E7%94%A8%E6%B1%87%E6%80%BB/　　作者: " title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2022/04/07/%E8%81%9A%E7%B1%BB%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/">
+                    聚类
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2022/04/06/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%20tricks/">
+                    深度学习训练tricks
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E8%BE%93%E5%87%BA"><span class="toc-number">1.</span> <span class="toc-text">日志输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E7%9A%84%E4%BF%9D%E5%AD%98%E5%92%8C%E8%AF%BB%E5%8F%96"><span class="toc-number">2.</span> <span class="toc-text">模型的保存和读取</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%8F%82%E6%95%B0%E5%92%8C%E5%8F%82%E6%95%B0%E5%AD%A6%E4%B9%A0%E7%8E%87%E7%9A%84%E4%BF%AE%E6%94%B9"><span class="toc-number">2.1.</span> <span class="toc-text">网络参数和参数学习率的修改</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E4%BF%9D%E5%AD%98%E5%92%8C%E8%AF%BB%E5%8F%96"><span class="toc-number">3.</span> <span class="toc-text">数据的保存和读取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GPU%E7%9A%84%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97"><span class="toc-number">4.</span> <span class="toc-text">GPU的并行计算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Wandb%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">5.</span> <span class="toc-text">Wandb的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#torchsummary"><span class="toc-number">6.</span> <span class="toc-text">torchsummary</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tensor-board%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">7.</span> <span class="toc-text">Tensor board的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#seed%E8%AE%BE%E7%BD%AE"><span class="toc-number">8.</span> <span class="toc-text">seed设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#import-%E7%B1%BB"><span class="toc-number">9.</span> <span class="toc-text">import 类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E6%A2%AF%E5%BA%A6%E9%97%AE%E9%A2%98"><span class="toc-number">10.</span> <span class="toc-text">计算过程中的梯度问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#python-%E4%B8%8B%E5%88%92%E7%BA%BF%E5%BC%80%E5%A4%B4%E5%92%8C%E7%BB%93%E5%B0%BE-%E7%9A%84%E5%85%83%E7%B4%A0"><span class="toc-number">11.</span> <span class="toc-text">python(下划线开头和结尾)的元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#open%E5%87%BD%E6%95%B0"><span class="toc-number">12.</span> <span class="toc-text">open函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E7%9A%84%E5%9B%BE%E5%83%8F%E5%8F%98%E9%87%8F%E9%9C%80%E8%A6%81%E8%AE%BE%E7%BD%AE%E6%A2%AF%E5%BA%A6%E5%90%97"><span class="toc-number">13.</span> <span class="toc-text">输入的图像变量需要设置梯度吗</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#F%E5%92%8Cnn"><span class="toc-number">14.</span> <span class="toc-text">F和nn</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96%E7%BD%91%E7%BB%9C%E5%8F%82%E6%95%B0"><span class="toc-number">15.</span> <span class="toc-text">读取网络参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#contiguous"><span class="toc-number">16.</span> <span class="toc-text">contiguous</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E9%AB%98gpu%E5%88%A9%E7%94%A8%E7%8E%87"><span class="toc-number">17.</span> <span class="toc-text">提高gpu利用率</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vscode%E7%9A%84%E7%9B%AE%E5%BD%95%E8%AE%BF%E9%97%AE"><span class="toc-number">18.</span> <span class="toc-text">vscode的目录访问</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pytorch%E7%9A%84GPU%E8%AE%BE%E7%BD%AE%E7%90%86%E8%A7%A3"><span class="toc-number">19.</span> <span class="toc-text">pytorch的GPU设置理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#torch-tensor%E4%B8%8Etorch-Tensor%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">20.</span> <span class="toc-text">torch.tensor与torch.Tensor的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tensor%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BD%A2%E7%8A%B6"><span class="toc-number">21.</span> <span class="toc-text">tensor类型和形状</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE"><span class="toc-number">22.</span> <span class="toc-text">1. 基本配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5%E5%8C%85%E5%92%8C%E7%89%88%E6%9C%AC%E6%9F%A5%E8%AF%A2"><span class="toc-number">22.1.</span> <span class="toc-text">导入包和版本查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E5%A4%8D%E7%8E%B0%E6%80%A7"><span class="toc-number">22.2.</span> <span class="toc-text">可复现性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%BE%E5%8D%A1%E8%AE%BE%E7%BD%AE"><span class="toc-number">22.3.</span> <span class="toc-text">显卡设置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%BC%A0%E9%87%8F-Tensor-%E5%A4%84%E7%90%86"><span class="toc-number">23.</span> <span class="toc-text">2. 张量(Tensor)处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%A0%E9%87%8F%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">23.1.</span> <span class="toc-text">张量的数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%A0%E9%87%8F%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF"><span class="toc-number">23.2.</span> <span class="toc-text">张量基本信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E5%90%8D%E5%BC%A0%E9%87%8F"><span class="toc-number">23.3.</span> <span class="toc-text">命名张量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-number">23.4.</span> <span class="toc-text">数据类型转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#torch-Tensor%E4%B8%8Enp-ndarray%E8%BD%AC%E6%8D%A2"><span class="toc-number">23.5.</span> <span class="toc-text">torch.Tensor与np.ndarray转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Torch-tensor%E4%B8%8EPIL-Image%E8%BD%AC%E6%8D%A2"><span class="toc-number">23.6.</span> <span class="toc-text">Torch.tensor与PIL.Image转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#np-ndarray%E4%B8%8EPIL-Image%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="toc-number">23.7.</span> <span class="toc-text">np.ndarray与PIL.Image的转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8E%E5%8F%AA%E5%8C%85%E5%90%AB%E4%B8%80%E4%B8%AA%E5%85%83%E7%B4%A0%E7%9A%84%E5%BC%A0%E9%87%8F%E4%B8%AD%E6%8F%90%E5%8F%96%E5%80%BC"><span class="toc-number">23.8.</span> <span class="toc-text">从只包含一个元素的张量中提取值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%A0%E9%87%8F%E5%BD%A2%E5%8F%98"><span class="toc-number">23.9.</span> <span class="toc-text">张量形变</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%93%E4%B9%B1%E9%A1%BA%E5%BA%8F"><span class="toc-number">23.10.</span> <span class="toc-text">打乱顺序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B0%B4%E5%B9%B3%E7%BF%BB%E8%BD%AC"><span class="toc-number">23.11.</span> <span class="toc-text">水平翻转</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E5%88%B6%E5%BC%A0%E9%87%8F"><span class="toc-number">23.12.</span> <span class="toc-text">复制张量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%A0%E9%87%8F%E6%8B%BC%E6%8E%A5"><span class="toc-number">23.13.</span> <span class="toc-text">张量拼接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%86%E6%95%B4%E6%95%B0%E6%A0%87%E7%AD%BE%E8%BD%AC%E4%B8%BAone-hot%E7%BC%96%E7%A0%81"><span class="toc-number">23.14.</span> <span class="toc-text">将整数标签转为one-hot编码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%97%E5%88%B0%E9%9D%9E%E9%9B%B6%E5%85%83%E7%B4%A0"><span class="toc-number">23.15.</span> <span class="toc-text">得到非零元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E4%B8%A4%E4%B8%AA%E5%BC%A0%E9%87%8F%E7%9B%B8%E7%AD%89"><span class="toc-number">23.16.</span> <span class="toc-text">判断两个张量相等</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%A0%E9%87%8F%E6%89%A9%E5%B1%95"><span class="toc-number">23.17.</span> <span class="toc-text">张量扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95"><span class="toc-number">23.18.</span> <span class="toc-text">矩阵乘法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E4%B8%A4%E7%BB%84%E6%95%B0%E6%8D%AE%E4%B9%8B%E9%97%B4%E7%9A%84%E4%B8%A4%E4%B8%A4%E6%AC%A7%E5%BC%8F%E8%B7%9D%E7%A6%BB"><span class="toc-number">23.19.</span> <span class="toc-text">计算两组数据之间的两两欧式距离</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%A8%A1%E5%9E%8B%E5%AE%9A%E4%B9%89%E5%92%8C%E6%93%8D%E4%BD%9C"><span class="toc-number">24.</span> <span class="toc-text">3. 模型定义和操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E4%B8%A4%E5%B1%82%E5%8D%B7%E7%A7%AF%E7%BD%91%E7%BB%9C%E7%9A%84%E7%A4%BA%E4%BE%8B"><span class="toc-number">24.1.</span> <span class="toc-text">一个简单两层卷积网络的示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8C%E7%BA%BF%E6%80%A7%E6%B1%87%E5%90%88%EF%BC%88bilinear-pooling%EF%BC%89"><span class="toc-number">24.2.</span> <span class="toc-text">双线性汇合（bilinear pooling）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E5%8D%A1%E5%90%8C%E6%AD%A5-BN%EF%BC%88Batch-normalization%EF%BC%89"><span class="toc-number">24.3.</span> <span class="toc-text">多卡同步 BN（Batch normalization）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%86%E5%B7%B2%E6%9C%89%E7%BD%91%E7%BB%9C%E7%9A%84%E6%89%80%E6%9C%89BN%E5%B1%82%E6%94%B9%E4%B8%BA%E5%90%8C%E6%AD%A5BN%E5%B1%82"><span class="toc-number">24.4.</span> <span class="toc-text">将已有网络的所有BN层改为同步BN层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E4%BC%BC-BN-%E6%BB%91%E5%8A%A8%E5%B9%B3%E5%9D%87"><span class="toc-number">24.5.</span> <span class="toc-text">类似 BN 滑动平均</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%A8%A1%E5%9E%8B%E6%95%B4%E4%BD%93%E5%8F%82%E6%95%B0%E9%87%8F"><span class="toc-number">24.6.</span> <span class="toc-text">计算模型整体参数量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84%E5%8F%82%E6%95%B0"><span class="toc-number">24.7.</span> <span class="toc-text">查看网络中的参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E5%8F%AF%E8%A7%86%E5%8C%96%EF%BC%88%E4%BD%BF%E7%94%A8pytorchviz%EF%BC%89"><span class="toc-number">24.8.</span> <span class="toc-text">模型可视化（使用pytorchviz）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E4%BC%BC-Keras-%E7%9A%84-model-summary-%E8%BE%93%E5%87%BA%E6%A8%A1%E5%9E%8B%E4%BF%A1%E6%81%AF%EF%BC%8C%E4%BD%BF%E7%94%A8pytorch-summary"><span class="toc-number">24.9.</span> <span class="toc-text">类似 Keras 的 model.summary() 输出模型信息，使用pytorch-summary</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E5%8F%96%E6%A8%A1%E5%9E%8B%E4%B8%AD%E7%9A%84%E6%9F%90%E4%B8%80%E5%B1%82"><span class="toc-number">24.10.</span> <span class="toc-text">提取模型中的某一层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%83%A8%E5%88%86%E5%B1%82%E4%BD%BF%E7%94%A8%E9%A2%84%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B"><span class="toc-number">24.11.</span> <span class="toc-text">部分层使用预训练模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%86%E5%9C%A8-GPU-%E4%BF%9D%E5%AD%98%E7%9A%84%E6%A8%A1%E5%9E%8B%E5%8A%A0%E8%BD%BD%E5%88%B0-CPU"><span class="toc-number">24.12.</span> <span class="toc-text">将在 GPU 保存的模型加载到 CPU</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5%E5%8F%A6%E4%B8%80%E4%B8%AA%E6%A8%A1%E5%9E%8B%E7%9A%84%E7%9B%B8%E5%90%8C%E9%83%A8%E5%88%86%E5%88%B0%E6%96%B0%E7%9A%84%E6%A8%A1%E5%9E%8B"><span class="toc-number">24.13.</span> <span class="toc-text">导入另一个模型的相同部分到新的模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86"><span class="toc-number">25.</span> <span class="toc-text">4. 数据处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%95%B0%E6%8D%AE%E9%9B%86%E7%9A%84%E5%9D%87%E5%80%BC%E5%92%8C%E6%A0%87%E5%87%86%E5%B7%AE"><span class="toc-number">25.1.</span> <span class="toc-text">计算数据集的均值和标准差</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%97%E5%88%B0%E8%A7%86%E9%A2%91%E6%95%B0%E6%8D%AE%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF"><span class="toc-number">25.2.</span> <span class="toc-text">得到视频数据基本信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TSN-%E6%AF%8F%E6%AE%B5%EF%BC%88segment%EF%BC%89%E9%87%87%E6%A0%B7%E4%B8%80%E5%B8%A7%E8%A7%86%E9%A2%91"><span class="toc-number">25.3.</span> <span class="toc-text">TSN 每段（segment）采样一帧视频</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E8%AE%AD%E7%BB%83%E5%92%8C%E9%AA%8C%E8%AF%81%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86"><span class="toc-number">25.4.</span> <span class="toc-text">常用训练和验证数据预处理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%92%8C%E6%B5%8B%E8%AF%95"><span class="toc-number">26.</span> <span class="toc-text">5. 模型训练和测试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E4%BB%A3%E7%A0%81"><span class="toc-number">26.1.</span> <span class="toc-text">分类模型训练代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81"><span class="toc-number">26.2.</span> <span class="toc-text">分类模型测试代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89loss"><span class="toc-number">26.3.</span> <span class="toc-text">自定义loss</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%87%E7%AD%BE%E5%B9%B3%E6%BB%91%EF%BC%88label-smoothing%EF%BC%89"><span class="toc-number">26.4.</span> <span class="toc-text">标签平滑（label smoothing）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mixup%E8%AE%AD%E7%BB%83"><span class="toc-number">26.5.</span> <span class="toc-text">Mixup训练</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#L1-%E6%AD%A3%E5%88%99%E5%8C%96"><span class="toc-number">26.6.</span> <span class="toc-text">L1 正则化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E5%AF%B9%E5%81%8F%E7%BD%AE%E9%A1%B9%E8%BF%9B%E8%A1%8C%E6%9D%83%E9%87%8D%E8%A1%B0%E5%87%8F%EF%BC%88weight-decay%EF%BC%89"><span class="toc-number">26.7.</span> <span class="toc-text">不对偏置项进行权重衰减（weight decay）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A2%AF%E5%BA%A6%E8%A3%81%E5%89%AA%EF%BC%88gradient-clipping%EF%BC%89"><span class="toc-number">26.8.</span> <span class="toc-text">梯度裁剪（gradient clipping）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%97%E5%88%B0%E5%BD%93%E5%89%8D%E5%AD%A6%E4%B9%A0%E7%8E%87"><span class="toc-number">26.9.</span> <span class="toc-text">得到当前学习率</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E7%8E%87%E8%A1%B0%E5%87%8F"><span class="toc-number">26.10.</span> <span class="toc-text">学习率衰减</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E5%99%A8%E9%93%BE%E5%BC%8F%E6%9B%B4%E6%96%B0"><span class="toc-number">26.11.</span> <span class="toc-text">优化器链式更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="toc-number">26.12.</span> <span class="toc-text">模型训练可视化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%9D%E5%AD%98%E4%B8%8E%E5%8A%A0%E8%BD%BD%E6%96%AD%E7%82%B9"><span class="toc-number">26.13.</span> <span class="toc-text">保存与加载断点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E5%8F%96-ImageNet-%E9%A2%84%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E6%9F%90%E5%B1%82%E7%9A%84%E5%8D%B7%E7%A7%AF%E7%89%B9%E5%BE%81"><span class="toc-number">26.14.</span> <span class="toc-text">提取 ImageNet 预训练模型某层的卷积特征</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E5%8F%96-ImageNet-%E9%A2%84%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E5%A4%9A%E5%B1%82%E7%9A%84%E5%8D%B7%E7%A7%AF%E7%89%B9%E5%BE%81"><span class="toc-number">26.15.</span> <span class="toc-text">提取 ImageNet 预训练模型多层的卷积特征</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AE%E8%B0%83%E5%85%A8%E8%BF%9E%E6%8E%A5%E5%B1%82"><span class="toc-number">26.16.</span> <span class="toc-text">微调全连接层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A5%E8%BE%83%E5%A4%A7%E5%AD%A6%E4%B9%A0%E7%8E%87%E5%BE%AE%E8%B0%83%E5%85%A8%E8%BF%9E%E6%8E%A5%E5%B1%82%EF%BC%8C%E8%BE%83%E5%B0%8F%E5%AD%A6%E4%B9%A0%E7%8E%87%E5%BE%AE%E8%B0%83%E5%8D%B7%E7%A7%AF%E5%B1%82"><span class="toc-number">26.17.</span> <span class="toc-text">以较大学习率微调全连接层，较小学习率微调卷积层</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%85%B6%E4%BB%96%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">27.</span> <span class="toc-text">6. 其他注意事项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">28.</span> <span class="toc-text">参考资料</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2022/04/07/%E8%81%9A%E7%B1%BB%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/" title="上一篇: 聚类">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2022/04/06/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%20tricks/" title="下一篇: 深度学习训练tricks">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2030/04/07/%E5%BF%83%E5%BE%97/">心得</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/04/11/%E5%9B%BE%E5%83%8F%E7%9A%84%E6%93%8D%E4%BD%9C/">图像的操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/04/07/%E7%89%B9%E8%89%B2%E5%8C%85/">特色包</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/04/07/python%E8%AF%AD%E6%B3%95/">python语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/04/07/%E8%81%9A%E7%B1%BB%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/">聚类</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/04/07/pytorch%E4%BD%BF%E7%94%A8%E6%B1%87%E6%80%BB/">pytorch使用汇总</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/04/06/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%20tricks/">深度学习训练tricks</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/04/06/pytorch%E8%AE%A1%E7%AE%97%E5%9B%BE/">Understanding Graphs, Automatic Differentiation and Autograd</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/10/28/Jensen-inequality/">Jensen_inequality</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/10/28/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0part1/">统计学习数学基础-1</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/10/25/BN%E7%AE%97%E6%B3%95/">BN算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/10/25/%E4%BA%92%E4%BF%A1%E6%81%AF/">互信息</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/10/22/algebra/">algebra</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/10/17/hello-world/">Hello World</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2021-2022  liusha
+            </div>
+            <div class="footer-right">
+                回首向来萧瑟处，归去，也无风雨也无晴。
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

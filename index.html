@@ -203,7 +203,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/deepLearning/" rel="tag">deepLearning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math/" rel="tag">math</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pytorch/" rel="tag">pytorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag">深度学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0/" rel="tag">统计学习</a></li></ul>
+                        <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/deepLearning/" rel="tag">deepLearning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math/" rel="tag">math</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pytorch/" rel="tag">pytorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag">深度学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0/" rel="tag">统计学习</a></li></ul>
                     </div>
                 </section>
                 
@@ -284,6 +284,170 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-心得" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2030/04/07/%E5%BF%83%E5%BE%97/" class="article-date">
+      <time datetime="2030-04-07T04:44:13.000Z" itemprop="datePublished">2030-04-07</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2030/04/07/%E5%BF%83%E5%BE%97/">心得</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <ol>
+<li> 卷积层要求输入的图片格式为CHW的，而PIL中展示图片要求HWC的，所以需要用permute()函数调整一下。</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag">深度学习</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-图像的操作" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/04/11/%E5%9B%BE%E5%83%8F%E7%9A%84%E6%93%8D%E4%BD%9C/" class="article-date">
+      <time datetime="2022-04-11T02:32:32.733Z" itemprop="datePublished">2022-04-11</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="PIL"><a href="#PIL" class="headerlink" title="PIL"></a>PIL</h2><blockquote>
+<p>  PIL，全称 Python Imaging Library，是一个功能非常强大而且简单易用的图像处理库,已经是Python平台事实上的图像处理标准库了。PIL功能非常强大，但API却非常简单易用。但是，由于 PIL 仅支持到Python 2.7，加上年久失修，于是一群志愿者在 PIL 的基础上创建了兼容 Python 3 的版本，名字叫 Pillow ，我们可以通过安装 Pillow 来使用 PIL。</p>
+</blockquote>
+<h3 id="1-pip-安装-pillow"><a href="#1-pip-安装-pillow" class="headerlink" title="1. pip 安装 pillow"></a>1. pip 安装 pillow</h3><p>在 Ubuntu 下通过一个简单的命令<code>pip3 install pillow</code>即可成功安装库。</p>
+<p>如果遇到<code>Permission denied</code>安装失败，请加上<code>sudo</code>重试。</p>
+<h3 id="2-打开、保存、显示图片"><a href="#2-打开、保存、显示图片" class="headerlink" title="2. 打开、保存、显示图片"></a>2. 打开、保存、显示图片</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line">image = Image.<span class="built_in">open</span>(<span class="string">&#x27;cat.jpg&#x27;</span>)</span><br><span class="line">image.show()</span><br><span class="line">image.save(<span class="string">&#x27;1.jpg&#x27;</span>,<span class="string">&#x27;jpeg&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(image.mode, image.size, image.<span class="built_in">format</span>)</span><br><span class="line"><span class="comment"># RGB (481, 321) JPEG</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>  mode 属性为图片的模式，RGB 代表彩色图像，L 代表光照图像也即灰度图像等</li>
+<li>  size 属性为图片的大小(宽度，长度)</li>
+<li>  format 属性为图片的格式，如常见的 PNG、JPEG 等</li>
+</ul>
+<h3 id="3-转换图片模式"><a href="#3-转换图片模式" class="headerlink" title="3. 转换图片模式"></a>3. 转换图片模式</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">image.show()</span><br><span class="line">grey_image = image.convert(<span class="string">&#x27;L&#x27;</span>)</span><br><span class="line">grey_image.show()</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="E:\笔记\markdown\reference\picture\v2-fa0ae3e48ef7a9645c252b49c16fce06_720w.jpg" alt="img"></p>
+<p><img src="E:\笔记\markdown\reference\picture\v2-0e23c82abff1c3673d55358c7e6f1155_720w.jpg" alt="img"></p>
+<ul>
+<li>  任何支持的图片模式都可以直接转为彩色模式或者灰度模式，但是，若是想转化为其他模式，则需要借助一个中间模式（通常是彩色）来进行过转</li>
+</ul>
+<h3 id="4-通道分离合并"><a href="#4-通道分离合并" class="headerlink" title="4. 通道分离合并"></a>4. 通道分离合并</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">r, g, b = image.split()</span><br><span class="line">im = Image.merge(<span class="string">&#x27;RGB&#x27;</span>, (b, g, r))</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>  彩色图像可以分离出 R、G、B 通道，但若是灰度图像，则返回灰度图像本身。然后，可以将 R、G、B 通道按照一定的顺序再合并成彩色图像。</li>
+</ul>
+<h3 id="5-图片裁剪、旋转和改变大小"><a href="#5-图片裁剪、旋转和改变大小" class="headerlink" title="5. 图片裁剪、旋转和改变大小"></a>5. 图片裁剪、旋转和改变大小</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">box = (<span class="number">100</span>, <span class="number">100</span>, <span class="number">300</span>, <span class="number">300</span>)</span><br><span class="line">region = image.crop(box)</span><br><span class="line">region = region.transpose(Image.ROTATE_180)</span><br><span class="line">image.paste(region, box)</span><br><span class="line">image.show()</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image, ImageFilter</span><br><span class="line"><span class="comment"># 打开一个jpg图像文件，注意是当前路径:</span></span><br><span class="line">im = Image.<span class="built_in">open</span>(<span class="string">&#x27;test.jpg&#x27;</span>)</span><br><span class="line"><span class="comment"># 应用模糊滤镜:</span></span><br><span class="line">im2 = im.<span class="built_in">filter</span>(ImageFilter.BLUR)</span><br></pre></td></tr></table></figure>
+
+<p><img src="E:\笔记\markdown\reference\picture\v2-6eb679436bfcefcf51d57c95d5e1ef10_720w.jpg" alt="img"></p>
+<ul>
+<li>  通过定义一个 4 元组，依次为左上角 X 坐标、Y 坐标，右下角 X 坐标、Y 坐标，可以対原图片的某一区域进行裁剪，然后进行一定处理后可以在原位置粘贴回去。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">im = image.resize((300, 300))</span><br><span class="line">im = image.rotate(45)  # 逆时针旋转 45 度</span><br><span class="line">im = image.transpose(Image.FLIP_LEFT_RIGHT) # 左右翻转</span><br><span class="line">im = im.transpose(Image.FLIP_TOP_BOTTOM)# 上下翻转</span><br><span class="line"># 缩放到50%:</span><br><span class="line">im.thumbnail((w//2, h//2))</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-像素值操作"><a href="#6-像素值操作" class="headerlink" title="6. 像素值操作"></a>6. 像素值操作</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">out = image.point(<span class="keyword">lambda</span> i: i * <span class="number">1.2</span>) <span class="comment"># 对每个像素值乘以 1.2</span></span><br><span class="line">source = image.split()</span><br><span class="line">out = source[<span class="number">0</span>].point(<span class="keyword">lambda</span> i: i &gt; <span class="number">128</span> <span class="keyword">and</span> <span class="number">255</span>) <span class="comment"># 对 R 通道进行二值化</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="E:\笔记\markdown\reference\picture\v2-8317adc4f04515dec04330c85bd332c7_720w.jpg" alt="img"></p>
+<ul>
+<li>  i &gt; 128 and 255，当 i &lt;= 128 时，返回 False 也即 0,；反之返回 255 。</li>
+</ul>
+<h3 id="7-和-Numpy-数组之间的转化"><a href="#7-和-Numpy-数组之间的转化" class="headerlink" title="7. 和 Numpy 数组之间的转化"></a>7. 和 Numpy 数组之间的转化</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">array = np.array(image)</span><br><span class="line"><span class="built_in">print</span>(array.shape) <span class="comment">#(321, 481, 3)</span></span><br><span class="line">image = Image.fromarray(array)</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-绘图"><a href="#8-绘图" class="headerlink" title="8.绘图"></a>8.绘图</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image, ImageDraw, ImageFont, ImageFilter</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="comment"># 随机字母:</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rndChar</span>():</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">chr</span>(random.randint(<span class="number">65</span>, <span class="number">90</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 随机颜色1:</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rndColor</span>():</span></span><br><span class="line">    <span class="keyword">return</span> (random.randint(<span class="number">64</span>, <span class="number">255</span>), random.randint(<span class="number">64</span>, <span class="number">255</span>), random.randint(<span class="number">64</span>, <span class="number">255</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 随机颜色2:</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rndColor2</span>():</span></span><br><span class="line">    <span class="keyword">return</span> (random.randint(<span class="number">32</span>, <span class="number">127</span>), random.randint(<span class="number">32</span>, <span class="number">127</span>), random.randint(<span class="number">32</span>, <span class="number">127</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 240 x 60:</span></span><br><span class="line">width = <span class="number">60</span> * <span class="number">4</span></span><br><span class="line">height = <span class="number">60</span></span><br><span class="line">image = Image.new(<span class="string">&#x27;RGB&#x27;</span>, (width, height), (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>))</span><br><span class="line"><span class="comment"># 创建Font对象:</span></span><br><span class="line">font = ImageFont.truetype(<span class="string">&#x27;Arial.ttf&#x27;</span>, <span class="number">36</span>)</span><br><span class="line"><span class="comment"># 创建Draw对象:</span></span><br><span class="line">draw = ImageDraw.Draw(image)</span><br><span class="line"><span class="comment"># 填充每个像素:</span></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(width):</span><br><span class="line">    <span class="keyword">for</span> y <span class="keyword">in</span> <span class="built_in">range</span>(height):</span><br><span class="line">        draw.point((x, y), fill=rndColor())</span><br><span class="line"><span class="comment"># 输出文字:</span></span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">    draw.text((<span class="number">60</span> * t + <span class="number">10</span>, <span class="number">10</span>), rndChar(), font=font, fill=rndColor2())</span><br><span class="line"><span class="comment"># 模糊:</span></span><br><span class="line">image = image.<span class="built_in">filter</span>(ImageFilter.BLUR)</span><br><span class="line">image.save(<span class="string">&#x27;code.jpg&#x27;</span>, <span class="string">&#x27;jpeg&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://pillow.readthedocs.org/">官方文档</a></p>
+<h2 id="plt"><a href="#plt" class="headerlink" title="plt"></a>plt</h2><h2 id="opencv"><a href="#opencv" class="headerlink" title="opencv"></a>opencv</h2><p>openCV具体笔记见对应的ipynb文件</p>
+<p>注意：</p>
+<ol>
+<li> ​    opencv的读取格式为：W,H,C，其中C是BGR的，plt等是RGB的。</li>
+</ol>
+<h2 id="数据增强"><a href="#数据增强" class="headerlink" title="数据增强"></a>数据增强</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># transforms 类</span></span><br><span class="line"><span class="keyword">from</span> torchvision <span class="keyword">import</span> transforms</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Transforms</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        transform= [</span><br><span class="line">                transforms.RandomResizedCrop(size=args.image_size,scale=(<span class="number">0.2</span>, <span class="number">1.0</span>),ratio=(<span class="number">3</span> / <span class="number">4</span>, <span class="number">4</span> / <span class="number">3</span>)),</span><br><span class="line">                transforms.ColorJitter(brightness=<span class="number">0.4</span>, contrast=<span class="number">0.4</span>, saturation=<span class="number">0.4</span>),</span><br><span class="line">                transforms.RandomGrayscale(p=<span class="number">0.2</span>),</span><br><span class="line">                transforms.ToTensor(),</span><br><span class="line">                transforms.Normalize(mean=[<span class="number">0.4914</span>, <span class="number">0.4822</span>, <span class="number">0.4465</span>],std=[<span class="number">0.2470</span>, <span class="number">0.2435</span>, <span class="number">0.2616</span>])</span><br><span class="line">        ]</span><br><span class="line">        self.train_transform = transforms.Compose(transform)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__call__</span>(<span class="params">self, x</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self.train_transform(x),self.train_transform(x)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 调用方法一</span></span><br><span class="line">dataset = CIFAR100(root=args.dataset_root,train=<span class="literal">False</span>,download=<span class="literal">True</span>,transform=Transforms())</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-特色包" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -313,8 +477,208 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="控制台颜色"><a href="#控制台颜色" class="headerlink" title="控制台颜色"></a>控制台颜色</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> termcolor <span class="keyword">import</span> colored</span><br><span class="line"><span class="built_in">print</span>(colored(<span class="string">&#x27;Fill memory bank for mining the nearest neighbors (train) ...&#x27;</span>, <span class="string">&#x27;blue&#x27;</span>))</span><br></pre></td></tr></table></figure>
+        <h1 id="控制台颜色"><a href="#控制台颜色" class="headerlink" title="控制台颜色"></a>控制台颜色</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> termcolor <span class="keyword">import</span> colored</span><br><span class="line"><span class="built_in">print</span>(colored(<span class="string">&#x27;Fill memory bank for mining the nearest neighbors (train) ...&#x27;</span>, <span class="string">&#x27;blue&#x27;</span>))</span><br></pre></td></tr></table></figure>
 
+<h1 id="Logging"><a href="#Logging" class="headerlink" title="Logging"></a>Logging</h1><blockquote>
+<p>  This module defines functions and classes which implement a flexible event logging system for applications and libraries.</p>
+<p>  Python logging 模块定义了为应用程序和库实现灵活的事件日志记录的函数和类。</p>
+</blockquote>
+<p>程序开发过程中，很多程序都有记录日志的需求，并且日志包含的信息有正常的程序访问日志还可能有错误、警告等信息输出，Python 的 logging 模块提供了标准的日志接口，可以通过它存储各种格式的日志,日志记录提供了一组便利功能，用于简单的日志记录用法。</p>
+<ul>
+<li>  使用 Python Logging 模块的主要好处是所有 Python 模块都可以参与日志记录</li>
+<li>  Logging 模块提供了大量具有灵活性的功能</li>
+</ul>
+<p><strong>日志记录函数以它们用来跟踪的事件的级别或严重性命名。下面描述了标准级别及其适用性（从高到低的顺序）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>日志等级(level)</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><strong>日志级别等级排序</strong>：critical &gt; error &gt; warning &gt; info &gt; debug</p>
+<p><strong>级别越高打印的日志越少，反之亦然，即</strong></p>
+<ul>
+<li>  debug : 打印全部的日志( notset 等同于 debug )</li>
+<li>  info : 打印 info, warning, error, critical 级别的日志</li>
+<li>  warning : 打印 warning, error, critical 级别的日志</li>
+<li>  error : 打印 error, critical 级别的日志</li>
+<li>  critical : 打印 critical 级别</li>
+</ul>
+<h2 id="一、-Logging-模块日志记录方式"><a href="#一、-Logging-模块日志记录方式" class="headerlink" title="一、 Logging 模块日志记录方式"></a><strong>一、 Logging 模块日志记录方式</strong></h2><p>Logging 模块提供了两种日志记录方式：</p>
+<ul>
+<li>  一种方式是使用 Logging 提供的模块级别的函数</li>
+<li>  另一种方式是使用 Logging 日志系统的四大组件记录</li>
+</ul>
+<h2 id="1、Logging-定义的模块级别函数"><a href="#1、Logging-定义的模块级别函数" class="headerlink" title="1、Logging 定义的模块级别函数"></a><strong>1、Logging 定义的模块级别函数</strong></h2><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+</table>
+<p>简单打印日志：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> logging</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打印日志级别</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_logging</span>():</span></span><br><span class="line">    logging.debug(<span class="string">&#x27;Python debug&#x27;</span>)</span><br><span class="line">    logging.info(<span class="string">&#x27;Python info&#x27;</span>)</span><br><span class="line">    logging.warning(<span class="string">&#x27;Python warning&#x27;</span>)</span><br><span class="line">    logging.error(<span class="string">&#x27;Python Error&#x27;</span>)</span><br><span class="line">    logging.critical(<span class="string">&#x27;Python critical&#x27;</span>)</span><br><span class="line"></span><br><span class="line">test_logging()</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">WARNING:root:Python warning</span><br><span class="line">ERROR:root:Python Error</span><br><span class="line">CRITICAL:root:Python critical</span><br></pre></td></tr></table></figure>
+
+<p>当指定一个日志级别之后，会记录大于或等于这个日志级别的日志信息，小于的将会被丢弃， ==默认情况下日志打印只显示大于等于 WARNING 级别的日志。==</p>
+<h3 id="1-1-设置日志显示级别"><a href="#1-1-设置日志显示级别" class="headerlink" title="1.1 设置日志显示级别"></a><strong>1.1 设置日志显示级别</strong></h3><p>通过 logging.basicConfig() 可以设置 root 的日志级别，和日志输出格式。</p>
+<p><strong>logging.basicConfig() 关键字参数</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>关键字</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><strong>format 格式</strong></p>
+<table>
+<thead>
+<tr>
+<th>格式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><strong>注意</strong>：Logging.basicConfig() 需要在开头就设置，在中间设置并无作用</p>
+<p><strong>实例</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import logging</span><br><span class="line"></span><br><span class="line"># 打印日志级别</span><br><span class="line">def test():</span><br><span class="line">    logging.basicConfig(level=logging.DEBUG)</span><br><span class="line">    logging.debug(&#x27;Python debug&#x27;)</span><br><span class="line">    logging.info(&#x27;Python info&#x27;)</span><br><span class="line">    logging.warning(&#x27;Python warning&#x27;)</span><br><span class="line">    logging.error(&#x27;Python Error&#x27;)</span><br><span class="line">    logging.critical(&#x27;Python critical&#x27;)</span><br><span class="line">    logging.log(2,&#x27;test&#x27;)</span><br><span class="line">test()</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">DEBUG:root:Python debug</span><br><span class="line">INFO:root:Python info</span><br><span class="line">WARNING:root:Python warning</span><br><span class="line">ERROR:root:Python Error</span><br><span class="line">CRITICAL:root:Python critical</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-将日志信息记录到文件"><a href="#1-2-将日志信息记录到文件" class="headerlink" title="1.2 将日志信息记录到文件"></a><strong>1.2 将日志信息记录到文件</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 日志信息记录到文件</span><br><span class="line">logging.basicConfig(filename=&#x27;F:/example.log&#x27;, level=logging.DEBUG)</span><br><span class="line">logging.debug(&#x27;This message should go to the log file&#x27;)</span><br><span class="line">logging.info(&#x27;So should this&#x27;)</span><br><span class="line">logging.warning(&#x27;And this, too&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>在相应的路径下会有 example.log 日志文件，内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DEBUG:root:This message should go to the log file</span><br><span class="line">INFO:root:So should this</span><br><span class="line">WARNING:root:And this, too</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3-多个模块记录日志信息"><a href="#1-3-多个模块记录日志信息" class="headerlink" title="1.3 多个模块记录日志信息"></a><strong>1.3 多个模块记录日志信息</strong></h3><p>如果程序包含多个模块，则用以下实例来显示日志信息： 实例中有两个模块，一个模块通过导入另一个模块的方式用日志显示另一个模块的信息：</p>
+<p><strong>myapp.py 模块</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import logging</span><br><span class="line">import mylib</span><br><span class="line">def main():</span><br><span class="line">    logging.basicConfig(filename=&#x27;myapp.log&#x27;,level=logging.DEBUG)</span><br><span class="line">    logging.info(&#x27;Started&#x27;)</span><br><span class="line">    mylib.do_something()</span><br><span class="line">    logging.info(&#x27;Finished&#x27;)</span><br><span class="line"></span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<p><strong>mylib.py 模块</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import logging</span><br><span class="line"></span><br><span class="line">def do_something():</span><br><span class="line">    logging.info(&#x27;Doing something&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>执行 myapp.py 模块会打印相应日志，在文件 myapp.log 中显示信息如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">INFO:root:Started</span><br><span class="line">INFO:root:Doing something</span><br><span class="line">INFO:root:Finishe</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-4-显示信息的日期及更改显示消息格式"><a href="#1-4-显示信息的日期及更改显示消息格式" class="headerlink" title="1.4 显示信息的日期及更改显示消息格式"></a><strong>1.4 显示信息的日期及更改显示消息格式</strong></h3><p><strong>显示消息日期</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import logging</span><br><span class="line"># 显示消息时间</span><br><span class="line">logging.basicConfig(format=&#x27;%(asctime)s %(message)s&#x27;)</span><br><span class="line">logging.warning(&#x27;is when this event was logged.&#x27;)</span><br><span class="line"></span><br><span class="line">logging.basicConfig(format=&#x27;%(asctime)s %(message)s&#x27;, datefmt=&#x27;%m/%d/%Y %I:%M:%S %p&#x27;)</span><br><span class="line">logging.warning(&#x27;is when this event was logged.&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2019-10-16 18:57:45,988 is when this event was logged.</span><br><span class="line">2019-10-16 18:57:45,988 is when this event was logged.</span><br></pre></td></tr></table></figure>
+
+<p><strong>更改显示消息格式</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import logging</span><br><span class="line"># 更改显示消息的格式</span><br><span class="line">logging.basicConfig(format=&#x27;%(levelname)s:%(message)s&#x27;,level=logging.DEBUG)</span><br><span class="line">logging.debug(&#x27;Python message format Debug&#x27;)</span><br><span class="line">logging.info(&#x27;Python message format Info&#x27;)</span><br><span class="line">logging.warning(&#x27;Python message format Warning&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DEBUG:Python message format Debug</span><br><span class="line">INFO:Python message format Info</span><br><span class="line">WARNING:Python message format Warning</span><br></pre></td></tr></table></figure>
+
+<p>==注意==：显示结果只显示级别和具体信息，之前显示的 “根” 已经消失，重新定义的格式修改了默认输出方式。</p>
+<h2 id="2、logging-模块四大组件"><a href="#2、logging-模块四大组件" class="headerlink" title="2、logging 模块四大组件"></a><strong>2、logging 模块四大组件</strong></h2><table>
+<thead>
+<tr>
+<th>组件名称</th>
+<th>对应类名</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="2-1-日志器-Logger"><a href="#2-1-日志器-Logger" class="headerlink" title="2.1 日志器- Logger"></a><strong>2.1 日志器- Logger</strong></h3><p>Logger 持有日志记录器的方法，日志记录器不直接实例化，而是通过模块级函数 logger.getlogger (name) 来实例化,使用相同的名称多次调用 getLogger() 总是会返回对相同 Logger 对象的引用。</p>
+<ul>
+<li>  应用程序代码能直接调用日志接口。</li>
+<li>  Logger最常用的操作有两类：配置和发送日志消息。</li>
+<li>  初始化 logger = logging.getLogger(“endlesscode”)，获取 logger 对象，getLogger() 方法后面最好加上所要日志记录的模块名字，配置文件和打印日志格式中的 %(name)s 对应的是这里的模块名字，如果不指定name则返回root对象。</li>
+<li>  logger.setLevel(logging.DEBUG)，Logging 中有 NOTSET &lt; DEBUG &lt; INFO &lt; WARNING &lt; ERROR &lt; CRITICAL这几种级别，日志会记录设置级别以上的日志</li>
+<li>  多次使用相同的name调用 getLogger 方法返回同一个 looger 对象；</li>
+</ul>
+<p>Logger是一个树形层级结构，在使用接口 debug，info，warn，error，critical 之前必须创建 Logger 实例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">创建方法: logger = logging.getLogger(logger_name)</span><br></pre></td></tr></table></figure>
+
+<p>创建Logger实例后，可以使用以下方法进行日志级别设置，增加处理器 Handler：</p>
+<ul>
+<li>  logger.setLevel(logging.ERROR) # 设置日志级别为 ERROR，即只有日志级别大于等于 ERROR 的日志才会输出</li>
+<li>  logger.addHandler(handler_name) # 为 Logger 实例增加一个处理器</li>
+<li>  logger.removeHandler(handler_name) # 为 Logger 实例删除一个处理器</li>
+</ul>
+<h3 id="2-2-处理器-Handler"><a href="#2-2-处理器-Handler" class="headerlink" title="2.2 处理器- Handler"></a><strong>2.2 处理器- Handler</strong></h3><p>Handler 处理器类型有很多种，比较常用的有三个，StreamHandler，FileHandler，NullHandler</p>
+<p><strong>StreamHandler</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">创建方法：sh = logging.StreamHandler(stream=None)</span><br></pre></td></tr></table></figure>
+
+<p>创建 StreamHandler 之后，可以通过使用以下方法设置日志级别，设置格式化器 Formatter，增加或删除过滤器 Filter：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ch.setLevel(logging.WARN) # 指定日志级别，低于WARN级别的日志将被忽略</span><br><span class="line"></span><br><span class="line">ch.setFormatter(formatter_name) # 设置一个格式化器formatter</span><br><span class="line"></span><br><span class="line">ch.addFilter(filter_name) # 增加一个过滤器，可以增加多个</span><br><span class="line"> </span><br><span class="line">ch.removeFilter(filter_name) # 删除一个过滤器</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-过滤器-Filter"><a href="#2-3-过滤器-Filter" class="headerlink" title="2.3 过滤器- Filter"></a><strong>2.3 过滤器- Filter</strong></h3><p>Handlers 和 Loggers 可以使用 Filters 来完成比级别更复杂的过滤。 Filter 基类只允许特定 Logger 层次以下的事件。 例如用 ‘A.B’ 初始化的 Filter 允许Logger ‘A.B’, ‘A.B.C’, ‘A.B.C.D’, ‘A.B.D’ 等记录的事件，logger‘A.BB’, ‘B.A.B’ 等就不行。 如果用空字符串来初始化，所有的事件都接受。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">创建方法: filter = logging.Filter(name=&#x27;&#x27;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-格式器-Formatter"><a href="#2-4-格式器-Formatter" class="headerlink" title="2.4 格式器- Formatter"></a><strong>2.4 格式器- Formatter</strong></h3><p>使用Formatter对象设置日志信息最后的规则、结构和内容，默认的时间格式为%Y-%m-%d %H:%M:%S。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">创建方法: formatter = logging.Formatter(fmt=None, datefmt=None)</span><br></pre></td></tr></table></figure>
+
+<p>其中，fmt 是消息的格式化字符串，datefmt 是日期字符串。如果不指明 fmt，将使用 ‘%(message)s’ 。如果不指明 datefmt，将使用 ISO8601 日期格式。</p>
+<h3 id="2-5-组件之间的关联关系"><a href="#2-5-组件之间的关联关系" class="headerlink" title="2.5 组件之间的关联关系"></a><strong>2.5 组件之间的关联关系</strong></h3><ul>
+<li>  日志器（logger）需要通过处理器（handler）将日志信息输出到目标位置，不同的处理器（handler）可以将日志输出到不同的位置；</li>
+<li>  日志器（logger）可以设置多个处理器（handler）将同一条日志记录输出到不同的位置；</li>
+<li>  每个处理器（handler）都可以设置自己的过滤器（filter）实现日志过滤，从而只保留感兴趣的日志；</li>
+<li>  每个处理器（handler）都可以设置自己的格式器（formatter）实现同一条日志以不同的格式输出到不同的地方。</li>
+</ul>
+<p>简明了说就是：日志器（logger）是入口，真正干活儿的是处理器（handler），处理器（handler）还可以通过过滤器（filter）和格式器（formatter）对要输出的日志内容做过滤和格式化等处理操作。</p>
+<ul>
+<li>  Logger 可以包含一个或多个 Handler 和 Filter</li>
+<li>  Logger 与 Handler 或 Fitler 是一对多的关系</li>
+<li>  一个 Logger 实例可以新增多 个 Handler，一个 Handler 可以新增多个格式化器或多个过滤器，而且日志级别将会继承。</li>
+</ul>
+<h2 id="二、Logging-日志工作流程"><a href="#二、Logging-日志工作流程" class="headerlink" title="二、Logging 日志工作流程"></a><strong>二、Logging 日志工作流程</strong></h2><h2 id="1、Logging-模块使用过程"><a href="#1、Logging-模块使用过程" class="headerlink" title="1、Logging 模块使用过程"></a><strong>1、Logging 模块使用过程</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1）第一次导入 logging 模块或使用 reload 函数重新导入 logging 模块，logging 模块中的代码将被执行，这个过程中将产生 logging 日志系统的默认配置。</span><br><span class="line"></span><br><span class="line">2）自定义配置(可选),logging标准模块支持三种配置方式: dictConfig，fileConfig，listen。其中，dictConfig 是通过一个字典进行配置 Logger，Handler，Filter，Formatter；fileConfig 则是通过一个文件进行配置；而 listen 则监听一个网络端口，通过接收网络数据来进行配置。当然，除了以上集体化配置外，也可以直接调用 Logger，Handler 等对象中的方法在代码中来显式配置。</span><br><span class="line"></span><br><span class="line">3）使用 logging 模块的全局作用域中的 getLogger 函数来得到一个 Logger 对象实例(其参数即是一个字符串，表示 Logger 对象实例的名字，即通过该名字来得到相应的 Logger 对象实例)。</span><br><span class="line"></span><br><span class="line">4）使用 Logger 对象中的 debug，info，error，warn，critical 等方法记录日志信息。</span><br></pre></td></tr></table></figure>
+
+<h2 id="2、Logging-模块处理流程"><a href="#2、Logging-模块处理流程" class="headerlink" title="2、Logging 模块处理流程"></a><strong>2、Logging 模块处理流程</strong></h2><p>流程描述：</p>
+<ol>
+<li> 判断日志的等级是否大于 Logger 对象的等级，如果大于，则往下执行，否则，流程结束。</li>
+<li> 产生日志：第一步，判断是否有异常，如果有，则添加异常信息。 第二步，处理日志记录方法(如 debug，info 等)中的占位符，即一般的字符串格式化处理。</li>
+<li> 使用注册到 Logger 对象中的 Filters 进行过滤。如果有多个过滤器，则依次过滤；只要有一个过滤器返回假，则过滤结束，且该日志信息将丢弃，不再处理，而处理流程也至此结束。否则，处理流程往下执行。</li>
+<li> 在当前 Logger 对象中查找 Handlers，如果找不到任何 Handler，则往上到该 Logger 对象的父 Logger 中查找；如果找到一个或多个 Handler，则依次用 Handler 来处理日志信息。但在每个 Handler 处理日志信息过程中，会首先判断日志信息的等级是否大于该 Handler 的等级，如果大于，则往下执行(由 Logger 对象进入 Handler 对象中)，否则，处理流程结束。</li>
+<li> 执行 Handler 对象中的 filter 方法，该方法会依次执行注册到该 Handler 对象中的 Filter。如果有一个 Filter 判断该日志信息为假，则此后的所有 Filter 都不再执行，而直接将该日志信息丢弃，处理流程结束。</li>
+<li> 使用 Formatter 类格式化最终的输出结果。 注：Formatter 同上述第 2 步的字符串格式化不同，它会添加额外的信息，比如日志产生的时间，产生日志的源代码所在的源文件的路径等等。</li>
+<li> 真正地输出日志信息(到网络，文件，终端，邮件等)。至于输出到哪个目的地，由 Handler 的种类来决定。</li>
+</ol>
+<h2 id="三、配置日志"><a href="#三、配置日志" class="headerlink" title="三、配置日志"></a><strong>三、配置日志</strong></h2><p>程序员可以通过三种方式配置日志记录：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1、使用配置方法的 Python 代码显式创建记录器，处理程序和格式化程序。</span><br><span class="line"></span><br><span class="line">2、创建日志记录配置文件并使用该 fileConfig() 功能读取它。</span><br><span class="line"></span><br><span class="line">3、创建配置信息字典并将其传递给 dictConfig()函数。</span><br></pre></td></tr></table></figure>
+
+<p>下面使用 Python 代码配置一个非常简单的记录器，一个控制台处理程序和一个简单的格式化程序：</p>
+<p><strong>logging.conf 配置文件</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">[loggers]</span><br><span class="line">keys=root,simpleExample</span><br><span class="line"></span><br><span class="line">[handlers]</span><br><span class="line">keys=consoleHandler</span><br><span class="line"></span><br><span class="line">[formatters]</span><br><span class="line">keys=simpleFormatter</span><br><span class="line"></span><br><span class="line">[logger_root]</span><br><span class="line">level=DEBUG</span><br><span class="line">handlers=consoleHandler</span><br><span class="line"></span><br><span class="line">[logger_simpleExample]</span><br><span class="line">level=DEBUG</span><br><span class="line">handlers=consoleHandler</span><br><span class="line">qualname=simpleExample</span><br><span class="line">propagate=0</span><br><span class="line"></span><br><span class="line">[handler_consoleHandler]</span><br><span class="line">class=StreamHandler</span><br><span class="line">level=DEBUG</span><br><span class="line">formatter=simpleFormatter</span><br><span class="line">args=(sys.stdout,)</span><br><span class="line"></span><br><span class="line">[formatter_simpleFormatter]</span><br><span class="line">format=%(asctime)s - %(name)s - %(levelname)s - %(message)s</span><br><span class="line">datefmt=</span><br></pre></td></tr></table></figure>
+
+<p><strong>config_logging.py 配置器</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import logging</span><br><span class="line"># create logger</span><br><span class="line">logger = logging.getLogger(&#x27;simple_example&#x27;)</span><br><span class="line">logger.setLevel(logging.DEBUG)</span><br><span class="line"></span><br><span class="line"># create console handler and set level to debug</span><br><span class="line">ch = logging.StreamHandler()</span><br><span class="line">ch.setLevel(logging.DEBUG)</span><br><span class="line"></span><br><span class="line"># create formatter</span><br><span class="line">formatter = logging.Formatter(&#x27;%(asctime)s - %(name)s - %(levelname)s - %(message)s&#x27;)</span><br><span class="line"></span><br><span class="line"># add formatter to ch</span><br><span class="line">ch.setFormatter(formatter)</span><br><span class="line"></span><br><span class="line"># add ch to logger</span><br><span class="line">logger.addHandler(ch)</span><br><span class="line"></span><br><span class="line"># &#x27;application&#x27; code</span><br><span class="line">logger.debug(&#x27;debug message&#x27;)</span><br><span class="line">logger.info(&#x27;info message&#x27;)</span><br><span class="line">logger.warning(&#x27;warn message&#x27;)</span><br><span class="line">logger.error(&#x27;error message&#x27;)</span><br><span class="line">logger.critical(&#x27;critical message&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>recorder 记录器</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import logging</span><br><span class="line">import logging.config</span><br><span class="line"></span><br><span class="line">logging.config.fileConfig(&#x27;logging.conf&#x27;)</span><br><span class="line"></span><br><span class="line"># create logger</span><br><span class="line">logger = logging.getLogger(&#x27;simpleExample&#x27;)</span><br><span class="line"></span><br><span class="line"># &#x27;application&#x27; code</span><br><span class="line">logger.debug(&#x27;debug message&#x27;)</span><br><span class="line">logger.info(&#x27;info message&#x27;)</span><br><span class="line">logger.warning(&#x27;warn message&#x27;)</span><br><span class="line">logger.error(&#x27;error message&#x27;)</span><br><span class="line">logger.critical(&#x27;critical message&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">2019-10-16 19:45:34,440 - simple_example - DEBUG - debug message</span><br><span class="line">2019-10-16 19:45:34,440 - simple_example - INFO - info message</span><br><span class="line">2019-10-16 19:45:34,440 - simple_example - WARNING - warn message</span><br><span class="line">2019-10-16 19:45:34,440 - simple_example - ERROR - error message</span><br><span class="line">2019-10-16 19:45:34,441 - simple_example - CRITICAL - critical message</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h2><p>本章节给大家介绍了 Python 标准库中 Logging 模块的详细介绍与使用，对 Python 工程师使用该模块提供更好的支撑</p>
+<p>参考： <a href="https://link.zhihu.com/?target=https://docs.python.org/3.6/library/logging.html?highlight=logging%23integration-with-the-warnings-module">https://docs.python.org/3.6/library/logging.html?highlight=logging#integration-with-the-warnings-module</a> <a href="https://link.zhihu.com/?target=https://www.jianshu.com/p/feb86c06c4f4">https://www.jianshu.com/p/feb86c06c4f4</a><br><a href="https://link.zhihu.com/?target=https://cloud.tencent.com/developer/article/1354396">https://cloud.tencent.com/devel</a></p>
 
       
     </div>
@@ -345,10 +709,10 @@
 
 
   
-    <article id="post-python" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-python语法" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2022/04/07/python/" class="article-date">
+      <a href="/2022/04/07/python%E8%AF%AD%E6%B3%95/" class="article-date">
       <time datetime="2022-04-07T08:10:44.000Z" itemprop="datePublished">2022-04-07</time>
 </a>
 
@@ -364,7 +728,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/04/07/python/">python语法</a>
+      <a class="article-title" href="/2022/04/07/python%E8%AF%AD%E6%B3%95/">python语法</a>
     </h1>
   
 
@@ -374,7 +738,39 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><p>在 Python 中，* 和 ** 具有语法多义性，具体来说是有四类用法。</p>
+              <h2 id="矩阵的操作"><a href="#矩阵的操作" class="headerlink" title="矩阵的操作"></a>矩阵的操作</h2><h3 id="view-和reshape"><a href="#view-和reshape" class="headerlink" title="view()和reshape"></a>view()和reshape</h3><p>view操作后的变量还是连续的。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a = torch.tensor([[[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]],</span><br><span class="line">                  [[<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>],[<span class="number">10</span>,<span class="number">11</span>,<span class="number">12</span>]]</span><br><span class="line">                 ])</span><br><span class="line">b = a.view(<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line">b = tensor([[ <span class="number">1</span>,  <span class="number">2</span>,  <span class="number">3</span>,  <span class="number">4</span>],</span><br><span class="line">        [<span class="number">5</span>,  <span class="number">6</span> ,<span class="number">7</span>,	<span class="number">8</span>],</span><br><span class="line">        [<span class="number">9</span>,	<span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>]])</span><br></pre></td></tr></table></figure>
+
+<p>张量a的size是2x2x3，使用view函数后，先将这12个元素排成一列，然后将其依次填充至新的4x3的张量中：</p>
+<p><img src="E:\笔记\markdown\reference\picture\v2-acfb79d45817e3080ddcac7666d61f09_b.jpg" alt="img"></p>
+<p>为了更细致，我们需要描述一下它们的具体操作流程（这并不是源码的流程，只是为了便于理解、记忆），因为二维比较直观，如果维度比较高的话，可能还是不够直观，心里老是有疑虑，还是以上面例子为例，张量a的每一个元素都有一个index，例如1的index是(0,0,0)，7的index是(1,0,0)，11的index是(1,1,1)……在拉成列向量排列时，排列规则是这样的，以(0,0,0)开始，维度从最后一维循环到第一维，在每一维内以升序将所有元素排成一列，即：</p>
+<p><img src="E:\笔记\markdown\reference\picture\v2-0c59291b64850293305ab879087ea32d_b.jpg" alt="img"></p>
+<p>然后依据新的size对每个元素给予新的index，仍然是维度从最后一维循环到第一维，在每一维内升序，即:</p>
+<p><img src="E:\笔记\markdown\reference\picture\v2-ab9112d1c2f5bb21d1b3d164bffa5e95_b.jpg" alt="img"></p>
+<blockquote>
+<p>  torch的view()与reshape()方法都可以用来重塑tensor的shape，区别就是使用的条件不一样。view()方法只适用于满足连续性条件的tensor，并且该操作不会开辟新的内存空间，只是产生了对原存储空间的一个新别称和引用，返回值是视图。而reshape()方法的返回值既可以是视图，也可以是副本，当满足连续性条件时返回view，否则返回副本[ 此时等价于先调用contiguous()方法在使用view() ]。因此当不确能否使用view时，可以使用reshape。如果只是想简单地重塑一个tensor的shape，那么就是用reshape，但是如果需要考虑内存的开销而且要确保重塑后的tensor与之前的tensor共享存储空间，那就使用view()。</p>
+</blockquote>
+<h3 id="permute-和transpose"><a href="#permute-和transpose" class="headerlink" title="permute()和transpose()"></a>permute()和transpose()</h3><p>transpose()也是转置操作，与permute不同的是，transpose()每次只能进行二维转置，而permute()每次可转置多个维度().</p>
+<p>接下来，说一下permute()，函数的参数为新的维度顺序，例如想交换第一维与第三维的index，则<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=tensor.permute&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22article%22,%22sourceId%22:%2288311093%22%7D">tensor.permute</a>(2,1,0)，同样举一个简单第二维与第三维的例子，</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">a = torch.tensor([[[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]],[[<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>],[<span class="number">10</span>,<span class="number">11</span>,<span class="number">12</span>]]])</span><br><span class="line">b = a.permute(<span class="number">0</span>,<span class="number">2</span>,<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">b = tensor([[[ <span class="number">1</span>,  <span class="number">4</span>],</span><br><span class="line">         [ <span class="number">2</span>,  <span class="number">5</span>],</span><br><span class="line">         [ <span class="number">3</span>,  <span class="number">6</span>]],</span><br><span class="line">        [[ <span class="number">7</span>, <span class="number">10</span>],</span><br><span class="line">         [ <span class="number">8</span>, <span class="number">11</span>],</span><br><span class="line">         [ <span class="number">9</span>, <span class="number">12</span>]]])</span><br></pre></td></tr></table></figure>
+
+<p><img src="E:\笔记\markdown\reference\picture\v2-6bdd87e65b64534339d3efad9ae4eae5_b.jpg" alt="img"></p>
+<p>当维度比较大，交换维度的结果并不直观，我们还是说下permute到底做了什么，示意图如下。</p>
+<p>需要说明一下，这里面的流程其实就是更改每个元素的index而已，上述例子中只是交换坐标，</p>
+<p><img src="E:\笔记\markdown\reference\picture\v2-ec4167d8c19713e232ab3f5ba35ed10d_b.jpg" alt="img"></p>
+<p>然后按照新的index更改下各元素的位置并展示出即可。</p>
+<h3 id="squeeze-和unsqueeze-函数功能"><a href="#squeeze-和unsqueeze-函数功能" class="headerlink" title="squeeze()和unsqueeze()函数功能"></a>squeeze()和unsqueeze()函数功能</h3><h4 id="1-squeeze-dim-："><a href="#1-squeeze-dim-：" class="headerlink" title="1.squeeze(dim)："></a>1.squeeze(dim)：</h4><p>给张量tensor降维，但不是啥张量都可以用这两个函数来降维。dim指定需要降维的维度，这个维度的值必须为1才能被降维。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line">a=torch.rand(<span class="number">2</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(a.shape)</span><br><span class="line"><span class="built_in">print</span>(a.squeeze(<span class="number">1</span>).shape)</span><br><span class="line"></span><br><span class="line"><span class="comment">#torch.Size([2, 1, 4, 1])</span></span><br><span class="line"><span class="comment">#torch.Size([2, 4, 1])</span></span><br></pre></td></tr></table></figure>
+
+<p>2.unsqueeze(dim)</p>
+<p>与squeeze(dim)相反，在dim维度上添加一个维度。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line">a=torch.rand(<span class="number">2</span>,<span class="number">4</span>)</span><br><span class="line"><span class="built_in">print</span>(a.shape)</span><br><span class="line"><span class="built_in">print</span>(a.unsqueeze(<span class="number">1</span>).shape)</span><br><span class="line"></span><br><span class="line"><span class="comment">#torch.Size([2, 4])</span></span><br><span class="line"><span class="comment">#torch.Size([2, 1, 4])</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><p>在 Python 中，* 和 ** 具有语法多义性，具体来说是有四类用法。</p>
           
       
     </div>
@@ -390,7 +786,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2022/04/07/python/#more">阅读全文 >></a>
+          <a href="/2022/04/07/python%E8%AF%AD%E6%B3%95/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -409,10 +805,75 @@
 
 
   
-    <article id="post-pytorch使用" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-聚类方法总结" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2022/04/07/pytorch%E4%BD%BF%E7%94%A8/" class="article-date">
+      <a href="/2022/04/07/%E8%81%9A%E7%B1%BB%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/" class="article-date">
+      <time datetime="2022-04-07T08:10:44.000Z" itemprop="datePublished">2022-04-07</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/04/07/%E8%81%9A%E7%B1%BB%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/">聚类</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>可以使用模块 <a target="_blank" rel="noopener" href="http://scikit-learn.org.cn/lists/3.html#sklearn.cluster%EF%BC%9A%E8%81%9A%E7%B1%BB"><code>sklearn.cluster</code></a> 对未标记的数据进行 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Cluster_analysis">聚类(Clustering)</a> 。</p>
+<p>每个聚类算法都有两个变体:一个是类，它实现了 <code>fit</code> 方法来学习训练数据上的簇，另一个是函数，给定训练数据，返回对应于不同簇的整数标签数组。对于类，可以在 <code>labels_</code> 属性中找到训练数据上的标签。</p>
+<blockquote>
+<p>  <strong>输入数据</strong></p>
+<p>  特别需要注意的一点是，本模块实现的算法可以采用不同类型的矩阵作为输入。所有算法的调用接口都接受 shape<code>[n_samples, n_features]</code> 的标准数据矩阵。 这些矩阵可以通过使用 <a target="_blank" rel="noopener" href="http://scikit-learn.org.cn/lists/3.html#sklearn.feature_extraction%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96"><code>sklearn.feature_extraction</code></a> 模块中的类获得。对于 <a target="_blank" rel="noopener" href="https://scikit-learn.org.cn/view/370.html"><code>AffinityPropagation</code></a>, <a target="_blank" rel="noopener" href="https://scikit-learn.org.cn/view/391.html"><code>SpectralClustering</code></a> 和 <a target="_blank" rel="noopener" href="https://scikit-learn.org.cn/view/379.html"><code>DBSCAN</code></a> 也可以输入 shape <code>[n_samples, n_samples]</code> 的相似矩阵，可以通过 <a target="_blank" rel="noopener" href="http://scikit-learn.org.cn/lists/3.html#sklearn.metrics%EF%BC%9A%E6%8C%87%E6%A0%87"><code>sklearn.metrics.pairwise</code></a> 模块中的函数获得。</p>
+</blockquote>
+<h3 id="聚类方法概述"><a href="#聚类方法概述" class="headerlink" title="聚类方法概述"></a>聚类方法概述</h3>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-pytorch使用汇总" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/04/07/pytorch%E4%BD%BF%E7%94%A8%E6%B1%87%E6%80%BB/" class="article-date">
       <time datetime="2022-04-07T04:44:13.000Z" itemprop="datePublished">2022-04-07</time>
 </a>
 
@@ -428,7 +889,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/04/07/pytorch%E4%BD%BF%E7%94%A8/">pytorch使用</a>
+      <a class="article-title" href="/2022/04/07/pytorch%E4%BD%BF%E7%94%A8%E6%B1%87%E6%80%BB/">pytorch使用汇总</a>
     </h1>
   
 
@@ -438,7 +899,12 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <h2 id="模型的保存和读取"><a href="#模型的保存和读取" class="headerlink" title="模型的保存和读取"></a>模型的保存和读取</h2><p>​    </p>
+              <h2 id="日志输出"><a href="#日志输出" class="headerlink" title="日志输出"></a>日志输出</h2><p>利用logging模块在控制台实时打印并及时记录运行日志。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">from config import  *</span><br><span class="line">import logging  # 引入logging模块</span><br><span class="line">import os.path</span><br><span class="line">class Logger:</span><br><span class="line">    def __init__(self,mode=&#x27;w&#x27;):</span><br><span class="line">        # 第一步，创建一个logger</span><br><span class="line">        self.logger = logging.getLogger()</span><br><span class="line">        self.logger.setLevel(logging.INFO)  # Log等级总开关</span><br><span class="line">        # 第二步，创建一个handler，用于写入日志文件</span><br><span class="line">        rq = time.strftime(&#x27;%Y%m%d%H%M&#x27;, time.localtime(time.time()))</span><br><span class="line">        log_path = os.getcwd() + &#x27;/Logs/&#x27;</span><br><span class="line">        log_name = log_path + rq + &#x27;.log&#x27;</span><br><span class="line">        logfile = log_name</span><br><span class="line">        fh = logging.FileHandler(logfile, mode=mode)</span><br><span class="line">        fh.setLevel(logging.DEBUG)  # 输出到file的log等级的开关</span><br><span class="line">        # 第三步，定义handler的输出格式</span><br><span class="line">        formatter = logging.Formatter(&quot;%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s&quot;)</span><br><span class="line">        fh.setFormatter(formatter)</span><br><span class="line">        # 第四步，将logger添加到handler里面</span><br><span class="line">        self.logger.addHandler(fh)</span><br><span class="line">        ch = logging.StreamHandler()</span><br><span class="line">        ch.setLevel(logging.INFO)  # 输出到console的log等级的开关</span><br><span class="line">        ch.setFormatter(formatter)</span><br><span class="line">        self.logger.addHandler(ch)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="模型的保存和读取"><a href="#模型的保存和读取" class="headerlink" title="模型的保存和读取"></a>模型的保存和读取</h2><p>​    </p>
 <table>
 <thead>
 <tr>
@@ -470,7 +936,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2022/04/07/pytorch%E4%BD%BF%E7%94%A8/#more">阅读全文 >></a>
+          <a href="/2022/04/07/pytorch%E4%BD%BF%E7%94%A8%E6%B1%87%E6%80%BB/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -738,205 +1204,6 @@
       
         <p class="article-more-link">
           <a href="/2021/10/28/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0part1/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-BN算法" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2021/10/25/BN%E7%AE%97%E6%B3%95/" class="article-date">
-      <time datetime="2021-10-25T12:20:14.000Z" itemprop="datePublished">2021-10-25</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/10/25/BN%E7%AE%97%E6%B3%95/">BN算法</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="BN算法概要"><a href="#BN算法概要" class="headerlink" title="BN算法概要"></a>BN算法概要</h1><p>Batch Normalization是2015年一篇论文中提出的数据归一化方法，往往用在深度神经网络中激活层之前。其作用可以加快模型训练时的收敛速度，使得模型训练过程更加稳定，避免梯度爆炸或者梯度消失。并且起到一定的正则化作用，几乎代替了Dropout。</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/deepLearning/" rel="tag">deepLearning</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2021/10/25/BN%E7%AE%97%E6%B3%95/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-互信息" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2021/10/25/%E4%BA%92%E4%BF%A1%E6%81%AF/" class="article-date">
-      <time datetime="2021-10-25T04:44:13.000Z" itemprop="datePublished">2021-10-25</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/10/25/%E4%BA%92%E4%BF%A1%E6%81%AF/">互信息</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="信息熵"><a href="#信息熵" class="headerlink" title="信息熵"></a>信息熵</h1><p>机器学习中很多地方都要根据目前的信息做出决策，信息熵主要是反应信息的不确定性；它的一个很重要的作用，就是做决策时提供一定的判断依据，比如决策树根据熵来往下设置分枝(branch)。</p>
-<ol>
-<li>计算方法 $$H(X)=-\sum_{i=1}^nP(x_i)logP(x_i)$$<br> 其中$P(x_i)$代表随机事件X为$x_i$的概率。</li>
-</ol>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math/" rel="tag">math</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2021/10/25/%E4%BA%92%E4%BF%A1%E6%81%AF/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-algebra" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2021/10/22/algebra/" class="article-date">
-      <time datetime="2021-10-22T08:26:34.000Z" itemprop="datePublished">2021-10-22</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/10/22/algebra/">algebra</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="一-向量"><a href="#一-向量" class="headerlink" title="一. 向量"></a>一. 向量</h1><ol>
-<li>向量对于不同的学科有不一样的定义，我们将从三个角度对向量进行解释。<ul>
-<li>物理学<br> 物理中的向量由长度和方向决定，长度和方向不变的情况下随意移动，表示的都是同一个向量。</li>
-<li>计算机<br> 计算机中的向量更多的是对数据的抽象，可以是根据面积和价格定义的一个房子特征$\begin{bmatrix}100m^2\\700000￥\end{bmatrix}$或是通过神经网络得到的图象的的一个向量。</li>
-<li>数学<br> 数学中的向量可以是任意东西，只要保证两个向量的相加$\vec v + \vec w$以及数字和向量相乘$2\vec v$是有意义的即可。
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math/" rel="tag">math</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2021/10/22/algebra/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>

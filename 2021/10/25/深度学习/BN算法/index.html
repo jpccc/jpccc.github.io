@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content=" liusha" />
+
+
+
+<meta name="description" content="BN算法BN算法概要传统的神经网络，只是在将样本x输入到输入层之前对x进行标准化处理，以降低样本间的差异性。BN是在此基础上，不仅仅只对输入层的输入数据x进行标准化，还对每个隐藏层的输入进行标准化。 Batch Normalization是2015年一篇论文中提出的数据归一化方法，往往用在深度神经网络中激活层之前。其作用可以加快模型训练时的收敛速度，使得模型训练过程更加稳定，避免梯度爆炸或者梯度消">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BN算法">
+<meta property="og:url" content="https://jpccc.github.io/2021/10/25/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/BN%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:site_name" content="流沙">
+<meta property="og:description" content="BN算法BN算法概要传统的神经网络，只是在将样本x输入到输入层之前对x进行标准化处理，以降低样本间的差异性。BN是在此基础上，不仅仅只对输入层的输入数据x进行标准化，还对每个隐藏层的输入进行标准化。 Batch Normalization是2015年一篇论文中提出的数据归一化方法，往往用在深度神经网络中激活层之前。其作用可以加快模型训练时的收敛速度，使得模型训练过程更加稳定，避免梯度爆炸或者梯度消">
+<meta property="og:locale">
+<meta property="og:image" content="e:/笔记/markdown/picture/bn01.png">
+<meta property="og:image" content="e:/笔记/markdown/picture/bn02.png">
+<meta property="og:image" content="e:/笔记/markdown/picture/bn03.png">
+<meta property="og:image" content="e:/笔记/markdown/picture/640.jpeg">
+<meta property="og:image" content="e:/笔记/markdown/picture/bn04.png">
+<meta property="og:image" content="e:/笔记/markdown/picture/bn05.png">
+<meta property="article:published_time" content="2021-10-25T12:20:14.000Z">
+<meta property="article:modified_time" content="2022-05-12T12:11:31.412Z">
+<meta property="article:author" content=" liusha">
+<meta property="article:tag" content="deepLearning">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="e:/笔记/markdown/picture/bn01.png">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="流沙" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>BN算法 | 流沙</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/"></a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="https://jpccc.github.io/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/%E9%9A%8F%E7%AC%94">随笔</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:jiangpc21@mails.glu.edu.cn" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa QQ" href="/1778013127" title="QQ"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/deepLearning/" rel="tag">deepLearning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math/" rel="tag">math</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pytorch/" rel="tag">pytorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag">深度学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0/" rel="tag">统计学习</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" target="_blank" rel="noopener" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" target="_blank" rel="noopener" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">机器学习</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页"></a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页"></a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="https://jpccc.github.io/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/%E9%9A%8F%E7%AC%94">随笔</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:jiangpc21@mails.glu.edu.cn" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="/1778013127" title="QQ"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-深度学习/BN算法" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2021/10/25/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/BN%E7%AE%97%E6%B3%95/" class="article-date">
+      <time datetime="2021-10-25T12:20:14.000Z" itemprop="datePublished">2021-10-25</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      BN算法
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/deepLearning/" rel="tag">deepLearning</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="BN算法"><a href="#BN算法" class="headerlink" title="BN算法"></a>BN算法</h1><h2 id="BN算法概要"><a href="#BN算法概要" class="headerlink" title="BN算法概要"></a>BN算法概要</h2><p>传统的神经网络，只是在将样本x输入到输入层之前对x进行标准化处理，以降低样本间的差异性。BN是在此基础上，不仅仅只对输入层的输入数据x进行标准化，还对每个隐藏层的输入进行标准化。</p>
+<p>Batch Normalization是2015年一篇论文中提出的数据归一化方法，<strong>往往用在深度神经网络中激活层之前</strong>。其作用可以加快模型训练时的收敛速度，使得模型训练过程更加稳定，避免梯度爆炸或者梯度消失。（怎么避免梯度爆炸或梯度消失的？）</p>
+<p>那为什么需要对每个隐藏层的输入进行标准化呢？或者说这样做有什么好处呢？这就牵涉到一个Covariate Shift问题。</p>
+<p>并且起到一定的正则化作用，几乎代替了Dropout。</p>
+<span id="more"></span>
+
+<h2 id="Covariate-Shift问题"><a href="#Covariate-Shift问题" class="headerlink" title="Covariate Shift问题"></a>Covariate Shift问题</h2><p>Convariate shift是BN论文作者提出来的概念，指的是具有不同分布的输入值对深度网络学习的影响。当神经网络的输入值的分布不同时，我们可以理解为输入特征值的scale差异较大，与权重进行矩阵相乘后，会产生一些偏离较大的差异值；而深度学习网络需要通过训练不断更新完善，那么差异值产生的些许变化都会深深影响后层，偏离越大表现越为明显；因此，对于反向传播来说，这些现象都会导致梯度发散，从而需要更多的训练步骤来抵消scale不同带来的影响，也就是说，<strong>这种分布不一致将减缓训练速度。</strong></p>
+<p>而BN的作用就是将这些输入值进行标准化，降低scale的差异至同一个范围内。这样做的好处在于一方面提高梯度的收敛程度，加快模型的训练速度；另一方面使得每一层可以尽量面对同一特征分布的输入值，减少了变化带来的不确定性，也降低了对后层网络的影响，各层网络变得相对独立，缓解了训练中的梯度消失问题。</p>
+<h2 id="BN算法产生的背景"><a href="#BN算法产生的背景" class="headerlink" title="BN算法产生的背景"></a>BN算法产生的背景</h2><p>做深度学习大家应该都知道，我们在数据处理部分，我们为了加速训练首先会对数据进行处理的。其中我们最常用的是零均值和PCA（白话）。首先我们进行简单介绍零均值带来的效果：</p>
+<p><img src="E:\笔记\markdown\picture\bn01.png" alt="img"></p>
+<p>首先对第一张图进行分析。</p>
+<p>由于我们通常使用采用零均值化对网络进行参数初始化，我们初始的拟合直线也就是红色部分。另外的一条绿色直线，是我们的目标直线。从图能够直观看出，我们应该需要多次迭代才能得到我们的需要的目标直线。</p>
+<p><img src="E:\笔记\markdown\picture\bn02.png" alt="img"></p>
+<p>我们再看第二张图</p>
+<p>假设我们还是和第一张图有相同的分布，只是我们做了减均值，让数据均值为零。能够直观的发现可能只进行简单的微调就能够实现拟合（理想）。大大提高了我们的训练速度。因此，在训练开始前，对数据进行零均值是一个必要的操作。</p>
+<p>但是，随着网络层次加深参数对分布的影响不定，导致网络每层间以及不同迭代轮次的相同层的输入分布发生改变，导致网络需要重新适应新的分布，迫使我们降低学习率降低影响。在这个背景下BN算法开始出现。       有些人首先提出在每层增加PCA白化(先对数据进行去相关然后再进行归一化)，这样基本满足了数据的0均值、单位方差、弱相关性。但是这样是不可取的，因为在白化过程中会计算协方差矩阵、求逆等操作，计算量会很大，另外，在反向传播时，白化的操作不一定可微。因此，在此背景下BN算法开始出现。</p>
+<h2 id="BN算法的实现和优点"><a href="#BN算法的实现和优点" class="headerlink" title="BN算法的实现和优点"></a>BN算法的实现和优点</h2><h3 id="BN算法的实现"><a href="#BN算法的实现" class="headerlink" title="BN算法的实现"></a>BN算法的实现</h3><p>上面提到了PCA白化优点，能够去相关和数据均值，标准值归一化等优点。但是当数据量比较大的情况下去相关的话需要大量的计算，因此有些人提出了只对数据进行均值和标准差归一化。叫做近似白化预处理。</p>
+<p>$$\hat{x}^k=\frac{X^k-E(X^k)}{\sqrt{Var[(x^k)}]}$$</p>
+<p>由于训练过程采用了batch随机梯度下降，因此$E(X^k)$指的是一批训练数据时，各神经元输入值的平均值；$\sqrt{Var[(x^k)}]$指的是一批训练数据时各神经元输入值的标准差。</p>
+<p><strong>但是，这些应用到深度学习网络还远远不够，因为可能由于这种的强制转化导致数据的分布发生破坏</strong>。因此需要对公式的鲁棒性进行优化，就有人提出了<strong>变换重构</strong>的概念。就是在基础公式的基础之上加上了两个参数γ、β。<strong>这样在训练过程中就可以学习这两个参数，采用适合自己网络的BN公式。</strong></p>
+<p>公式如下：<br>    $$y^k=\gamma^k\hat x^k+\beta^k$$<br>    每一个神经元都会有一对这样的参数γ、β。这样其实当$\beta^k=E[x^k],\gamma^k=\sqrt{var[x^k]}$时，是可以恢复出原始的某一层所学到的特征的。引入可学习重构参数γ、β，让网络可以学习恢复出原始网络所要学习的特征分布。</p>
+<p>总结上面我们会得到BN的向前传导公式：</p>
+<p>$\mu_\beta\leftarrow\frac{1}{m}\sum_{i=1}^nx_i$<br>        $\delta_\beta^2\leftarrow\frac{1}{m}\sum_{i=1}^n(x_i-\mu_\beta)^2$<br>        $\hat{x}\leftarrow\frac{x_i-\mu_\beta}{\sqrt{\delta_\beta^2+\epsilon}}$<br>        $y_i\leftarrow\gamma\hat{x_i}+\beta\equiv BN_{\gamma,\beta}(x_i)$ </p>
+<h3 id="BN算法在网络中的作用"><a href="#BN算法在网络中的作用" class="headerlink" title="BN算法在网络中的作用"></a>BN算法在网络中的作用</h3><p>BN算法像卷积层，池化层、激活层一样也作为一层。BN层添加在激活函数前，对输入激活函数的输入进行归一化。这样解决了输入数据发生偏移和增大的影响。</p>
+<p>优点：</p>
+<ol>
+<li>可以增加训练速度，防止过拟合：如果没有归一化，每一层训练后的数据分布都不同，网络需要更大的开销去学习新的分布，造成网络模型更加复杂，因此容易发生过拟合，网络收敛也比较慢。即使小的学习率也能够有快速的学习速率;</li>
+<li>可以避免激活函数进入非线性饱和区，从而造成梯度弥散问题。不用理会拟合中的droupout、L2 正则化项的参数选择，采用BN算法可以省去这两项或者只需要小的L2正则化约束。原因，BN算法后，参数进行了归一化，原本经过激活函数没有太大影响的神经元，分布变得明显，经过一个激活函数以后，神经元会自动削弱或者去除一些神经元，就不用再对其进行dropout。另外就是L2正则化，由于每次训练都进行了归一化，就很少发生由于数据分布不同导致的参数变动过大，带来的参数不断增大。</li>
+<li>可以把训练数据集打乱，防止训练发生偏移。</li>
+</ol>
+<p>使用： 在卷积中，会出现每层卷积层中有（L）多个特征图。AxAxL特征矩阵。我们只需要以每个特征图为单元求取一对γ、β。</p>
+<p>在测试时，由于不再有mini-batch的概念，无法计算均值和方差，因此用训练时所有mini-batch的均值和方差求期望，将其作为测试时的均值和方差。训练（train）过程和测试（inference）过程合并，算法总流程如下：</p>
+<p><img src="E:\笔记\markdown\picture\bn03.png" alt="img"></p>
+<h1 id="归一化和标准化"><a href="#归一化和标准化" class="headerlink" title="归一化和标准化"></a>归一化和标准化</h1><h2 id="问题引入"><a href="#问题引入" class="headerlink" title="问题引入"></a><strong>问题引入</strong></h2><p>在我们做机器学习相关的研究时，尤其在进行数据处理的过程中，大大小小都会遇到标准化和归一化的相关概念和处理。</p>
+<h2 id="问题解答"><a href="#问题解答" class="headerlink" title="问题解答"></a><strong>问题解答</strong></h2><p>首先看一下标准化和归一化的公式：</p>
+<p>归一化 ：$x^{\prime}=\frac{x-\min(x)}{\max(x)-\min(x)}$</p>
+<p>标准化 ：$x^{\prime}=\frac{x-\overline{x}}{\delta}$</p>
+<h2 id="归一化（Normalization）"><a href="#归一化（Normalization）" class="headerlink" title="归一化（Normalization）"></a>归一化（Normalization）</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>将一列数据变化到某个固定区间(范围)中，通常，这个区间是[0, 1]，广义的讲，可以是各种区间，比如映射到[0，1]一样可以继续映射到其他范围，图像中可能会映射到[0,255]，其他情况可能映射到[-1,1]；归一化不止上面公式给出的一种形式，还有范数（比如torch.nn.normalize()就是一种归一化）</p>
+<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>归一化后的数据有助于在求解是缓解求解过程中的参数寻优的动荡，以加快收敛。对于不归一化的收敛，可以发现其参数更新、收敛如左图，归一化后的收敛如右图。可以看到在左边是呈现出之字形的寻优路线，在右边则是呈现较快的梯度下降。</p>
+<p><img src="E:\笔记\markdown\picture\640.jpeg" alt="图片"></p>
+<h2 id="标准化（Standardization）"><a href="#标准化（Standardization）" class="headerlink" title="标准化（Standardization）"></a>标准化（Standardization）</h2><h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><p>将数据变换为均值为0，标准差为1的分布切记，并非一定是正态的。</p>
+<h2 id="归一化和标准化的区别"><a href="#归一化和标准化的区别" class="headerlink" title="归一化和标准化的区别"></a>归一化和标准化的区别</h2><p>归一化是将样本的特征值转换到同一量纲下把数据映射到[0,1]或者[-1, 1]区间内，仅由变量的极值决定，因区间放缩法是归一化的一种。标准化是依照特征矩阵的列处理数据，其通过求z-score的方法，转换为标准正态分布，和整体样本分布相关，每个样本点都能对标准化产生影响。它们的相同点在于都能取消由于量纲不同引起的误差；都是一种线性变换，都是对向量X按照比例压缩再进行平移。</p>
+<p>很多博客甚至书中说，Standardization是改变数据分布，将其变换为服从N(0,1)的标准正态分布，这点是错的，Standardization会改变数据的均值、标准差(当然，严格的说，均值和标准差变了，分布也是变了，但分布种类依然没变，原来是啥类型，现在就是啥类型)，但本质上的分布并不一定是标准正态，完全取决于原始数据是什么分布。我个举例子，我生成了100万个服从beta(0.5,0.5)的样本点(你可以替换成任意非正态分布，比如卡方等等，beta(1,1)是一个服从U(0,1)的均匀分布，所以我选了beta(0.5,0.5))，称这个原始数据为$b_0$分布如下图所示：</p>
+<p><img src="E:\笔记\markdown\picture\bn04.png" alt="在这里插入图片描述"></p>
+<p>通过计算机计算，样本$b_0$的均值和方差分别为0.49982和0.12497(约为0.5和0.125)<br>对这个数据做Standardization，称这个标准化后的数据为$b_1$,分布如下：</p>
+<p><img src="E:\笔记\markdown\picture\bn05.png"></p>
+<p>可以看到数据形态完全不是正态分布，但是数学期望和方差已经变了。beta分布的数学期望为$\frac{a}{a+b}$，方差为$\frac{ab}{(a+b)^2(a+b+1)} $<br> ，所以$E(b_0) =\frac{0.5}{0.5+0.5}=\frac{1}{2}$, $Var(b_0)=\frac{1}{8}$,这也和我们上文所计算的样本均值和方差一致，而$b_1$ 的均值和方差分别为：-1.184190523417783e-1和1，均值和方差已经不再是0.5和0.125，分布改变，但绝不是一个正态分布。之所以大家会把标准化和正态分布联系起来，是因为实际数据中大部分都是正态分布，起码近似正态，另外，我看到很多人说标准化的基本假设是对正态数据，我并没有从哪些知名度较高的课本教材中查询到依据，如果有知道的同学也可以给我普及。</p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><h2 id="什么时候Standardization，什么时候Normalization"><a href="#什么时候Standardization，什么时候Normalization" class="headerlink" title="什么时候Standardization，什么时候Normalization"></a>什么时候Standardization，什么时候Normalization</h2><p>如果你对处理后的数据范围有严格要求，那肯定是归一化，个人经验，标准化是ML中更通用的手段，如果你无从下手，可以直接使用标准化；如果数据不为稳定，存在极端的最大最小值，不要用归一化。在分类、聚类算法中，需要使用距离来度量相似性的时候、或者使用PCA技术进行降维的时候，标准化表现更好；在不涉及距离度量、协方差计算的时候，可以使用归一化方法。<br>PS：PCA中标准化表现更好的原因可以参考(<a target="_blank" rel="noopener" href="https://blog.csdn.net/young951023/article/details/78389445">PCA标准化</a>)</p>
+<h4 id="所有情况都应当Standardization或Normalization么"><a href="#所有情况都应当Standardization或Normalization么" class="headerlink" title="所有情况都应当Standardization或Normalization么"></a>所有情况都应当Standardization或Normalization么</h4>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2021/10/25/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/BN%E7%AE%97%E6%B3%95/">BN算法</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">流沙</a></p>
+        <p><span>发布时间:</span>2021-10-25, 20:20:14</p>
+        <p><span>最后更新:</span>2022-05-12, 20:11:31</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2021/10/25/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/BN%E7%AE%97%E6%B3%95/" title="BN算法">https://jpccc.github.io/2021/10/25/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/BN%E7%AE%97%E6%B3%95/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://jpccc.github.io/2021/10/25/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/BN%E7%AE%97%E6%B3%95/　　作者: " title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2021/10/28/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0part1/">
+                    统计学习数学基础-1
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2021/10/25/%E4%BA%92%E4%BF%A1%E6%81%AF/">
+                    互信息
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#BN%E7%AE%97%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">BN算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#BN%E7%AE%97%E6%B3%95%E6%A6%82%E8%A6%81"><span class="toc-number">1.1.</span> <span class="toc-text">BN算法概要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Covariate-Shift%E9%97%AE%E9%A2%98"><span class="toc-number">1.2.</span> <span class="toc-text">Covariate Shift问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BN%E7%AE%97%E6%B3%95%E4%BA%A7%E7%94%9F%E7%9A%84%E8%83%8C%E6%99%AF"><span class="toc-number">1.3.</span> <span class="toc-text">BN算法产生的背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BN%E7%AE%97%E6%B3%95%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%92%8C%E4%BC%98%E7%82%B9"><span class="toc-number">1.4.</span> <span class="toc-text">BN算法的实现和优点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#BN%E7%AE%97%E6%B3%95%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.4.1.</span> <span class="toc-text">BN算法的实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BN%E7%AE%97%E6%B3%95%E5%9C%A8%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">1.4.2.</span> <span class="toc-text">BN算法在网络中的作用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BD%92%E4%B8%80%E5%8C%96%E5%92%8C%E6%A0%87%E5%87%86%E5%8C%96"><span class="toc-number">2.</span> <span class="toc-text">归一化和标准化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E5%BC%95%E5%85%A5"><span class="toc-number">2.1.</span> <span class="toc-text">问题引入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E8%A7%A3%E7%AD%94"><span class="toc-number">2.2.</span> <span class="toc-text">问题解答</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BD%92%E4%B8%80%E5%8C%96%EF%BC%88Normalization%EF%BC%89"><span class="toc-number">2.3.</span> <span class="toc-text">归一化（Normalization）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-number">2.3.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%9B%A0"><span class="toc-number">2.3.2.</span> <span class="toc-text">原因</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%87%E5%87%86%E5%8C%96%EF%BC%88Standardization%EF%BC%89"><span class="toc-number">2.4.</span> <span class="toc-text">标准化（Standardization）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-1"><span class="toc-number">2.4.1.</span> <span class="toc-text">定义</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BD%92%E4%B8%80%E5%8C%96%E5%92%8C%E6%A0%87%E5%87%86%E5%8C%96%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">2.5.</span> <span class="toc-text">归一化和标准化的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8"><span class="toc-number">2.5.1.</span> <span class="toc-text">使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99Standardization%EF%BC%8C%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99Normalization"><span class="toc-number">2.6.</span> <span class="toc-text">什么时候Standardization，什么时候Normalization</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%80%E6%9C%89%E6%83%85%E5%86%B5%E9%83%BD%E5%BA%94%E5%BD%93Standardization%E6%88%96Normalization%E4%B9%88"><span class="toc-number">2.6.0.1.</span> <span class="toc-text">所有情况都应当Standardization或Normalization么</span></a></li></ol></li></ol></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2021/10/28/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0part1/" title="上一篇: 统计学习数学基础-1">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2021/10/25/%E4%BA%92%E4%BF%A1%E6%81%AF/" title="下一篇: 互信息">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2022/04/11/%E5%9B%BE%E5%83%8F%E7%9A%84%E6%93%8D%E4%BD%9C/">图像的操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/04/07/%E7%89%B9%E8%89%B2%E5%8C%85/">特色包</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/04/07/python%E8%AF%AD%E6%B3%95/">python语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/04/07/%E8%81%9A%E7%B1%BB%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/">聚类</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/04/07/pytorch%E4%BD%BF%E7%94%A8%E6%B1%87%E6%80%BB/">pytorch使用汇总</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/04/06/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%20tricks/">深度学习训练tricks</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/04/06/pytorch%E8%AE%A1%E7%AE%97%E5%9B%BE/">Understanding Graphs, Automatic Differentiation and Autograd</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/10/28/Jensen-inequality/">Jensen_inequality</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/10/28/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0part1/">统计学习数学基础-1</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/10/25/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/BN%E7%AE%97%E6%B3%95/">BN算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/10/25/%E4%BA%92%E4%BF%A1%E6%81%AF/">互信息</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/10/22/algebra/">algebra</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/10/17/hello-world/">Hello World</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2021-2022  liusha
+            </div>
+            <div class="footer-right">
+                回首向来萧瑟处，归去，也无风雨也无晴。
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
